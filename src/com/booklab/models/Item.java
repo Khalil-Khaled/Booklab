@@ -6,6 +6,7 @@
 package com.booklab.models;
 
 import java.awt.Image;
+import java.util.Objects;
 
 /**
  *

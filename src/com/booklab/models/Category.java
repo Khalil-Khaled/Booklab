@@ -5,6 +5,8 @@
  */
 package com.booklab.models;
 
+import java.util.Objects;
+
 /**
  *
  * @author Naoures Hidri
