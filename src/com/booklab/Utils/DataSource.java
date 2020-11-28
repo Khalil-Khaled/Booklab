@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DataSource {
  private static DataSource instance; 	
  private Connection cnx;
- private final String  URL="jdbc:mysql://localhost:3306/booklab";
+ private final String URL="jdbc:mysql://localhost:3306/booklab?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
  private final String USERNAME="root";
  private final String PASSWORD="";
  
@@ -24,13 +24,13 @@ public class DataSource {
  private DataSource() {
 	 try {
 	cnx = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-	System.out.println("connected to BD");
+	System.out.println("Connected to Database");
 	 }catch(SQLException ex) {
 		 System.out.println(ex.getMessage());
 	 }
 }
  public static DataSource getInstance() {//only one instance 
-	 if (instance ==null)
+	 if (instance==null)
 		 instance=new DataSource();
 	return instance;
  }

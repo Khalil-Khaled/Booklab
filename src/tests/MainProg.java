@@ -5,12 +5,17 @@
  */
 package tests;
 
+import com.booklab.models.ShoppingCart;
+import com.booklab.services.ServicesShoppingCart;
+
 /**
  *
  * @author Khalil
  */
 public class MainProg {
     public static void main(String[] args) {
-        System.out.println("test");
+
     }
+    
+
 }
