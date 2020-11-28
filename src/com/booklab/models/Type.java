@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.booklab.services;
+package com.booklab.models;
 
 /**
  *
  * @author user
  */
-public class CouponServices {
-    
+public enum Type {
+    ORDER,OFFER
 }

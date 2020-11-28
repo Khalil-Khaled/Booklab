@@ -9,55 +9,47 @@ import java.util.Objects;
 
 /**
  *
- * @author radhw
+ * @author user
  */
 public class Coupon {
-    private int couponId;
+
+    private int couponID;
     private String codeCoupon;
-    private Boolean validity;
+    private boolean validity;
 
-    public Coupon(int couponId, String codeCoupon, Boolean validity) {
-        this.couponId = couponId;
+    public Coupon(int couponID, String codeCoupon, boolean validity) {
+        this.couponID = couponID;
         this.codeCoupon = codeCoupon;
         this.validity = validity;
     }
 
-    public Coupon(String codeCoupon, Boolean validity) {
+    public Coupon(String codeCoupon, boolean validity) {
         this.codeCoupon = codeCoupon;
         this.validity = validity;
     }
 
-    public int getCouponId() {
-        return couponId;
+    public int getCouponID() {
+        return couponID;
     }
 
     public String getCodeCoupon() {
         return codeCoupon;
     }
 
-    public Boolean getValidity() {
+    public boolean isValidity() {
         return validity;
     }
 
-    public void setCouponId(int couponId) {
-        this.couponId = couponId;
+    public void setCouponID(int couponID) {
+        this.couponID = couponID;
     }
 
     public void setCodeCoupon(String codeCoupon) {
         this.codeCoupon = codeCoupon;
     }
 
-    public void setValidity(Boolean validity) {
+    public void setValidity(boolean validity) {
         this.validity = validity;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + this.couponId;
-        hash = 53 * hash + Objects.hashCode(this.codeCoupon);
-        hash = 53 * hash + Objects.hashCode(this.validity);
-        return hash;
     }
 
     @Override
@@ -72,21 +64,16 @@ public class Coupon {
             return false;
         }
         final Coupon other = (Coupon) obj;
-        if (this.couponId != other.couponId) {
+        if (this.couponID != other.couponID) {
+            return false;
+        }
+        if (this.validity != other.validity) {
             return false;
         }
         if (!Objects.equals(this.codeCoupon, other.codeCoupon)) {
             return false;
         }
-        if (!Objects.equals(this.validity, other.validity)) {
-            return false;
-        }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Coupon{" + "couponId=" + couponId + ", codeCoupon=" + codeCoupon + ", validity=" + validity + '}';
-    }
-    
 }

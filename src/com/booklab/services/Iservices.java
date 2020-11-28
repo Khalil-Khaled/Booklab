@@ -9,6 +9,8 @@ package com.booklab.services;
  *
  * @author user
  */
-public class CouponServices {
-    
+public interface Iservices<T> {
+    public void add(T t);
+    public void delete(T t);
+    public void modify(T t);
 }
