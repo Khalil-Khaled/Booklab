@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ShoppingCart {
 	private int cartID;
 	private int userID;
-	private ArrayList<Integer> itemsID = new ArrayList<>();
+	private ArrayList<Item> items = new ArrayList<>();
         private ArrayList<Integer> amounts = new ArrayList<>();
         
     @Override
@@ -65,25 +65,33 @@ public class ShoppingCart {
         this.userID = userID;
     }
 
-    public int getItem(int index){
-        return itemsID.get(index);
+    public Item getItem(int index){
+        return items.get(index);
     }
     public int getItemAmount(int index){
         return amounts.get(index);
     }
     
-    public ArrayList<Integer> getItemsID() {
-        return itemsID;
+    public ArrayList<Item> getItems() {
+        return items;
     }
 
-    public void setItemsID(ArrayList<Integer> itemsID) {
-        this.itemsID = itemsID;
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
     
-    public void addItem(int itemID, int amount) {
-        this.itemsID.add(itemID);
-        this.amounts.add(amount);
-    }
+    public void addItem(Item item, int amount) {
+        boolean found = false;
+        for(int i=0; i<items.size(); i++){
+            if (items.get(i).equals(item)){
+                amounts.set(i, amounts.get(i)+amount);
+                found = true;
+                return;
+            }
+        }
+            this.items.add(item);
+            this.amounts.add(amount);
+    }   
 
     public ArrayList<Integer> getAmounts() {
         return amounts;
@@ -92,10 +100,22 @@ public class ShoppingCart {
     public void setAmounts(ArrayList<Integer> amounts) {
         this.amounts = amounts;
     }
+    
+    
+    
+    public double calculateMontantTotal(){
+        double montant = 0;
+        for(int i=0; i<items.size(); i++){
+            System.out.println("(*) "+items.get(i).getName()+"  "+items.get(i).getPrice()+"$ x "+amounts.get(i)+"   "+(items.get(i).getPrice() * amounts.get(i))+"$");
+            montant += items.get(i).getPrice() * amounts.get(i);
+        }
+        System.out.println("-------------------------------------");
+        return montant;
+    }
 
     @Override
     public String toString() {
-        return "ShoppingCart{" + "cartID=" + cartID + ", userID=" + userID + ", itemsID=" + itemsID + ", amounts=" + amounts + '}';
+        return "ShoppingCart{" + "cartID=" + cartID + ", userID=" + userID + ", itemsID=" + items + ", amounts=" + amounts + '}';
     }
 
     

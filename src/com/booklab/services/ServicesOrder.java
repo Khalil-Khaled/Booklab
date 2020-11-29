@@ -12,11 +12,11 @@ import java.sql.Statement;
 public class ServicesOrder {
     Connection cnx = DataSource.getInstance().getCnx();
     
-    public void insert(Order O){
+    public void insertOrder(Order O){
         try {
             String REQ = "INSERT INTO Orders values (null, ?, ?, ?)";
             PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
-                st.setInt(1, O.getCartID());
+                st.setInt(1, O.getCart().getCartID());
                 st.setBoolean(2, O.isOrderStatus());
                 st.setDate(3, O.getOrderDate());
                 st.executeUpdate();
@@ -33,7 +33,7 @@ public class ServicesOrder {
     }
     
     
-    public void remove(Order O){
+    public void removeOrder(Order O){
         try {
             String REQ = "DELETE FROM Orders where orderID = ?";
             PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);

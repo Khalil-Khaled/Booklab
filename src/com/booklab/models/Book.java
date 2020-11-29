@@ -23,8 +23,14 @@ public class Book extends Item{
    private String author;
    private int ageRatingBook;
 
-   public Book(int id, String name, float price, Image image,int bookId, String bookName, int categoryId, String bookDescription, Date publishDate, String author, int ageRatingBook){
-       super(id, name, price, image);
+    public Book(int id) {
+        super(id);
+    }
+   
+   
+
+   public Book(int id, String name, int quantity, float price, String image,int bookId, String bookName, int categoryId, String bookDescription, Date publishDate, String author, int ageRatingBook){
+       super(id, name, quantity, price, image);
        this.bookId=bookId;
        this.bookName=bookName;
        this.categoryId=categoryId;
@@ -96,8 +102,10 @@ public class Book extends Item{
 
     @Override
     public String toString() {
-        return "Book{" + "bookId=" + bookId + ", bookName=" + bookName + ", categoryId=" + categoryId + ", bookDescription=" + bookDescription + ", publishDate=" + publishDate + ", author=" + author + ", ageRatingBook=" + ageRatingBook + '}';
+        return super.toString()+"Book{" + "bookId=" + bookId + ", bookName=" + bookName + ", categoryId=" + categoryId + ", bookDescription=" + bookDescription + ", publishDate=" + publishDate + ", author=" + author + ", ageRatingBook=" + ageRatingBook + '}';
     }
+
+ 
 
     @Override
     public int hashCode() {

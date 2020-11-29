@@ -17,18 +17,31 @@ public abstract class Item {
     private int id;
     private String name;
     private float price;
-    private Image image;
+    private String image;
+    private int quantity;
+    
+    public Item(int id){
+        this.id=id;
+    }
 
-    public Item(int id, String name, float price, Image image){
+    public Item(int id, String name, int quantity, float price, String image){
         this.id=id;
         this.name=name;
+        this.quantity = quantity;
         this.price=price;
         this.image=image;
     }
-    
-    public String toString(){
-        return "Item{"+"id="+id+", name="+name+", price="+price+", image="+image+",};";
+
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", quantity=" + quantity + '}';
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    
+  
     public int getId() {
         return id;
     }
@@ -53,11 +66,11 @@ public abstract class Item {
         this.price = price;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -7,6 +7,7 @@ package com.booklab.services;
 
 import com.booklab.models.ShoppingCart;
 import com.booklab.Utils.DataSource;
+import com.booklab.models.Book;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -44,12 +45,12 @@ public class ServicesShoppingCart {
         String REQ = "";
         try {
             
-            for(int i=0; i<SC.getItemsID().size(); i++){
+            for(int i=0; i<SC.getItems().size(); i++){
             REQ = "INSERT INTO cart_actions values (null, ?, ?, ?)";
             st = cnx.prepareStatement(REQ);
                 
                 st.setInt(1, SC.getCartID());
-                st.setInt(2, SC.getItem(i));
+                st.setInt(2, SC.getItem(i).getId());
                 st.setInt(3, SC.getItemAmount(i));
                 System.out.println("("+i+")INSERT STATUS: "+(st.executeUpdate()>0));
             }
@@ -66,12 +67,12 @@ public class ServicesShoppingCart {
         String REQ = "";
         try {
             
-            for(int i=0; i<SC.getItemsID().size(); i++){
+            for(int i=0; i<SC.getItems().size(); i++){
             REQ = "DELETE FROM cart_actions WHERE cartID = ? and itemID = ?";
             st = cnx.prepareStatement(REQ);
                 
                 st.setInt(1, SC.getCartID());
-                st.setInt(2, SC.getItem(i));
+                st.setInt(2, SC.getItem(i).getId());
                 System.out.println("("+i+")DELETE STATUS: "+(st.executeUpdate()>0));
             }
             
@@ -122,8 +123,8 @@ public class ServicesShoppingCart {
             
             ResultSet result = st.executeQuery();
            
-            while (result.next()){
-                list.addItem(result.getInt(1), result.getInt(2));
+            while (result.next()){//getInt(1), result.getInt(2)
+                list.addItem(new Book(result.getInt(1)), result.getInt(2));
             }
             
             System.out.println("UPDATE STATUS: "+(st.executeUpdate()>0));
