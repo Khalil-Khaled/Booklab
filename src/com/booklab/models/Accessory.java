@@ -19,11 +19,11 @@ public class Accessory extends Item{
     private String accessoryName;
     private int categoryId;
     private String accessoryDescription;
-    private Image accessoryImage;
+    private String accessoryImage;
     private int ageRatingAccessory;
 
-    public Accessory(int id, String name, float price, Image image, int accessoryId, String accessoryName, int categoryId, String accessoryDescription, Image accessoryImage,int ageRatingBook){
-        super(id, name, price, image);
+    public Accessory(int id, String name, int quantity, float price, String image, int accessoryId, String accessoryName, int categoryId, String accessoryDescription, String accessoryImage,int ageRatingBook){
+        super(id, name,quantity , price, image);
         this.accessoryId=accessoryId;
         this.accessoryName=accessoryName;
         this.categoryId=categoryId;
@@ -63,11 +63,11 @@ public class Accessory extends Item{
         this.accessoryDescription = accessoryDescription;
     }
 
-    public Image getAccessoryImage() {
+    public String getAccessoryImage() {
         return accessoryImage;
     }
 
-    public void setAccessoryImage(Image accessoryImage) {
+    public void setAccessoryImage(String accessoryImage) {
         this.accessoryImage = accessoryImage;
     }
 
@@ -81,8 +81,10 @@ public class Accessory extends Item{
 
     @Override
     public String toString() {
-        return "Accessory{" + "accessoryId=" + accessoryId + ", accessoryName=" + accessoryName + ", categoryId=" + categoryId + ", accessoryDescription=" + accessoryDescription + ", accessoryImage=" + accessoryImage + ", ageRatingAccessory=" + ageRatingAccessory + '}';
+        return super.toString()+"Accessory{" + "accessoryId=" + accessoryId + ", accessoryName=" + accessoryName + ", categoryId=" + categoryId + ", accessoryDescription=" + accessoryDescription + ", accessoryImage=" + accessoryImage + ", ageRatingAccessory=" + ageRatingAccessory + '}';
     }
+
+   
 
     @Override
     public int hashCode() {

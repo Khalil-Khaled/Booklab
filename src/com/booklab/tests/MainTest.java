@@ -7,6 +7,7 @@ package com.booklab.tests;
 
 import com.booklab.Utils.DataSource;
 import com.booklab.models.Admin;
+import com.booklab.models.Book;
 import com.booklab.models.Customer;
 import com.booklab.models.Offer;
 import com.booklab.models.ShoppingCart;
@@ -15,6 +16,7 @@ import com.booklab.services.CustomerServices;
 import com.booklab.services.OfferServices;
 import com.booklab.services.ServicesShoppingCart;
 import java.io.FileInputStream;
+import java.util.Date;
 
 /**
  *
@@ -59,15 +61,20 @@ public class MainTest{
         System.out.println(O);*/
         
         ShoppingCart SC = new ShoppingCart(1,1);
-            SC.addItem(55, 1);
-            SC.addItem(45, 3);
-        
+        Book b = new Book(0, "KTEB 9RA2A", 5, 35, "", 0, "", 0, "1er Année", new Date(2020-1900, 3, 1), "Mehdi", 3);
+            SC.addItem(b, 1);
+            SC.addItem(b, 3);
+        Book b1 = new Book(1, "KTEB FALSFA", 3, 20, "", 0, "", 0, "2eme Année", new Date(2020-1900, 3, 1), "Rami", 5);
+            SC.addItem(b1, 1);
         ssc.createCart(SC);
         ssc.addItemsToCart(SC);
         
         
         
-        System.out.println(ssc.getCartItems(SC));
+        System.out.println(SC);
+        System.out.println("-------------------------------------");
+        System.out.println("Montant Total:              "+SC.calculateMontantTotal()+"$");
+        System.out.println("-------------------------------------");
         
         ssc.clearCart(SC);
         ssc.removeCart(SC);
