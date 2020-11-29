@@ -16,32 +16,33 @@ public abstract class Item {
  
     private int id;
     private String name;
+    private int categoryId;
+    private String description;
     private float price;
     private String image;
     private int quantity;
+    private int rating;
     
     public Item(int id){
         this.id=id;
     }
 
-    public Item(int id, String name, int quantity, float price, String image){
-        this.id=id;
-        this.name=name;
+    public Item(int id, String name, int categoryId, String description, float price, String image, int quantity, int rating) {
+        this.id = id;
+        this.name = name;
+        this.categoryId = categoryId;
+        this.description = description;
+        this.price = price;
+        this.image = image;
         this.quantity = quantity;
-        this.price=price;
-        this.image=image;
+        this.rating = rating;
     }
 
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", quantity=" + quantity + '}';
+        return "Item{" + "id=" + id + ", name=" + name + ", categoryId=" + categoryId + ", description=" + description + ", price=" + price + ", image=" + image + ", quantity=" + quantity + ", rating=" + rating + '}';
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-    
-  
     public int getId() {
         return id;
     }
@@ -56,6 +57,22 @@ public abstract class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public float getPrice() {
@@ -74,9 +91,26 @@ public abstract class Item {
         this.image = image;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
+        hash = 89 * hash + this.id;
         return hash;
     }
 
@@ -95,18 +129,12 @@ public abstract class Item {
         if (this.id != other.id) {
             return false;
         }
-        if (Float.floatToIntBits(this.price) != Float.floatToIntBits(other.price)) {
-            return false;
-        }
         if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.image, other.image)) {
             return false;
         }
         return true;
     }
-    
+
 
     
 
