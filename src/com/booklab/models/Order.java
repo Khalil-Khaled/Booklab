@@ -4,21 +4,21 @@ import java.sql.Date;
 
 public class Order {
 	private int orderID;
-	private int cartID;
+	private ShoppingCart SC;
 	private boolean orderStatus;
 	private Date orderDate;
 	
 	
 	//CONSTRUCTEUR
-	public Order(int cartID, boolean orderStatus, Date orderDate) {
-		this.cartID = cartID;
+	public Order(ShoppingCart SC, boolean orderStatus, Date orderDate) {
+		this.SC = SC;
 		this.orderStatus = orderStatus;
 		this.orderDate = orderDate;
 	}
 	
-	public Order(int orderID, int cartID, boolean orderStatus, Date orderDate) {
+	public Order(int orderID, ShoppingCart SC, boolean orderStatus, Date orderDate) {
 		this.orderID = orderID;
-		this.cartID = cartID;
+		this.SC = SC;
 		this.orderStatus = orderStatus;
 		this.orderDate = orderDate;
 	}
@@ -29,11 +29,11 @@ public class Order {
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
-	public int getCartID() {
-		return cartID;
+	public ShoppingCart getCart() {
+		return SC;
 	}
-	public void setCartID(int cartID) {
-		this.cartID = cartID;
+	public void setCart(ShoppingCart SC) {
+		this.SC = SC;
 	}
 	public boolean isOrderStatus() {
 		return orderStatus;
@@ -54,7 +54,6 @@ public class Order {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cartID;
 		result = prime * result + ((orderDate == null) ? 0 : orderDate.hashCode());
 		result = prime * result + orderID;
 		result = prime * result + (orderStatus ? 1231 : 1237);
@@ -70,24 +69,18 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		if (cartID != other.cartID)
-			return false;
-		if (orderDate == null) {
-			if (other.orderDate != null)
-				return false;
-		} else if (!orderDate.equals(other.orderDate))
-			return false;
 		if (orderID != other.orderID)
 			return false;
-		if (orderStatus != other.orderStatus)
-			return false;
+
 		return true;
 	}
 
     @Override
     public String toString() {
-        return "Order{" + "orderID=" + orderID + ", cartID=" + cartID + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate + '}';
+        return "Order{" + "orderID=" + orderID + ", SC=" + SC + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate + '}';
     }
+
+
 	
 	
 }

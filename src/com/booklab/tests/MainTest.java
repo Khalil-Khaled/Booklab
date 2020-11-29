@@ -10,13 +10,15 @@ import com.booklab.models.Admin;
 import com.booklab.models.Book;
 import com.booklab.models.Customer;
 import com.booklab.models.Offer;
+import com.booklab.models.Order;
 import com.booklab.models.ShoppingCart;
 import com.booklab.services.AdminServices;
 import com.booklab.services.CustomerServices;
 import com.booklab.services.OfferServices;
+import com.booklab.services.ServicesOrder;
 import com.booklab.services.ServicesShoppingCart;
 import java.io.FileInputStream;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -45,7 +47,7 @@ public class MainTest{
     
     public static void testCart(){
         ServicesShoppingCart ssc = new ServicesShoppingCart();
-        //ServicesOrder so = new ServicesOrder();
+        ServicesOrder so = new ServicesOrder();
         
         /*ShoppingCart SC = new ShoppingCart(1);
             SC.addItem(1, 5);
@@ -66,17 +68,20 @@ public class MainTest{
             SC.addItem(b, 3);
         Book b1 = new Book(1, "KTEB FALSFA", 3, 20, "", 0, "", 0, "2eme Année", new Date(2020-1900, 3, 1), "Rami", 5);
             SC.addItem(b1, 1);
-        ssc.createCart(SC);
-        ssc.addItemsToCart(SC);
+        //ssc.createCart(SC);
+        //ssc.addItemsToCart(SC);
         
         
         
-        System.out.println(SC);
+       /* System.out.println(SC);
         System.out.println("-------------------------------------");
         System.out.println("Montant Total:              "+SC.calculateMontantTotal()+"$");
         System.out.println("-------------------------------------");
+        */
+        Order O = new Order(SC, true, new Date(2020, 5, 5));
+        //so.insertOrder(O);
         
-        ssc.clearCart(SC);
+        //ssc.clearCart(SC);
         ssc.removeCart(SC);
     }
 }
