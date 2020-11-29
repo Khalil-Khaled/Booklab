@@ -30,17 +30,18 @@ public class CustomerServices {
 			
                         PreparedStatement st = cnx.prepareStatement(req);
                        
-                        st.setBinaryStream(1, c.getProfileImage());
-                        st.setInt(2,c.getRate());
-                        st.setInt(3,c.getWishId());
-                        st.setInt(4,c.getCardId());
-			st.setString(5,c.getUserName());
-			st.setString(6,c.getFirstName());
-			st.setString(7,c.getLastName());
-			st.setString(8,c.getEmail());
-			st.setString(9,c.getPassword());
-			st.setString(10,c.getQuestionVerif());
-			st.setString(11,c.getAnswerVerif());
+                        st.setString(1,c.getUserName());
+			st.setString(2,c.getFirstName());
+			st.setString(3,c.getLastName());
+			st.setString(4,c.getEmail());
+			st.setString(5,c.getPassword());
+			st.setString(6,c.getQuestionVerif());
+			st.setString(7,c.getAnswerVerif());
+                        st.setString(8, c.getProfilimage());
+                        st.setInt(9,c.getRate());
+                        st.setInt(10,c.getWishId());
+                        st.setInt(11,c.getCardId());
+		
 			st.executeUpdate();
 			
 			System.out.println("customer ADD ok!!");
@@ -50,9 +51,9 @@ public class CustomerServices {
 	}
             public void delete(Customer c) {
 		try {
-			String req="DELETE FROM Customer WHERE customerId=?";
+			String req="DELETE FROM Customer WHERE userId=?";
 			PreparedStatement st = cnx.prepareStatement(req);
-			st.setInt(1,c.getCustomerId());
+			st.setInt(1,c.getUserid());
 		
 			st.executeUpdate();
 			
@@ -63,21 +64,23 @@ public class CustomerServices {
 	}
         public void modify(Customer c) {
 		try {
-			String req="UPDATE customer set profileImage=?,rate=?,wishId=?,cardId=?,userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=? ,answerVerif=? WHERE customerId=? ";
+			String req="UPDATE customer set userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=?,answerVerif=?,profilImage=?,rate=?,wishlistId=?,cardId=? WHERE userId=? ";
 			PreparedStatement st = cnx.prepareStatement(req);
 
-			st.setBinaryStream(1, c.getProfileImage());
-                        st.setInt(2,c.getRate());
-                        st.setInt(3,c.getWishId());
-                        st.setInt(4,c.getCardId());
-			st.setString(5,c.getUserName());
-			st.setString(6,c.getFirstName());
-			st.setString(7,c.getLastName());
-			st.setString(8,c.getEmail());
-			st.setString(9,c.getPassword());
-			st.setString(10,c.getQuestionVerif());
-			st.setString(11,c.getAnswerVerif());
-                        st.setInt(12,c.getCustomerId());
+			
+                      
+			st.setString(1,c.getUserName());
+			st.setString(2,c.getFirstName());
+			st.setString(3,c.getLastName());
+			st.setString(4,c.getEmail());
+			st.setString(5,c.getPassword());
+			st.setString(6,c.getQuestionVerif());
+			st.setString(7,c.getAnswerVerif());
+                        st.setString(8, c.getProfilimage());
+                        st.setInt(9,c.getRate());
+                        st.setInt(10,c.getWishId());
+                        st.setInt(11,c.getCardId());
+                        st.setInt(12,c.getUserid());
 			st.executeUpdate();
 			
 			System.out.println("customer updatedd ok!!");
@@ -92,9 +95,8 @@ public class CustomerServices {
 			PreparedStatement st = cnx.prepareStatement(req);
 			ResultSet res =st.executeQuery(req);
 			while (res.next()) {
-                                System.out.println(res.getBlob("profileImage"));
-				list.add(new Customer(res.getInt("customerId"),res.getInt("rate"),res.getInt("wishId"),res.getInt("cardId"),res.getString("userName"),res.getString("firstName"),res.getString("lastName"),res.getString("email"),res.getString("password"),res.getString("questionVerif"),res.getString("answerVerif")));
-                                //list sans image
+				list.add(new Customer(res.getInt("userId"),res.getString("userName"),res.getString("firstName"),res.getString("lastName"),res.getString("email"),res.getString("password"),res.getString("questionVerif"),res.getString("answerVerif"),res.getString("profilimage"),res.getInt("rate"),res.getInt("wishlistId"),res.getInt("cardId")));
+                                
                         }
 			
 			System.out.println("customer listed");
