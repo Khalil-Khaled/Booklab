@@ -24,7 +24,7 @@ public class AdminServices {
     
     public void create(Admin a) {
 		try {
-			String req="INSERT INTO Admin VALUES(null,?,?,?,?,?,?,?)";
+			String req="INSERT INTO Admin VALUES(null,?,?,?,?,?,?,?,?)";
 			
                         PreparedStatement st = cnx.prepareStatement(req);
    
@@ -35,6 +35,7 @@ public class AdminServices {
 			st.setString(5,a.getPassword());
 			st.setString(6,a.getQuestionVerif());
 			st.setString(7,a.getAnswerVerif());
+                        st.setString(8,a.getProfilimage());
 			st.executeUpdate();
 			
 			System.out.println("Admin ADD ok!!");
@@ -44,20 +45,20 @@ public class AdminServices {
 	}
             public void delete(Admin a) {
 		try {
-			String req="DELETE FROM admin WHERE adminId=?";
+			String req="DELETE FROM admin WHERE userid=?";
 			PreparedStatement st = cnx.prepareStatement(req);
-			st.setInt(1,a.getAdminId());
+			st.setInt(1,a.getUserid());
 		
 			st.executeUpdate();
 			
-			System.out.println("customer delete ok!!");
+			System.out.println("admin delete ok!!");
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
 		}	
 	}
         public void modify(Admin a) {
 		try {
-			String req="UPDATE admin set userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=? ,answerVerif=? WHERE adminId=? ";
+			String req="UPDATE admin set userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=? ,answerVerif=?,Profilimage=? WHERE userId=? ";
 			PreparedStatement st = cnx.prepareStatement(req);
 
 			
@@ -68,10 +69,11 @@ public class AdminServices {
 			st.setString(5,a.getPassword());
 			st.setString(6,a.getQuestionVerif());
 			st.setString(7,a.getAnswerVerif());
-                        st.setInt(8,a.getAdminId());
+                        st.setString(8,a.getProfilimage());
+                        st.setInt(9,a.getUserid());
 			st.executeUpdate();
 			
-			System.out.println("customer updatedd ok!!");
+			System.out.println("admin updatedd ok!!");
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
 		}	
@@ -84,7 +86,7 @@ public class AdminServices {
 			ResultSet res =st.executeQuery(req);
 			while (res.next()) {
                                 
-				list.add(new Admin(res.getInt("adminId"),res.getString("userName"),res.getString("firstName"),res.getString("lastName"),res.getString("email"),res.getString("password"),res.getString("questionVerif"),res.getString("answerVerif")));
+				list.add(new Admin(res.getInt("userid"),res.getString("userName"),res.getString("firstName"),res.getString("lastName"),res.getString("email"),res.getString("password"),res.getString("questionVerif"),res.getString("answerVerif"),res.getString("profilimage")));
                                 //list sans image
                         }
 			
