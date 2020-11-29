@@ -5,116 +5,117 @@
  */
 package com.booklab.models;
 
-import java.util.*; 
+import java.util.*;
 
 /**
  *
  * @author steam
  */
 public class Event {
-    private int id ;
-    private int organizerID ;
-    private String organizerName ;
-    private String name ;
-    private String desciption ;
-    private Date date  ; 
-    private String location ;
-    private int customerID ;
-    
-    public Event(String name,int organizerID , String organizerName ,String desciption,Date date, String location) {
-        this.name = name;
-        this.organizerID = organizerID ;
-        this.organizerName = organizerName;
-        this.desciption = desciption;
-        this.date = date ;
-        this.location = location ;
+
+    private int idEvent;
+    private int eventOrganizerID;
+    private String eventName;
+    private String eventDesciption;
+    private Date eventDate;
+    private String eventLocation;
+    private ArrayList<Customer> participants = new ArrayList<>();
+
+    public Event(String eventName, int eventOrganizerID, String eventDesciption, Date eventDate, String eventLocation) {
+        this.eventName = eventName;
+        this.eventOrganizerID = eventOrganizerID;
+        this.eventDesciption = eventDesciption;
+        this.eventDate = eventDate;
+        this.eventLocation = eventLocation;
     }
 
-    public Event(String organizerName, String name, String desciption, Date date , String location) {
-        this.organizerName = organizerName;
-        this.name = name;
-        this.desciption = desciption;
-        this.date = date ;
-        this.location = location;
+    public Event(String eventName, String eventDesciption, Date eventDate, String eventLocation) {
+        this.eventName = eventName;
+        this.eventDesciption = eventDesciption;
+        this.eventDate = eventDate;
+        this.eventLocation = eventLocation;
     }
-    
-    public Event(int id, String name,String organizerName, String description, String location) {
-        this.id = id;
-        this.name = name;
-        this.organizerName = organizerName;
-        this.desciption = description ;
-        this.location = location;
+
+    public Event(int idEvent, String eventName, String eventDesciption, String eventLocation) {
+        this.idEvent = idEvent;
+        this.eventName = eventName;
+        this.eventDesciption = eventDesciption;
+        this.eventLocation = eventLocation;
     }
-    
+
     public int getId() {
-        return id;
+        return idEvent;
     }
 
-    public String getOrganizerName() {
-        return organizerName;
+    public int getIdEvent() {
+        return idEvent;
     }
 
-    public String getName() {
-        return name;
+    public String getEventName() {
+        return eventName;
     }
 
-    public String getDesciption() {
-        return desciption;
+    public String getEventDesciption() {
+        return eventDesciption;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getEventDate() {
+        return eventDate;
     }
 
-    public String getLocation() {
-        return location;
+    public String getEventLocation() {
+        return eventLocation;
     }
 
-    public int getCustomerID() {
-        return customerID;
+    public int getEventOrganizerID() {
+        return eventOrganizerID;
     }
 
-    public int getOrganizerID() {
-        return organizerID;
-    }
-    
-    public void setId(int id) {
-        this.id = id;
+    public Customer getParticipant(int index) {
+        return participants.get(index);
     }
 
-    public void setOrganizerName(String organizerName) {
-        this.organizerName = organizerName;
+    public ArrayList<Customer> getParticipants() {
+        return participants;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setParticipants(ArrayList<Customer> participants) {
+        this.participants = participants;
     }
 
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
+    public void setId(int idEvent) {
+        this.idEvent = idEvent;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    
-    public void setCustomerID(int customerID){
-    this.customerID = customerID ;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
-    public void setOrganizerID(int organizerID) {
-        this.organizerID = organizerID;
+    public void setEventDesciption(String eventDesciption) {
+        this.eventDesciption = eventDesciption;
+    }
+
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
+    }
+
+    public void setEventOrganizerID(int eventOrganizerID) {
+        this.eventOrganizerID = eventOrganizerID;
     }
 
     @Override
     public String toString() {
-        return "Event{" + "id=" + id + ", organizerName=" + organizerName + ", name=" + name + ", desciption=" + desciption + ", date=" + date + ", location=" + location + ", events=" + customerID + '}';
+        return "Event{" + "idEvent=" + idEvent + ", eventOrganizerID=" + eventOrganizerID + ", eventName=" + eventName + ", eventDesciption=" + eventDesciption + ", eventDate=" + eventDate + ", eventLocation=" + eventLocation + '}';
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -127,6 +128,38 @@ public class Event {
             return false;
         }
         final Event other = (Event) obj;
-        return Objects.equals(this.date, other.date);
+        if (this.eventOrganizerID != other.eventOrganizerID) {
+            return false;
+        }
+        if (!Objects.equals(this.eventLocation, other.eventLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.eventDate, other.eventDate)) {
+            return false;
+        }
+        return true;
     }
+
+    public void ajouterParticipant(Customer participant) {
+        boolean found = false;
+        for (int i = 0; i < participants.size(); i++) {
+            if (participants.get(i).equals(participant)) {
+                found = true;
+                return;
+            }
+        }
+        this.participants.add(participant);
+    }
+
+    public void supprimerBook(Book book) {
+        boolean found = false;
+        for (int i = 0; i < participants.size(); i++) {
+            if (participants.get(i).equals(book)) {
+                found = true;
+                this.participants.remove(book);
+            }
+        }
+        return;
+    }
+
 }
