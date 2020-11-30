@@ -12,65 +12,22 @@ import java.util.Objects;
  * @author radhw
  */
 public class Customer extends User{
-private int customerId;
-private FileInputStream profileImage;
 private int rate;
 private int wishId;
 private int cardId;
 
-    public Customer(FileInputStream profileImage, int rate, int wishId, int cardId, String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif) {
-        super(userName, firstName, lastName, email, password, questionVerif, answerVerif);
-        this.profileImage = profileImage;
+    public Customer(int userid, String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif,String profilimage,int rate, int wishId, int cardId) {
+        super(userid, userName, firstName, profilimage, lastName, email, password, questionVerif, answerVerif);
         this.rate = rate;
         this.wishId = wishId;
         this.cardId = cardId;
     }
 
-    public Customer() {
-    
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public void setProfileImage(FileInputStream profileImage) {
-        this.profileImage = profileImage;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
-    }
-
-    public void setWishId(int wishId) {
-        this.wishId = wishId;
-    }
-
-    public void setCardId(int cardId) {
-        this.cardId = cardId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public Customer(int customerId, FileInputStream profileImage, int rate, int wishId, int cardId, String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif) {
-        super(userName, firstName, lastName, email, password, questionVerif, answerVerif);
-        this.customerId = customerId;
-        this.profileImage = profileImage;
+    public Customer(String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif,String profilimage,int rate, int wishId, int cardId) {
+        super(userName, firstName, profilimage, lastName, email, password, questionVerif, answerVerif);
         this.rate = rate;
         this.wishId = wishId;
         this.cardId = cardId;
-    }
- public Customer(int customerId, int rate, int wishId, int cardId, String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif) {
-        super(userName, firstName, lastName, email, password, questionVerif, answerVerif);
-        this.customerId = customerId;
-        this.rate = rate;
-        this.wishId = wishId;
-        this.cardId = cardId;
- }
-    public FileInputStream getProfileImage() {
-        return profileImage;
     }
 
     public int getRate() {
@@ -85,18 +42,34 @@ private int cardId;
         return cardId;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + this.customerId;
-        hash = 61 * hash + Objects.hashCode(this.profileImage);
-        hash = 61 * hash + this.rate;
-        hash = 61 * hash + this.wishId;
-        hash = 61 * hash + this.cardId;
-        return hash;
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public void setWishId(int wishId) {
+        this.wishId = wishId;
+    }
+
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 19 * hash + this.rate;
+        hash = 19 * hash + this.wishId;
+        hash = 19 * hash + this.cardId;
+        return hash;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return super.toString()+"Customer{" + "rate=" + rate + ", wishId=" + wishId + ", cardId=" + cardId + '}';
+    }
+
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -108,26 +81,10 @@ private int cardId;
             return false;
         }
         final Customer other = (Customer) obj;
-        if (this.customerId != other.customerId) {
-            return false;
-        }
-        if (this.wishId != other.wishId) {
-            return false;
-        }
-        if (this.cardId != other.cardId) {
-            return false;
-        }
-        if (!Objects.equals(this.profileImage, other.profileImage)) {
+        if (!Objects.equals(this.getEmail(), other.getEmail())) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return super.toString()+"Customer{" + "customerId=" + customerId + ", rate=" + rate + ", wishId=" + wishId + ", cardId=" + cardId + '}';
-    }
-
-    
 
 }
