@@ -22,7 +22,7 @@ import javafx.stage.StageStyle;
  *
  * @author proxc
  */
-public class JavaFX_BasicDetails extends Application {
+public class Registertest extends Application {
     
    
     //init xy offsets

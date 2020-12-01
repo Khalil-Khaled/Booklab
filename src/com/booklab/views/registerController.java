@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author proxc
  */
-public class FXMLDocumentController implements Initializable {
+public class RegisterController implements Initializable {
     
     @FXML
     private Label btn_exit;

@@ -16,7 +16,7 @@ import javafx.stage.StageStyle;
  *
  * @author radhw
  */
-public class NewFXMain extends Application {
+public class logintest extends Application {
     public static Stage stage = null;
     @Override
     public void start(Stage stage) throws IOException {

@@ -7,7 +7,7 @@ package com.booklab.views;
 
 import com.booklab.models.Customer;
 import com.booklab.services.CustomerServices;
-import com.booklab.tests.NewFXMain;
+import com.booklab.tests.logintest;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -77,16 +77,16 @@ public class UserloginController implements Initializable {
         parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                NewFXMain.stage.setX(event.getScreenX() - xOffset);
-                NewFXMain.stage.setY(event.getScreenY() - yOffset);
-                NewFXMain.stage.setOpacity(0.7f);
+                logintest.stage.setX(event.getScreenX() - xOffset);
+                logintest.stage.setY(event.getScreenY() - yOffset);
+                logintest.stage.setOpacity(0.7f);
             }
         });
         parent.setOnDragDone((e) -> {
-            NewFXMain.stage.setOpacity(1.0f);
+            logintest.stage.setOpacity(1.0f);
         });
         parent.setOnMouseReleased((e) -> {
-            NewFXMain.stage.setOpacity(1.0f);
+            logintest.stage.setOpacity(1.0f);
         });
 
     }
