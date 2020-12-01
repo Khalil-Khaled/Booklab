@@ -119,7 +119,7 @@ public class EventServices {
                 REQ = "INSERT INTO event_participant values (null, ?, ?, ?)";
                 st = cnx.prepareStatement(REQ);
                 st.setInt(1, event.getIdEvent());
-                st.setInt(2, event.getParticipant(i).getCustomerId());
+                st.setInt(2, event.getParticipant(i).getUserid());
                 st.setInt(3, event.getParticipants().size());
                 st.executeUpdate();
                 System.out.println("Participant ajouté");

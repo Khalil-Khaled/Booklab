@@ -99,15 +99,34 @@ public class UserloginController implements Initializable {
      
     }
   @FXML
-    private void authentification(ActionEvent event) {
+    private void authentification(ActionEvent event) throws IOException {
       CustomerServices s=new CustomerServices();
       String s1=username.getText().toString();
       String s2=password.getText().toString();
       boolean passauth=s.authentification(s1,s2);
       if(!passauth)
           infoBox("Please enter correct username and password",null,"FAILED");
-      else
-          infoBox("Login seccessfull",null,"Success");
+      else{
+             Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+                } });
+      }
      
  }      
     @FXML
