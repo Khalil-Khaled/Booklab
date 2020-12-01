@@ -29,7 +29,7 @@ public class CustomerServices {
 			String req="INSERT INTO Customer VALUES(null,?,?,?,?,?,?,?,?,?,?,?)";
 			
                         PreparedStatement st = cnx.prepareStatement(req);
-                       
+              
                         st.setString(1,c.getUserName());
 			st.setString(2,c.getFirstName());
 			st.setString(3,c.getLastName());
@@ -105,5 +105,24 @@ public class CustomerServices {
 		}
 		return list;
 	}
-
+        public boolean authentification(String username,String pass){
+                    
+           	try {
+			String req="select * from Customer "+"where username ='"+username+"' and password ='"+pass+"' ";
+			
+                        PreparedStatement st = cnx.prepareStatement(req);
+//                      st.setString(1, username);
+//			st.setString(2, pass);
+			ResultSet res=st.executeQuery(req);
+                        if(!res.next()){
+                        return false;
+                        }else{
+                            return true;
+                        }
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+	
+        return false;
+        }
 }

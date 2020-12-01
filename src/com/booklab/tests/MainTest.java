@@ -28,28 +28,28 @@ public class MainTest {
 
     public static void main(String[] args) throws Exception {
 
-//      Customer c = new Customer(12,"radhw.05","radhwene","elhafi","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
-//      Customer c1 = new Customer(17,"radhw.05","","","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
-//      CustomerServices s = new CustomerServices();
+//      Customer c = new Customer("radhw.05","radhwene","elhafi","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
+////      Customer c1 = new Customer(17,"radhw.05","","","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
+     CustomerServices s = new CustomerServices();
 //      s.create(c);
-//      s.modify(c);
-//      s.delete(c1);
+////      s.modify(c);
+////      s.delete(c1);
 //      System.out.println(s.show());
-//      Admin a = new Admin("radhwene05","radhwene","elhafi","elhafi@gmail.com","radhwej134564","radhwene??","byrsa","pige.png");   
+//     Admin a = new Admin("radhwene05","radhwene","elhafi","elhafi@gmail.com","radhwej134564","radhwene??","byrsa","pige.png");   
 //      Admin a1 = new Admin(16," ","","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou","pig.png");   
-//        
+////        
 //      AdminServices aa=new AdminServices();
 //      aa.create(a);
-//      aa.modify(a1);
-//      aa.delete(a1);
-//      System.out.println(aa.show());  
-//      System.out.println(aa.show());
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// radhwene test dont toutch
-//       Offer offer = new Offer ("vente", 100, "vente de livre",1);
-        //OfferServices sss=new OfferServices();
-//       sss.createOffer(offer);
-        //sss.removeOffer(new Offer (1,"vente", 100, "vente de livre",false,1));
-        //testCart();
+////      aa.modify(a1);
+////      aa.delete(a1);
+////      System.out.println(aa.show());  
+//     System.out.println(aa.show());
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// radhwene test dont toutch
+////       Offer offer = new Offer ("vente", 100, "vente de livre",1);
+//        //OfferServices sss=new OfferServices();
+////       sss.createOffer(offer);
+//        //sss.removeOffer(new Offer (1,"vente", 100, "vente de livre",false,1));
+//        //testCart();
     }
 
 //    public static void testCart(){

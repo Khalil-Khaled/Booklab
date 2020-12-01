@@ -17,14 +17,14 @@ private int wishId;
 private int cardId;
 
     public Customer(int userid, String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif,String profilimage,int rate, int wishId, int cardId) {
-        super(userid, userName, firstName, profilimage, lastName, email, password, questionVerif, answerVerif);
+        super(userid, userName, firstName, lastName, email, password, questionVerif, answerVerif, profilimage);
         this.rate = rate;
         this.wishId = wishId;
         this.cardId = cardId;
     }
 
     public Customer(String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif,String profilimage,int rate, int wishId, int cardId) {
-        super(userName, firstName, profilimage, lastName, email, password, questionVerif, answerVerif);
+        super(userName, firstName, lastName, email, password, questionVerif, answerVerif, profilimage);
         this.rate = rate;
         this.wishId = wishId;
         this.cardId = cardId;
