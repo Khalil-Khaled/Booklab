@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="500.0" prefWidth="45.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.UserloginController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="440.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #2E323B;">
+         <children>
+            <Pane prefHeight="136.0" prefWidth="300.0">
+               <children>
+               
+                <FontAwesomeIcon glyphStyle="-fx-fill:#fff" iconName="CLOSE" layoutX="274.0" layoutY="25.0" onMouseClicked="#close_app" size="1.3em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </FontAwesomeIcon>
+               </children>
+            </Pane>
+           
+         </children>
+      </VBox>
+      <Label layoutX="70.0" layoutY="103.0" text="User Login">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="70.0" layoutY="163.0" prefHeight="35.0" prefWidth="300.0" style="-fx-border-color: #BEBFC1; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+         <children>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#BEBFC1" iconName="USER" size="1.2em" />
+            <TextField promptText="Username" fx:id="username" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="70.0" layoutY="215.0" prefHeight="35.0" prefWidth="300.0" style="-fx-border-color: #BEBFC1; -fx-background-radius: 5px; -fx-border-radius: 5px;">
+         <children>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#BEBFC1" iconName="LOCK" size="1.2em" />
+            <PasswordField promptText="Password" fx:id="password" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+      <JFXButton layoutX="70.0" layoutY="271.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" onAction="#authentification" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="LOGIN">
+         <font>
+            <Font name="Microsoft Sans Serif" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXCheckBox layoutX="253.0" layoutY="283.0" text="REMEMBER ME" unCheckedColor="#bebfc1" />
+      <Pane layoutY="420.0" prefHeight="80.0" prefWidth="440.0" style="-fx-background-color: #F3F4F6;">
+         <children>
+            <JFXButton layoutX="86.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="WHITE" text="REGISTER" underline="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="14.0" layoutY="33.0" text="NEW USER?">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="280.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="WHITE" text="FORGET PASSWORD?" underline="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/repo/Booklab/src/com/booklab/models/ShoppingCart.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/repo/Booklab/src/com/booklab/services/ServicesShoppingCart.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/repo/Booklab/src/com/booklab/models/Order.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/repo/Booklab/src/com/booklab/tests/MainTest.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/repo/Booklab/src/com/booklab/services/ServicesOrder.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/UserloginController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CustomerServices.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/NewFXMain.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/MainTest.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/FXMLController.java</file>
         </group>
     </open-files>
 </project-private>
