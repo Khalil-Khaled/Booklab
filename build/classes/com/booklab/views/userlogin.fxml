@@ -70,10 +70,13 @@
       <JFXCheckBox layoutX="253.0" layoutY="283.0" text="REMEMBER ME" unCheckedColor="#bebfc1" />
       <Pane layoutY="420.0" prefHeight="80.0" prefWidth="440.0" style="-fx-background-color: #F3F4F6;">
          <children>
-            <JFXButton layoutX="86.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="WHITE" text="REGISTER" underline="true">
+            <JFXButton layoutX="86.0" fx:id="register" onAction="#registert" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="WHITE" text="REGISTER" underline="true">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
+                  <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
             </JFXButton>
             <Label layoutX="14.0" layoutY="33.0" text="NEW USER?">
                <font>
@@ -84,6 +87,9 @@
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
+                <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
             </JFXButton>
          </children>
       </Pane>

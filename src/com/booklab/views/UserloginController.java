@@ -8,6 +8,7 @@ package com.booklab.views;
 import com.booklab.models.Customer;
 import com.booklab.services.CustomerServices;
 import com.booklab.tests.NewFXMain;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,13 +19,17 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -41,7 +46,10 @@ public class UserloginController implements Initializable {
     private double yOffset = 0;
     @FXML
     private AnchorPane parent;
-
+    
+    Stage dialogStage = new Stage();
+    Scene scene;
+   
     /**
      * Initializes the controller class.
      */
@@ -100,11 +108,31 @@ public class UserloginController implements Initializable {
           infoBox("Please enter correct username and password",null,"FAILED");
       else
           infoBox("Login seccessfull",null,"Success");
-
-      
-
-   
+     
+ }      
+    @FXML
+        private void registert(ActionEvent event) throws IOException {
+                Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("register.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+            }
+        });
     
-}
+     }
 
 }
