@@ -3,7 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/steam/Documents/git/Booklab/src/com/booklab/services/OfferServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/EventServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/ComplaintServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/Offer.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/ComplaintStatus.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/CouponServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/OfferServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/tests/MainTest.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/Complaint.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/AdminServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/CustomerServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/ComplaintResponse.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/Utils/DataSource.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/Coupon.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/Event.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/models/Book.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/Iservices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/com/booklab/services/ComplaintResponseServices.java</file>
+            <file>file:/C:/JavaFx_BookLab/Booklab/src/tests/MainProg.java</file>
         </group>
     </open-files>
 </project-private>
