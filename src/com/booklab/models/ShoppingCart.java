@@ -7,6 +7,10 @@ public class ShoppingCart {
 	private int userID;
 	private ArrayList<Item> items = new ArrayList<>();
         private ArrayList<Integer> amounts = new ArrayList<>();
+
+    public ShoppingCart() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
     @Override
     public int hashCode() {

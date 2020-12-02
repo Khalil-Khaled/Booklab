@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+// lezem constructeur men ghir password
+// lezem el affichage men ghir password, question réponse secrete, clés étrangeres
+
 package com.booklab.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

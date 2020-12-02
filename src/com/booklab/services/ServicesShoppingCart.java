@@ -117,14 +117,19 @@ public class ServicesShoppingCart {
     public ShoppingCart getCartItems(ShoppingCart SC){
         ShoppingCart list = new ShoppingCart(SC.getCartID(), SC.getUserID());
         try {
-            String REQ = "select DISTINCT itemID, sum(amount) from cart_actions where cartID = ? group by itemID;";
+            String REQ = "select DISTINCT itemID, name, price, quantity, sum(amount) from cart_actions inner join item on itemID = id where cartID = ? group by itemID;";
             PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
             st.setInt(1, SC.getCartID());
             
             ResultSet result = st.executeQuery();
            
             while (result.next()){//getInt(1), result.getInt(2)
-                list.addItem(new Book(result.getInt(1)), result.getInt(2));
+                Book tmp = new Book(result.getInt(1));
+                    tmp.setName(result.getString(2));
+                    tmp.setPrice(result.getFloat(3) * result.getInt(5));
+                    tmp.setQuantity(result.getInt(5));
+
+                list.addItem(tmp, result.getInt(5));
             }
             
             System.out.println("UPDATE STATUS: "+(st.executeUpdate()>0));

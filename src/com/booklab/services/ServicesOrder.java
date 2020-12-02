@@ -32,7 +32,7 @@ public class ServicesOrder {
         }
     }
     
-    
+    //update status of order
     public void removeOrder(Order O){
         try {
             String REQ = "DELETE FROM Orders where orderID = ?";
