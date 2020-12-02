@@ -110,7 +110,7 @@ public class UserloginController implements Initializable {
              Node node = (Node)event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
                 dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
+                scene = new Scene(FXMLLoader.load(getClass().getResource("dashboard.fxml")));
                 dialogStage.setScene(scene);
                 dialogStage.show();
                 scene.setOnMousePressed(new EventHandler<MouseEvent>() {

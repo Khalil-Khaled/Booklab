@@ -22,7 +22,7 @@ private int cardId;
         this.wishId = wishId;
         this.cardId = cardId;
     }
-
+    public Customer(){}
     public Customer(String userName, String firstName, String lastName, String email, String password, String questionVerif, String answerVerif,String profilimage,int rate, int wishId, int cardId) {
         super(userName, firstName, lastName, email, password, questionVerif, answerVerif, profilimage);
         this.rate = rate;

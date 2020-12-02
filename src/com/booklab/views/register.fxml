@@ -12,13 +12,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+
 
 <AnchorPane id="AnchorPane" prefHeight="850" prefWidth="1000" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="com.booklab.views.RegisterController">
    <children>
       <Pane prefHeight="1000.0" prefWidth="110.0" style="-fx-background-color: #2E323B;">
          <children>
-            
-                     </children>
+             <ImageView fitHeight="25.0" id="return" onMousePressed="#returns" fitWidth="21.0" layoutX="40.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@up_1.png" />
+               </image>
+                   <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+            </ImageView>
+         </children>
       </Pane>
       <JFXTextField focusColor="#2E323B" fx:id="username" layoutX="133.0" layoutY="150.0" prefHeight="25.0" prefWidth="300.0" promptText="Username" />
       <JFXTextField focusColor="#2E323B" fx:id="firstname" layoutX="580.0" layoutY="150.0" prefHeight="25.0" prefWidth="300.0" promptText="Firstname" />
@@ -26,8 +35,8 @@
        <JFXTextField focusColor="#2E323B" fx:id="email" layoutX="580.0" layoutY="300.0" prefHeight="25.0" prefWidth="300.0" promptText="Email" />
       
        
-       <JFXTextField focusColor="#2E323B" layoutX="133.0" layoutY="450.0" prefHeight="25.0" prefWidth="300.0" promptText="Password" />
-       <PasswordField  promptText="Password" layoutX="133.0" layoutY="450.0" prefHeight="25.0" prefWidth="300.0" fx:id="password" style="-fx-background-color: #2E323B;" >
+      
+       <PasswordField  promptText="Password" layoutX="133.0" layoutY="450.0" prefHeight="25.0" prefWidth="300.0" fx:id="password" style="-fx-background-color:transparent;">
                <font >
                   <Font size="14.0"  />
                </font>
@@ -35,20 +44,24 @@
      
       <JFXTextField focusColor="#2E323B" fx:id="questionverif" layoutX="580.0" layoutY="450.0" prefHeight="25.0" prefWidth="300.0" promptText="Question verification " />
       <JFXTextField focusColor="#2E323B" fx:id="answerverif" layoutX="133.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" promptText="Answer verification" />
-      <JFXTextField focusColor="#2E323B" fx:id="image" layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" promptText="Image" />
+      <Button fx:id="image" layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" mnemonicParsing="false" onAction="#image" text="Choose file" />
+    <Label fx:id="labSingleFile" layoutX="580.0" layoutY="650.0" prefHeight="25.0" prefWidth="300.0" />
       <Label layoutX="133.0" layoutY="31.0" text="REGISTER" textFill="#48a5ea">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
       
-      
+     
       <JFXButton layoutX="760.0" layoutY="740.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color:#48A5EA;" onAction="#adduser" text="send" textFill="WHITE" />
       <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="520.0" />
      
       <Label id="btn_exit" fx:id="btn_exit" layoutX="998.0" layoutY="2.0" onMousePressed="#handleButtonAction" prefHeight="25.0" prefWidth="21.0" text="X" textFill="#2E323B">
-         <font>
-   
+          <cursor>
+                 <Cursor fx:constant="HAND" />
+          </cursor>
+          <font>
+        
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>

@@ -49,7 +49,12 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnControls;
     private double xOffset = 0;
     private double yOffset = 0;
+    @FXML
+    private void close_app(MouseEvent event) {
+        System.exit(0);
+    }
     @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
         //Load all fxmls in a cache
         try {
