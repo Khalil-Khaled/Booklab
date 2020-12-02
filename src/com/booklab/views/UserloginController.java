@@ -103,8 +103,9 @@ public class UserloginController implements Initializable {
       CustomerServices s=new CustomerServices();
       String s1=username.getText().toString();
       String s2=password.getText().toString();
+      
       boolean passauth=s.authentification(s1,s2);
-      if(!passauth)
+      if((!passauth)||(s1.length()==0)||(s2.length()==0))
           infoBox("Please enter correct username and password",null,"FAILED");
       else{
              Node node = (Node)event.getSource();
