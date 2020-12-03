@@ -44,7 +44,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btnAlerts;
     
-    AnchorPane contacts,alerts,pricing,profiles,widgets,controls;
+    AnchorPane contacts,alerts,pricing,profiles,widgets,controls,offers;
     @FXML
     private JFXButton btnControls;
     private double xOffset = 0;
@@ -64,6 +64,7 @@ public class FXMLDocumentController implements Initializable {
              profiles = FXMLLoader.load(getClass().getResource("Profiles.fxml"));
              widgets = FXMLLoader.load(getClass().getResource("Widgets.fxml"));
              controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
+             offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
             setNode(pricing);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,7 +88,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void switchPricing(ActionEvent event) {
-        setNode(pricing);
+        setNode(offers);
     }
 
     @FXML
@@ -114,5 +115,6 @@ public class FXMLDocumentController implements Initializable {
     private void switchControls(ActionEvent event) {
         setNode(controls);
     }
+    
 
 }
