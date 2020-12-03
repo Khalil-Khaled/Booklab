@@ -62,9 +62,9 @@ public class CustomerServices {
 			System.out.println(ex.getMessage());
 		}	
 	}
-        public void modify(Customer c) {
+        public void modify(Customer c,int id) {
 		try {
-			String req="UPDATE customer set userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=?,answerVerif=?,profilImage=?,rate=?,wishlistId=?,cardId=? WHERE userId=? ";
+			String req="UPDATE customer set userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=?,answerVerif=?,profilImage=?,rate=?,wishlistId=?,cardId=? WHERE userId="+id;
 			PreparedStatement st = cnx.prepareStatement(req);
 
 			
@@ -80,7 +80,7 @@ public class CustomerServices {
                         st.setInt(9,c.getRate());
                         st.setInt(10,c.getWishId());
                         st.setInt(11,c.getCardId());
-                        st.setInt(12,c.getUserid());
+                        
 			st.executeUpdate();
 			
 			System.out.println("customer updatedd ok!!");
@@ -125,4 +125,37 @@ public class CustomerServices {
 	
         return false;
         }
+        public int idlogin(String username,String pass){
+         	int a=0;
+                try {
+			String req="select userid from Customer "+"where username ='"+username+"' and password ='"+pass+"' ";
+			
+                        PreparedStatement st = cnx.prepareStatement(req);
+//                      st.setString(1, username);
+//			st.setString(2, pass);
+			ResultSet res=st.executeQuery(req);
+                        while (res.next()) {
+                            a= res.getInt("userId");       
+                        }
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+        return a;
+        }
+            public Customer showcustomer(int id){
+		Customer c=null;
+		try {
+			String req="select * from Customer where userid="+id;
+			PreparedStatement st = cnx.prepareStatement(req);
+			ResultSet res =st.executeQuery(req);
+			while (res.next()) {
+				c=new Customer(res.getInt("userId"),res.getString("userName"),res.getString("firstName"),res.getString("lastName"),res.getString("email"),res.getString("password"),res.getString("questionVerif"),res.getString("answerVerif"),res.getString("profilimage"),res.getInt("rate"),res.getInt("wishlistId"),res.getInt("cardId"));
+                                
+                        }
+			
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return c;
+	}
 }

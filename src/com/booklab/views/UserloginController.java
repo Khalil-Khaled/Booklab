@@ -46,7 +46,7 @@ public class UserloginController implements Initializable {
     private double yOffset = 0;
     @FXML
     private AnchorPane parent;
-    
+    public static int idlogin;
     Stage dialogStage = new Stage();
     Scene scene;
    
@@ -103,18 +103,21 @@ public class UserloginController implements Initializable {
       CustomerServices s=new CustomerServices();
       String s1=username.getText().toString();
       String s2=password.getText().toString();
-      
+      idlogin=s.idlogin(s1,s2);
       boolean passauth=s.authentification(s1,s2);
       if((!passauth)||(s1.length()==0)||(s2.length()==0))
           infoBox("Please enter correct username and password",null,"FAILED");
       else{
-             Node node = (Node)event.getSource();
+                
+                Node node = (Node)event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
                 dialogStage.close();
                 scene = new Scene(FXMLLoader.load(getClass().getResource("dashboard.fxml")));
                 dialogStage.setScene(scene);
                 dialogStage.show();
+                
                 scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+   
                 @Override
                 public void handle(MouseEvent event) {
                     xOffset = event.getSceneX();

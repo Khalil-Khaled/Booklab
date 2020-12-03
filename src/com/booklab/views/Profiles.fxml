@@ -31,10 +31,10 @@
       <JFXTextField focusColor="#2E323B" fx:id="firstname" layoutX="580.0" layoutY="150.0" prefHeight="25.0" prefWidth="300.0" promptText="Firstname" />
       <JFXTextField focusColor="#2E323B" fx:id="lastname" layoutX="133.0" layoutY="300.0" prefHeight="25.0" prefWidth="300.0" promptText="lastname" />
        <JFXTextField focusColor="#2E323B" fx:id="email" layoutX="580.0" layoutY="300.0" prefHeight="25.0" prefWidth="300.0" promptText="Email" />
-      
+        <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="450" layoutX="980.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
        
       
-       <PasswordField  promptText="Password" layoutX="133.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" fx:id="password" style="-fx-background-color:transparent;">
+       <PasswordField  promptText="Password" layoutX="133.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0"  style="-fx-background-color:transparent;">
                <font >
                   <Font size="14.0"  />
                </font>
@@ -42,9 +42,9 @@
      
       <JFXTextField focusColor="#2E323B" fx:id="questionverif" layoutX="580.0" layoutY="450.0" prefHeight="25.0" prefWidth="300.0" promptText="Question verification " />
       <JFXTextField focusColor="#2E323B" fx:id="answerverif" layoutX="133.0" layoutY="450.0"  prefHeight="25.0" prefWidth="300.0" promptText="Answer verification" />
-      <Button fx:id="image" layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" mnemonicParsing="false" onAction="#image" text="Choose file" />
+<!--      <Button fx:id="image" layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" mnemonicParsing="false" onAction="#image" text="Choose file" />-->
       <Label fx:id="labSingleFile" layoutX="580.0" layoutY="650.0" prefHeight="25.0" prefWidth="300.0" />
-      
+       <JFXButton layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color:#48A5EA;" onAction="#updated" text="Update" textFill="WHITE" />
      
    
     </children>

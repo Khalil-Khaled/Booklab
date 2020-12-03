@@ -5,8 +5,12 @@
  */
 package com.booklab.views;
 
+import com.booklab.models.Customer;
+import com.booklab.services.CustomerServices;
 import com.booklab.tests.logintest;
+import static com.booklab.views.UserloginController.idlogin;
 import com.jfoenix.controls.JFXButton;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +23,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -43,6 +50,10 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnProfile;
     @FXML
     private JFXButton btnAlerts;
+    @FXML
+    private Label user;
+    @FXML
+     private ImageView imageuser;
     
     AnchorPane contacts,alerts,pricing,profiles,widgets,controls;
     @FXML
@@ -57,7 +68,16 @@ public class FXMLDocumentController implements Initializable {
     
     public void initialize(URL url, ResourceBundle rb) {
         //Load all fxmls in a cache
+//        CustomerServices s=new CustomerServices();
+//        Customer c=s.showcustomer(UserloginController.idlogin);
+//         File file = new File(c.getProfilimage());
+//        Image image = new Image(file.toURI().toString());
+//        imageuser.setImage(image);
+//        user.setText("User : "+c.getUserName());
+//image and user in the dashboard
         try {
+            
+            
              contacts = FXMLLoader.load(getClass().getResource("Contacts.fxml"));
              alerts = FXMLLoader.load(getClass().getResource("Alerts.fxml"));
              pricing = FXMLLoader.load(getClass().getResource("Pricing.fxml"));

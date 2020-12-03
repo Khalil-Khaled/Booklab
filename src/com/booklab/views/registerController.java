@@ -112,12 +112,13 @@ public class RegisterController implements Initializable {
           imagelink=f.getAbsolutePath();
           System.out.println(imagelink);
         }
-     
+        
     }
      
      @FXML
      private void adduser(ActionEvent event) {
          CustomerServices s = new CustomerServices();
+         
          s.create(new Customer(username.getText(),firstname.getText(),lastname.getText(),email.getText(),password.getText(),questionverif.getText(),answerverif.getText(),this.getImagelink(),1,2,3));
         JOptionPane.showMessageDialog(null,"customer added");
         

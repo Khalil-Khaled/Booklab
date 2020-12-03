@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="500.0" prefWidth="45.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.UserloginController">
+<AnchorPane id="AnchorPane" onInputMethodTextChanged="#registert" fx:id="parent" prefHeight="500.0" prefWidth="45.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.UserloginController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="440.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #2E323B;">
          <children>

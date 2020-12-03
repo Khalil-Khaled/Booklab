@@ -3,18 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/register.fxml</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/userlogin.fxml</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ProfilesController.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/logintest.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/RegisterController.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Controls.fxml</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/UserloginController.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/Registertest.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/dashboard.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/register.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/User.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CustomerServices.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/userlogin.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/dashboard.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Customer.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Widgets.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Pricing.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/RegisterController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/Registertest.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/custom.css</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Profiles.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Alerts.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Controls.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Contacts.fxml</file>
         </group>
     </open-files>
 </project-private>
