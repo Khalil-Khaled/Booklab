@@ -158,4 +158,27 @@ public class CustomerServices {
 		}
 		return c;
 	}
+            public void updatepass(String pass, int id){
+            try {
+                String req="UPDATE customer set password="+pass+" WHERE userId="+id;
+			PreparedStatement st = cnx.prepareStatement(req);
+                        st.executeUpdate();
+			
+			System.out.println("customer updatedd ok!!");
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}	
+	}
+                 public void updateimage(String pass, int id){
+            try {
+                String req="UPDATE customer set profilImage=? WHERE userId="+id;
+			PreparedStatement st = cnx.prepareStatement(req);
+                        st.executeUpdate();
+			st.setString(1,pass);
+			System.out.println("image updated ok!!");
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}	
+	}
+            
 }

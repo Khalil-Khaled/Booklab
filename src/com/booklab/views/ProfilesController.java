@@ -9,6 +9,7 @@ import com.booklab.models.Customer;
 import com.booklab.services.CustomerServices;
 import static com.booklab.tests.logintest.stage;
 import static com.booklab.views.UserloginController.idlogin;
+import static com.booklab.views.UserloginController.infoBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.File;
@@ -28,6 +29,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -42,7 +44,12 @@ import javax.swing.JOptionPane;
  */
 public class ProfilesController implements Initializable {
     private String imagelink;
-    private PasswordField password;
+    @FXML
+    private PasswordField oldpassword;
+    @FXML
+    private PasswordField newpassword;
+    @FXML
+    private PasswordField confirmationpassword;
     @FXML
     private TextField firstname;
     @FXML
@@ -136,4 +143,36 @@ public class ProfilesController implements Initializable {
         
         
         }
+            public static void infoBox(String infoMessage,String title,String herdertext){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setContentText(infoMessage);
+                alert.setTitle(title);
+                alert.setHeaderText(herdertext);
+                alert.showAndWait();
+
+               }
+         @FXML
+        private void updatedpassword1(ActionEvent event){
+            CustomerServices s = new CustomerServices();
+            if(!oldpassword.getText().equals(s.showcustomer(idlogin).getPassword()))
+                infoBox("Please enter the old password",null,"FAILED");
+            else if(!newpassword.getText().equals(confirmationpassword.getText()))
+                infoBox("Please enter the same password ",null,"FAILED");
+            else {
+                s.updatepass(newpassword.getText(),idlogin);
+                JOptionPane.showMessageDialog(null,"password changed");
+            }
+        }
+          @FXML
+     private void image1(ActionEvent event) {
+     CustomerServices s = new CustomerServices();
+     FileChooser fc = new FileChooser(); 
+     fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files","*.jpg","*.png"));
+     File f = fc.showOpenDialog(null);
+        if (f!=null){
+          imagelink=f.getAbsolutePath();
+          s.updateimage(imagelink,idlogin);
+        }
+        
+    }
 }
