@@ -5,6 +5,8 @@
  */
 package com.booklab.models;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -12,21 +14,25 @@ import java.util.Objects;
  * @author user
  */
 public class Coupon {
-
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     private int couponID;
     private String codeCoupon;
     private boolean validity;
-
-    public Coupon(int couponID, String codeCoupon, boolean validity) {
+    private Date expirationDate;
+    
+    public Coupon(int couponID, String codeCoupon, boolean validity,Date expirationDate ) {
         this.couponID = couponID;
         this.codeCoupon = codeCoupon;
         this.validity = validity;
+        this.expirationDate=expirationDate;
     }
 
-    public Coupon(String codeCoupon, boolean validity) {
+    public Coupon(String codeCoupon, boolean validity,Date expirationDate) {
         this.codeCoupon = codeCoupon;
         this.validity = validity;
+        this.expirationDate=expirationDate;
     }
+
 
     public int getCouponID() {
         return couponID;
@@ -52,6 +58,14 @@ public class Coupon {
         this.validity = validity;
     }
 
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -64,16 +78,16 @@ public class Coupon {
             return false;
         }
         final Coupon other = (Coupon) obj;
-        if (this.couponID != other.couponID) {
-            return false;
-        }
-        if (this.validity != other.validity) {
-            return false;
-        }
         if (!Objects.equals(this.codeCoupon, other.codeCoupon)) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Coupon{" + "couponID=" + couponID + ", codeCoupon=" + codeCoupon + ", validity=" + validity + ", expirationDate=" + expirationDate + '}';
+    }
+
 
 }

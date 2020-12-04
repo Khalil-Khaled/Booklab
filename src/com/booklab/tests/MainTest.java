@@ -6,6 +6,7 @@
 package com.booklab.tests;
 
 import com.booklab.Utils.DataSource;
+<<<<<<< HEAD
 import com.booklab.models.Admin;
 import com.booklab.models.Book;
 import com.booklab.models.Customer;
@@ -19,6 +20,14 @@ import com.booklab.services.ServicesOrder;
 import com.booklab.services.ServicesShoppingCart;
 import java.io.FileInputStream;
 import java.sql.Date;
+=======
+import com.booklab.models.*;
+
+import com.booklab.services.*;
+
+import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
+>>>>>>> e759570524a9efd14bbb4bd3528354b2422235f8
 
 /**
  *
@@ -27,6 +36,7 @@ import java.sql.Date;
 public class MainTest {
 
     public static void main(String[] args) throws Exception {
+<<<<<<< HEAD
 
 //      Customer c = new Customer("radhw.05","radhwene","elhafi","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
 ////      Customer c1 = new Customer(17,"radhw.05","","","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
@@ -50,6 +60,47 @@ public class MainTest {
 ////       sss.createOffer(offer);
 //        //sss.removeOffer(new Offer (1,"vente", 100, "vente de livre",false,1));
 //        //testCart();
+=======
+//    FileInputStream fin = new FileInputStream("E:\\images\\javafx_logo.jpg");
+//    Customer c = new Customer(2,fin,1,235,456,"","","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou");
+//    CustomerServices s = new CustomerServices();
+//        Admin a = new Admin("ra","raaa","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou");
+//               Admin a1 = new Admin("ra","raaa","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou");
+//
+//        AdminServices aa=new AdminServices();
+//       aa.delete(a1);
+//       System.out.println(aa.show());
+//       Offer offer = new Offer ("vente", 100, "vente de livre",1);
+//       OfferServices sss=new OfferServices();
+////       sss.createOffer(offer);
+//       sss.removeOffer(new Offer (1,"vente", 100, "vente de livre",false,1));
+    /*   Complaint complaint1 = new Complaint("Wrong order ", "ORDER", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        Complaint complaint2 = new Complaint("Wrong offer ", "OFFER", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        Complaint complaint3 = new Complaint(4, "Wrong order ", "ORDER", "cccccccccccccccccccccccccccccccccccccccccc");
+        ComplaintServices complaintService = new ComplaintServices();
+        complaintService.add(complaint1);
+        complaintService.add(complaint2);
+        complaintService.add(complaint3);
+        System.out.println(complaintService.showAll()); */
+        //complaintService.delete(complaint3);
+        /*String sDate1 = "31/12/1998";
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+        System.out.println(date1);
+         */
+        // complaintService.show(1);
+        /*Coupon c1 = new Coupon("12ee2a", true, new SimpleDateFormat("dd/MM/yyyy").parse("30/11/2020"));
+        Coupon c2 = new Coupon("857e2a", false, new SimpleDateFormat("dd/MM/yyyy").parse("10/12/2020"));
+
+        CouponServices couponServices = new CouponServices();*/
+        // couponServices.add(c1);
+        //couponServices.add(c2);
+        // couponServices.show(17);
+        //couponServices.showAll();
+        ComplaintResponse cr1 = new ComplaintResponse(1, 2, "aaaaaaaaaaaaaaa", "COMPLETED");
+        ComplaintResponseServices complaintResponseServices = new ComplaintResponseServices();
+        //  complaintResponseServices.show(1);
+
+>>>>>>> e759570524a9efd14bbb4bd3528354b2422235f8
     }
 
 //    public static void testCart(){

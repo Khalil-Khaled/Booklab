@@ -5,7 +5,11 @@
  */
 package com.booklab.models;
 
+import java.util.Date;
 import java.util.Objects;
+
+
+
 
 /**
  *
@@ -15,21 +19,24 @@ public class Complaint {
 
     private int complaintId;
     private String topic;
-    private Type type;
     private String message;
-
-    public Complaint(int complaintId, String topic, Type type, String message) {
+    private String type;
+   
+    public Complaint(int complaintId, String topic, String type, String message ) {
         this.complaintId = complaintId;
         this.topic = topic;
         this.type = type;
         this.message = message;
+        
     }
 
-    public Complaint(String topic, Type type, String message) {
+    public Complaint(String topic, String type, String message) {
         this.topic = topic;
         this.type = type;
         this.message = message;
+      
     }
+
 
     public int getComplaintId() {
         return complaintId;
@@ -39,7 +46,7 @@ public class Complaint {
         return topic;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
@@ -55,7 +62,7 @@ public class Complaint {
         this.topic = topic;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -63,6 +70,8 @@ public class Complaint {
         this.message = message;
     }
 
+  
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -88,6 +97,13 @@ public class Complaint {
             return false;
         }
         return true;
+    }
+
+  
+
+    @Override
+    public String toString() {
+        return "Complaint{" + "complaintId=" + complaintId + ", topic=" + topic + ", type=" + type + ", message=" + message + '}';
     }
 
 }
