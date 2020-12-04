@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.ComplaintsViewController">
+   <children>
+      <TableView fx:id="table_complaints" layoutX="27.0" layoutY="120.0" prefHeight="419.0" prefWidth="780.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <columns>
+          <TableColumn fx:id="col_topic" onEditCommit="#updateComplaintTopic" prefWidth="226.0" resizable="false" text="Topic" />
+          <TableColumn fx:id="col_details" onEditCommit="#updateComplaintDetails" prefWidth="468.0" resizable="false" text="Complaint details" />
+            <TableColumn fx:id="col_type" minWidth="5.0" onEditCommit="#updateComplaintType" prefWidth="85.0" resizable="false" text="Type" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="338.0" layoutY="37.0" text="ALL COMPLAINTS " />
+      <Button fx:id="btnRemove" layoutX="608.0" layoutY="547.0" mnemonicParsing="false" onAction="#removeComplaint" text="Remove Complaint" />
+   </children>
+</AnchorPane>

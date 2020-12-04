@@ -5,33 +5,30 @@
  */
 package com.booklab.services;
 
-import com.booklab.models.Complaint;
 import com.booklab.Utils.DataSource;
-import com.booklab.models.Type;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import com.booklab.models.*;
+import java.sql.*;
+import java.util.*;
 
 /**
  *
  * @author user
  */
-public class ComplaintServices implements Iservices<Complaint> {
+public class ComplaintServices {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
-    @Override
+ 
+     
     public void add(Complaint c) {
         try {
             String req = "INSERT INTO complaint(topic,type,message) VALUES (?,?,?)";
             PreparedStatement st = cnx.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
             st.setString(1, c.getTopic());
-            st.setString(2, c.getType().name());
+            st.setString(2, c.getType());
             st.setString(3, c.getMessage());
+          
+
             st.executeUpdate();
             ResultSet rs = st.getGeneratedKeys();
             while (rs.next()) {
@@ -43,7 +40,7 @@ public class ComplaintServices implements Iservices<Complaint> {
         }
     }
 
-    @Override
+    
     public void delete(Complaint c) {
         try {
 
@@ -57,14 +54,14 @@ public class ComplaintServices implements Iservices<Complaint> {
         }
     }
 
-    @Override
+    
     public void modify(Complaint c) {
         try {
             String req = "UPDATE complaint SET topic=? , type=? , message=?  WHERE complaintId=?";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(4, c.getComplaintId());
             st.setString(1, c.getTopic());
-            st.setString(2, c.getType().name());
+            st.setString(2, c.getType());
             st.setString(3, c.getMessage());
             st.executeUpdate();
             System.out.println("Complaint modified !");
@@ -83,7 +80,7 @@ public class ComplaintServices implements Iservices<Complaint> {
             st.setInt(1, complaintId);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                complaint = new Complaint(res.getInt(1), res.getString(2), (Type.valueOf(res.getString(3))), res.getString(4));
+                complaint = new Complaint(res.getInt(1), res.getString(2), (res.getString(3)), res.getString(4));
             }
             System.out.println(complaint);
         } catch (SQLException ex) {
@@ -95,11 +92,11 @@ public class ComplaintServices implements Iservices<Complaint> {
     public List<Complaint> showAll() {
         List<Complaint> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM complaint";
+            String req = "SELECT * FROM complaint";//where id =loginId 
             PreparedStatement st = cnx.prepareStatement(req);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new Complaint(res.getInt(1), res.getString(2), (Type.valueOf(res.getString(3))), res.getString(3)));
+                list.add(new Complaint(res.getInt(1), res.getString(2), res.getString(3), res.getString(4)));
             }
             System.out.println("List of complaints :");
             System.out.println(list);
@@ -109,5 +106,7 @@ public class ComplaintServices implements Iservices<Complaint> {
 
         return list;
     }
+    
+   
   
 }

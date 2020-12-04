@@ -14,11 +14,11 @@ import java.util.Objects;
 public class ComplaintResponse {
    private int  complaintResponseID;
     private String response ;
-    private ComplaintStatus complaintStatus ;
+    private String complaintStatus ;
     private int userId;
      private int complaintId;
      
-    public ComplaintResponse(int complaintResponseID, int userId,int complaintId, String Response, ComplaintStatus complaintStatus) {
+    public ComplaintResponse(int complaintResponseID, int userId,int complaintId, String Response, String complaintStatus) {
         this.complaintResponseID = complaintResponseID;
         this.userId=userId;
         this.complaintId=complaintId;
@@ -26,7 +26,7 @@ public class ComplaintResponse {
         this.complaintStatus = complaintStatus;
     }
 
-    public ComplaintResponse(int userId,int complaintId,String Response, ComplaintStatus complaintStatus) {
+    public ComplaintResponse(int userId,int complaintId,String Response, String complaintStatus) {
         this.userId=userId;
         this.complaintId=complaintId;
         this.response = Response;
@@ -41,7 +41,7 @@ public class ComplaintResponse {
         return response;
     }
 
-    public ComplaintStatus getComplaintStatus() {
+    public String getComplaintStatus() {
         return complaintStatus;
     }
 
@@ -57,7 +57,7 @@ public class ComplaintResponse {
         this.response = Response;
     }
 
-    public void setComplaintStatus(ComplaintStatus complaintStatus) {
+    public void setComplaintStatus(String complaintStatus) {
         this.complaintStatus = complaintStatus;
     }
 

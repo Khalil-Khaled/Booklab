@@ -6,25 +6,12 @@
 package com.booklab.tests;
 
 import com.booklab.Utils.DataSource;
-import com.booklab.models.Admin;
-import com.booklab.models.Complaint;
-import com.booklab.models.ComplaintResponse;
-import com.booklab.models.ComplaintStatus;
-import com.booklab.models.Coupon;
-import com.booklab.models.Customer;
-import com.booklab.models.Offer;
-import com.booklab.models.Type;
-import com.booklab.services.AdminServices;
-import com.booklab.services.ComplaintResponseServices;
-import com.booklab.services.ComplaintServices;
-import com.booklab.services.CouponServices;
-import com.booklab.services.CustomerServices;
-import com.booklab.services.OfferServices;
+import com.booklab.models.*;
+
+import com.booklab.services.*;
+
 import java.io.FileInputStream;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.function.Consumer;
 
 /**
  *
@@ -46,29 +33,31 @@ public class MainTest {
 //       OfferServices sss=new OfferServices();
 ////       sss.createOffer(offer);
 //       sss.removeOffer(new Offer (1,"vente", 100, "vente de livre",false,1));
-        Complaint complaint1 = new Complaint("Wrong order ", Type.ORDER, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        Complaint complaint2 = new Complaint("Wrong offer ", Type.OFFER, "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-        Complaint complaint3 = new Complaint(4, "Wrong order ", Type.ORDER, "cccccccccccccccccccccccccccccccccccccccccc");
+    /*   Complaint complaint1 = new Complaint("Wrong order ", "ORDER", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        Complaint complaint2 = new Complaint("Wrong offer ", "OFFER", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        Complaint complaint3 = new Complaint(4, "Wrong order ", "ORDER", "cccccccccccccccccccccccccccccccccccccccccc");
         ComplaintServices complaintService = new ComplaintServices();
-        //complaintService.add(complaint3);
+        complaintService.add(complaint1);
+        complaintService.add(complaint2);
+        complaintService.add(complaint3);
+        System.out.println(complaintService.showAll()); */
         //complaintService.delete(complaint3);
         /*String sDate1 = "31/12/1998";
         Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
         System.out.println(date1);
          */
-       // complaintService.show(1);
-        Coupon c1 = new Coupon("12ee2a", true, new SimpleDateFormat("dd/MM/yyyy").parse("30/11/2020"));
+        // complaintService.show(1);
+        /*Coupon c1 = new Coupon("12ee2a", true, new SimpleDateFormat("dd/MM/yyyy").parse("30/11/2020"));
         Coupon c2 = new Coupon("857e2a", false, new SimpleDateFormat("dd/MM/yyyy").parse("10/12/2020"));
 
-        CouponServices couponServices = new CouponServices();
-       // couponServices.add(c1);
+        CouponServices couponServices = new CouponServices();*/
+        // couponServices.add(c1);
         //couponServices.add(c2);
         // couponServices.show(17);
-          //couponServices.showAll();
-
-          ComplaintResponse cr1 = new ComplaintResponse(1,2,"aaaaaaaaaaaaaaa",ComplaintStatus.COMPLETED);
-          ComplaintResponseServices complaintResponseServices=new ComplaintResponseServices();
+        //couponServices.showAll();
+        ComplaintResponse cr1 = new ComplaintResponse(1, 2, "aaaaaaaaaaaaaaa", "COMPLETED");
+        ComplaintResponseServices complaintResponseServices = new ComplaintResponseServices();
         //  complaintResponseServices.show(1);
-       
+
     }
 }

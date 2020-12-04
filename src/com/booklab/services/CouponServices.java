@@ -8,15 +8,13 @@ package com.booklab.services;
 import com.booklab.Utils.DataSource;
 import com.booklab.models.Complaint;
 import com.booklab.models.Coupon;
-import com.booklab.models.Type;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
 /**
  *

@@ -19,20 +19,22 @@ public class Complaint {
 
     private int complaintId;
     private String topic;
-    private Type type;
     private String message;
-  
-    public Complaint(int complaintId, String topic, Type type, String message) {
+    private String type;
+   
+    public Complaint(int complaintId, String topic, String type, String message ) {
         this.complaintId = complaintId;
         this.topic = topic;
         this.type = type;
         this.message = message;
+        
     }
 
-    public Complaint(String topic, Type type, String message) {
+    public Complaint(String topic, String type, String message) {
         this.topic = topic;
         this.type = type;
         this.message = message;
+      
     }
 
 
@@ -44,7 +46,7 @@ public class Complaint {
         return topic;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
@@ -60,7 +62,7 @@ public class Complaint {
         this.topic = topic;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -68,6 +70,7 @@ public class Complaint {
         this.message = message;
     }
 
+  
     
     @Override
     public boolean equals(Object obj) {

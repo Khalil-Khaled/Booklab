@@ -6,15 +6,9 @@
 package com.booklab.services;
 
 import com.booklab.Utils.DataSource;
-import com.booklab.models.ComplaintResponse;
-import com.booklab.models.ComplaintStatus;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import com.booklab.models.*;
+import java.sql.*;
+import java.util.*;
 
 /**
  *
@@ -32,7 +26,7 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
             st.setInt(1, c.getUserId());
             st.setInt(2, c.getComplaintId());
             st.setString(3, c.getResponse());
-            st.setString(4, c.getComplaintStatus().name());
+            st.setString(4, c.getComplaintStatus());
             st.executeUpdate();
             ResultSet rs = st.getGeneratedKeys();
             while (rs.next()) {
@@ -67,7 +61,7 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
              st.setInt(5, c.getUserId());
               st.setInt(5, c.getComplaintId());
             st.setString(2, c.getResponse());
-            st.setString(4, c.getComplaintStatus().name());
+            st.setString(4, c.getComplaintStatus());
             st.executeUpdate();
             System.out.println("ComplaintResponse modified !");
         } catch (SQLException ex) {
@@ -85,7 +79,7 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
             st.setInt(1, complaintResponseId);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                complaintResponse = new ComplaintResponse(res.getInt(1), res.getInt(2),res.getInt(3),res.getString(4), (ComplaintStatus.valueOf(res.getString(5))));
+                complaintResponse = new ComplaintResponse(res.getInt(1), res.getInt(2),res.getInt(3),res.getString(4), res.getString(5));
             }
             System.out.println(complaintResponse);
         } catch (SQLException ex) {
@@ -102,7 +96,7 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
             PreparedStatement st = cnx.prepareStatement(req);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new ComplaintResponse(res.getInt(1), res.getInt(2),res.getInt(3),res.getString(4), (ComplaintStatus.valueOf(res.getString(5)))));
+                list.add(new ComplaintResponse(res.getInt(1), res.getInt(2),res.getInt(3),res.getString(4), res.getString(5)));
             }
             System.out.println("List of complaints responses  :");
             System.out.println(list);
