@@ -169,9 +169,11 @@ public class ProfilesController implements Initializable {
      FileChooser fc = new FileChooser(); 
      fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files","*.jpg","*.png"));
      File f = fc.showOpenDialog(null);
+              System.out.println(imagelink=f.getAbsolutePath());
         if (f!=null){
           imagelink=f.getAbsolutePath();
           s.updateimage(imagelink,idlogin);
+          
         }
         
     }

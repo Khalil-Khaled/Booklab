@@ -171,10 +171,10 @@ public class CustomerServices {
 	}
                  public void updateimage(String pass, int id){
             try {
-                String req="UPDATE customer set profilImage=? WHERE userId="+id;
+                String req="UPDATE customer set profilImage='"+pass+"'WHERE userId="+id;
 			PreparedStatement st = cnx.prepareStatement(req);
                         st.executeUpdate();
-			st.setString(1,pass);
+			
 			System.out.println("image updated ok!!");
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
