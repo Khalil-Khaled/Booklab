@@ -9,23 +9,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="createOfferAnchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.CreateOfferController">
+<AnchorPane id="AnchorPane" fx:id="createOfferAnchor" prefHeight="446.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.CreateOfferController">
    <children>
-      <TextField fx:id="priceTF" alignment="CENTER" layoutX="268.0" layoutY="175.0" promptText="Enter price..." />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="179.0" text="Price" textAlignment="CENTER" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="264.0" text="Description" textAlignment="CENTER" />
-      <Label layoutX="241.0" layoutY="24.0" text="Create an offer">
+      <TextField fx:id="priceTF" alignment="CENTER" layoutX="194.0" layoutY="216.0" promptText="Enter price..." />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="220.0" text="Price" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="305.0" text="Description" textAlignment="CENTER" />
+      <Label layoutX="167.0" layoutY="61.0" text="Create an offer">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <RadioButton fx:id="venteRadio" layoutX="258.0" layoutY="113.0" mnemonicParsing="false" text="Vente">
+      <RadioButton fx:id="venteRadio" layoutX="184.0" layoutY="154.0" mnemonicParsing="false" text="Vente">
          <toggleGroup>
             <ToggleGroup fx:id="ventePret" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="pretRadio" layoutX="384.0" layoutY="113.0" mnemonicParsing="false" text="Prêt" toggleGroup="$ventePret" />
-      <Label layoutX="145.0" layoutY="113.0" text="Type" />
-      <Button fx:id="createOfferBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="344.0" mnemonicParsing="false" onAction="#createOffer" text="Create Offer" />
-      <TextArea fx:id="DescriptionTF" layoutX="268.0" layoutY="216.0" prefHeight="114.0" prefWidth="149.0" promptText="Enter your description..." wrapText="true" />
+      <RadioButton fx:id="pretRadio" layoutX="310.0" layoutY="154.0" mnemonicParsing="false" text="Prêt" toggleGroup="$ventePret" />
+      <Label layoutX="71.0" layoutY="154.0" text="Type" />
+      <Button fx:id="createOfferBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="421.0" mnemonicParsing="false" onAction="#createOffer" text="Create Offer" />
+      <TextArea fx:id="DescriptionTF" layoutX="194.0" layoutY="257.0" prefHeight="114.0" prefWidth="149.0" promptText="Enter your description..." wrapText="true" />
    </children>
 </AnchorPane>

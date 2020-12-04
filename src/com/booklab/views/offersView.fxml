@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="614.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.OffersViewController">
+<AnchorPane id="AnchorPane" prefHeight="703.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.OffersViewController">
    <children>
-      <Label layoutX="252.0" layoutY="45.0" text="Offers">
+      <Label layoutX="328.0" layoutY="46.0" text="Offers">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="offersTable" layoutX="47.0" layoutY="86.0" prefHeight="459.0" prefWidth="480.0">
+      <TableView fx:id="offersTable" editable="true" layoutX="47.0" layoutY="86.0" prefHeight="511.0" prefWidth="685.0">
         <columns>
-          <TableColumn fx:id="idOffer" prefWidth="75.0" text="idOffer" />
-          <TableColumn fx:id="typeOffer" prefWidth="84.0" text="typeOffer" />
-            <TableColumn fx:id="priceOffer" prefWidth="75.0" text="Price" />
-            <TableColumn fx:id="descriptionOffer" prefWidth="75.0" text="description" />
-            <TableColumn fx:id="statusOffer" prefWidth="75.0" text="status" />
-            <TableColumn fx:id="idUser" prefWidth="75.0" text="idUser" />
+            <TableColumn fx:id="idOffer" prefWidth="90.0" text="Offre Num " />
+          <TableColumn fx:id="typeOffer" prefWidth="103.0" text="Offre" />
+            <TableColumn fx:id="priceOffer" prefWidth="100.0" text="Price" />
+            <TableColumn fx:id="descriptionOffer" prefWidth="298.0" text="description" />
+            <TableColumn fx:id="statusOffer" onEditCommit="#updateOfferStatus" prefWidth="94.0" text="status" />
         </columns>
       </TableView>
-      <Button fx:id="createOfferBtn" layoutX="229.0" layoutY="571.0" mnemonicParsing="false" onAction="#createOfferView" text="Create an offer" textAlignment="CENTER">
+      <Button fx:id="createOfferBtn" layoutX="305.0" layoutY="629.0" mnemonicParsing="false" onAction="#createOfferView" text="Create an offer" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <AnchorPane fx:id="holderPane" layoutX="534.0" prefHeight="621.0" prefWidth="480.0" />
-      <Button fx:id="refreshBtn" layoutX="77.0" layoutY="571.0" mnemonicParsing="false" onAction="#refreshOffers" text="Refresh offers" />
+      <AnchorPane fx:id="holderPane" layoutX="693.0" layoutY="116.0" prefHeight="452.0" prefWidth="310.0" />
+      <Button fx:id="refreshBtn" layoutX="152.0" layoutY="629.0" mnemonicParsing="false" onAction="#refreshOffers" text="Refresh offers" />
+      <Button fx:id="removeBtn" layoutX="457.0" layoutY="629.0" mnemonicParsing="false" onAction="#removeOffer" text="Remove offer" />
    </children>
 </AnchorPane>

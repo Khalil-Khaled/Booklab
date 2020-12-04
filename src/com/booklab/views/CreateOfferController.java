@@ -53,6 +53,7 @@ public class CreateOfferController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        createOfferAnchor.setVisible(true);
         priceTF.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -75,7 +76,11 @@ public class CreateOfferController implements Initializable {
         OfferServices os = new OfferServices();
         os.createOffer(offer);
         JOptionPane.showMessageDialog(null,"Offer successfully added !");
-        createOfferAnchor.getChildren().clear();
+        createOfferAnchor.setVisible(false);
+        priceTF.setText("");
+        DescriptionTF.setText("");
+        venteRadio.setSelected(false);
+        pretRadio.setSelected(false);
     }
     
 }
