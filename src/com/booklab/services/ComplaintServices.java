@@ -14,7 +14,7 @@ import java.util.*;
  *
  * @author user
  */
-public class ComplaintServices {
+public class ComplaintServices  {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
@@ -40,7 +40,7 @@ public class ComplaintServices {
         }
     }
 
-    
+
     public void delete(Complaint c) {
         try {
 
@@ -54,7 +54,7 @@ public class ComplaintServices {
         }
     }
 
-    
+
     public void modify(Complaint c) {
         try {
             String req = "UPDATE complaint SET topic=? , type=? , message=?  WHERE complaintId=?";
@@ -88,9 +88,9 @@ public class ComplaintServices {
         }
         return complaint;
     }
-
     public List<Complaint> showAll() {
         List<Complaint> list = new ArrayList<>();
+        
         try {
             String req = "SELECT * FROM complaint";//where id =loginId 
             PreparedStatement st = cnx.prepareStatement(req);
@@ -106,7 +106,6 @@ public class ComplaintServices {
 
         return list;
     }
-    
    
   
 }
