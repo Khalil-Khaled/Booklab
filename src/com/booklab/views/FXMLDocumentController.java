@@ -55,7 +55,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
      private ImageView imageuser;
     
-    AnchorPane contacts,alerts,pricing,profiles,widgets,controls,offers;
+    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers;
     @FXML
     private JFXButton btnControls;
     private double xOffset = 0;
@@ -82,7 +82,7 @@ public class FXMLDocumentController implements Initializable {
              alerts = FXMLLoader.load(getClass().getResource("Alerts.fxml"));
              pricing = FXMLLoader.load(getClass().getResource("Pricing.fxml"));
              profiles = FXMLLoader.load(getClass().getResource("Profiles.fxml"));
-             widgets = FXMLLoader.load(getClass().getResource("Widgets.fxml"));
+             complaints = FXMLLoader.load(getClass().getResource("complaints.fxml"));
              controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
              offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
             setNode(pricing);
@@ -118,7 +118,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void switchWidget(ActionEvent event) {
-        setNode(widgets);
+        setNode(complaints);
     }
 
     @FXML

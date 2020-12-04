@@ -6,7 +6,7 @@
 package com.booklab.tests;
 
 import com.booklab.Utils.DataSource;
-<<<<<<< HEAD
+
 import com.booklab.models.Admin;
 import com.booklab.models.Book;
 import com.booklab.models.Customer;
@@ -20,14 +20,13 @@ import com.booklab.services.ServicesOrder;
 import com.booklab.services.ServicesShoppingCart;
 import java.io.FileInputStream;
 import java.sql.Date;
-=======
+
 import com.booklab.models.*;
 
 import com.booklab.services.*;
 
 import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
->>>>>>> e759570524a9efd14bbb4bd3528354b2422235f8
 
 /**
  *
@@ -36,7 +35,7 @@ import java.text.SimpleDateFormat;
 public class MainTest {
 
     public static void main(String[] args) throws Exception {
-<<<<<<< HEAD
+
 
 //      Customer c = new Customer("radhw.05","radhwene","elhafi","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
 ////      Customer c1 = new Customer(17,"radhw.05","","","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
@@ -60,7 +59,7 @@ public class MainTest {
 ////       sss.createOffer(offer);
 //        //sss.removeOffer(new Offer (1,"vente", 100, "vente de livre",false,1));
 //        //testCart();
-=======
+
 //    FileInputStream fin = new FileInputStream("E:\\images\\javafx_logo.jpg");
 //    Customer c = new Customer(2,fin,1,235,456,"","","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou");
 //    CustomerServices s = new CustomerServices();
@@ -100,7 +99,7 @@ public class MainTest {
         ComplaintResponseServices complaintResponseServices = new ComplaintResponseServices();
         //  complaintResponseServices.show(1);
 
->>>>>>> e759570524a9efd14bbb4bd3528354b2422235f8
+
     }
 
 //    public static void testCart(){
