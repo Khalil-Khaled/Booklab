@@ -27,10 +27,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -40,7 +42,7 @@ import javafx.util.Duration;
 public class OffersViewController implements Initializable {
 
     @FXML
-    private TableView offersTable;
+    private TableView <Offer> offersTable;
     @FXML
     private TableColumn<Offer,Integer> idOffer;
     @FXML
@@ -50,9 +52,7 @@ public class OffersViewController implements Initializable {
     @FXML
     private TableColumn<Offer, String> descriptionOffer;
     @FXML
-    private TableColumn<Offer, Boolean> statusOffer;
-    @FXML
-    private TableColumn<Offer, Integer> idUser;
+    private TableColumn<Offer, String> statusOffer;
     @FXML
     private Button createOfferBtn;
     @FXML
@@ -61,6 +61,8 @@ public class OffersViewController implements Initializable {
     static AnchorPane offersView, createOffer;
     @FXML
     private Button refreshBtn;
+    @FXML
+    private Button removeBtn;
 
     /**
      * Initializes the controller class.
@@ -84,17 +86,20 @@ public class OffersViewController implements Initializable {
 //        ObservableList<Offer> data = FXCollections.<Offer>observableArrayList(offers);
 //        data.addAll(offers);
 
+        //update table to allow modification 
+       
         
         
-        
-        idOffer.setCellValueFactory(new PropertyValueFactory<Offer,Integer>("idOffer"));
+        idOffer.setCellValueFactory(new PropertyValueFactory<Offer,Integer>("IdOffer"));
         typeOffer.setCellValueFactory(new PropertyValueFactory<Offer, String>("typeOffer"));
         priceOffer.setCellValueFactory(new PropertyValueFactory<Offer, Float>("priceOffer"));
         descriptionOffer.setCellValueFactory(new PropertyValueFactory<Offer, String>("descriptionOffer"));
-        statusOffer.setCellValueFactory(new PropertyValueFactory<Offer, Boolean>("statusOffer"));
-        idUser.setCellValueFactory(new PropertyValueFactory<Offer, Integer>("idUser"));
+        statusOffer.setCellValueFactory(new PropertyValueFactory<Offer, String>("OfferStatus"));
+        statusOffer.setCellFactory(TextFieldTableCell.forTableColumn());
+//        idUser.setCellValueFactory(new PropertyValueFactory<Offer, Integer>("idUser"));
         
         offersTable.getItems().addAll(offers);
+        
 
     }
 
@@ -110,14 +115,40 @@ public class OffersViewController implements Initializable {
 
         FadeTransition ft = new FadeTransition(Duration.millis(1500));
         ft.setNode(node);
-        ft.setFromValue(0.1);
+        node.setVisible(true);
+        ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(1);
         ft.setAutoReverse(false);
-        ft.play();}
+        ft.play();
+        
+    }
 
     @FXML
     private void refreshOffers(ActionEvent event) {
+        update();
+    }
+
+    @FXML
+    private void removeOffer(ActionEvent event) {
+         Offer offerSelected = offersTable.getSelectionModel().getSelectedItem();
+        if (offerSelected == null)
+            JOptionPane.showMessageDialog(null, "Select Row to Remove!");
+        else{
+            OfferServices os = new OfferServices();
+            os.removeOffer(offerSelected);
+            update();
+        }
+    }
+    
+    public void updateOfferStatus(TableColumn.CellEditEvent edittedCell) {
+        Offer offerSelected = offersTable.getSelectionModel().getSelectedItem();
+        offerSelected.setOfferStatus(edittedCell.getNewValue().toString());
+        OfferServices os = new OfferServices();
+        os.updateOffers(offerSelected);
+    }
+    
+    private void update () {
         ArrayList<Offer> offers = new ArrayList<>();
         OfferServices os = new OfferServices();
         offers = os.getOffers();

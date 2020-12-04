@@ -103,4 +103,17 @@ public class OfferServices {
         }
         return offers;
     }
+    
+    public void updateOffers(Offer c) {
+        String req = "UPDATE offer SET offerStatus = ?  WHERE idOffer=?";
+        try {
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setBoolean(1, c.isOfferStatus());
+            st.setInt(2, c.getIdOffer());
+            st.executeUpdate();
+            System.out.println("Offer modified !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

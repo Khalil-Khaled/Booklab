@@ -67,15 +67,19 @@ public class Offer {
     }
 
     public String getOfferStatus() {
-        return offerStatus? "TerminÃ©" : "En cours";
+        return offerStatus? "Termine" : "En cours";
     }
 
     public boolean isOfferStatus() {
         return offerStatus;
     }
     
-    public void setOfferStatus(boolean offerStatus) {
-        this.offerStatus = offerStatus;
+    public void setOfferStatus(String message) {
+        if (message.equals("Termine"))
+            this.offerStatus = true;
+        
+        if (message.equals("En cours"))
+            this.offerStatus = false;
     }
 
     public int getIdCustomer() {
