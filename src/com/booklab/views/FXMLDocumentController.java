@@ -49,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btnProfile;
     @FXML
-    private JFXButton btnAlerts;
+    private JFXButton btnComplaints;
     @FXML
     private Label user;
     @FXML
@@ -79,10 +79,10 @@ public class FXMLDocumentController implements Initializable {
             
             
              contacts = FXMLLoader.load(getClass().getResource("Contacts.fxml"));
-             alerts = FXMLLoader.load(getClass().getResource("Alerts.fxml"));
+             complaints = FXMLLoader.load(getClass().getResource("Complaints.fxml"));
              pricing = FXMLLoader.load(getClass().getResource("Pricing.fxml"));
              profiles = FXMLLoader.load(getClass().getResource("Profiles.fxml"));
-             complaints = FXMLLoader.load(getClass().getResource("complaints.fxml"));
+            // complaints = FXMLLoader.load(getClass().getResource("Complaints.fxml"));
              controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
              offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
             setNode(pricing);
@@ -117,7 +117,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void switchWidget(ActionEvent event) {
+    private void switchComplaints(ActionEvent event) {
         setNode(complaints);
     }
 
@@ -126,10 +126,10 @@ public class FXMLDocumentController implements Initializable {
         setNode(profiles);
     }
 
-    @FXML
-    private void switchAlert(ActionEvent event) {
-        setNode(alerts);
-    }
+//    @FXML
+//    private void switchAlert(ActionEvent event) {
+//        setNode(alerts);
+//    }
 
     @FXML
     private void switchControls(ActionEvent event) {

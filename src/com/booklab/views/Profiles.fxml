@@ -52,7 +52,7 @@
      <JFXButton layoutX="133.0" layoutY="640.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color:#48A5EA;" onAction="#updatedpassword1" text="Update password" textFill="WHITE" />
       <JFXTextField focusColor="#2E323B" fx:id="questionverif" layoutX="580.0" layoutY="450.0" prefHeight="25.0" prefWidth="300.0" promptText="Question verification " />
       <JFXTextField focusColor="#2E323B" fx:id="answerverif" layoutX="133.0" layoutY="450.0"  prefHeight="25.0" prefWidth="300.0" promptText="Answer verification" />
-<!--      <Button fx:id="image" layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" mnemonicParsing="false" onAction="#image" text="Choose file" />-->
+      <Button fx:id="image" layoutX="580.0" layoutY="600.0" prefHeight="25.0" prefWidth="300.0" mnemonicParsing="false" onAction="#image" text="Choose file" />
       <Label fx:id="labSingleFile" layoutX="580.0" layoutY="650.0" prefHeight="25.0" prefWidth="300.0" />
        <JFXButton layoutX="580.0" layoutY="640.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color:#48A5EA;" onAction="#updated" text="Update" textFill="WHITE" />
         <Button fx:id="image" layoutX="900.0" layoutY="640.0" prefHeight="25.0" prefWidth="300.0" mnemonicParsing="false" onAction="#image1" text="change image" />
