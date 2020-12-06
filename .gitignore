@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 /dist/
+=======
+/Booklab/nbproject/private
+/Booklab/src/com/booklab/tests
+/nbproject/private/
+/build/
+>>>>>>> 91f213d9e16a1e816e0395ea4aaf2b2fa602ecd6

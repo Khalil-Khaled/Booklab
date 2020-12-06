@@ -85,11 +85,9 @@ public class ShoppingCart {
     }
     
     public void addItem(Item item, int amount) {
-        boolean found = false;
         for(int i=0; i<items.size(); i++){
             if (items.get(i).equals(item)){
                 amounts.set(i, amounts.get(i)+amount);
-                found = true;
                 return;
             }
         }

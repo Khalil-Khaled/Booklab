@@ -10,21 +10,21 @@ package com.booklab.models;
  * @author radhw
  */
 public class Invitation {
-    
-    private int invitationID ;
-    private int sernderID ;
-    private int receiverID ;
-    private boolean invitationStatus ;
 
-    public Invitation(int invitationID, int sernderID, int receiverID, boolean invitationStatus) {
+    private int invitationID;
+    private int senderID;
+    private int receiverID;
+    private boolean invitationStatus;
+
+    public Invitation(int invitationID, int senderID, int receiverID, boolean invitationStatus) {
         this.invitationID = invitationID;
-        this.sernderID = sernderID;
+        this.senderID = senderID;
         this.receiverID = receiverID;
         this.invitationStatus = invitationStatus;
     }
 
-    public Invitation(int sernderID, int receiverID, boolean invitationStatus) {
-        this.sernderID = sernderID;
+    public Invitation(int senderID, int receiverID, boolean invitationStatus) {
+        this.senderID = senderID;
         this.receiverID = receiverID;
         this.invitationStatus = invitationStatus;
     }
@@ -34,7 +34,7 @@ public class Invitation {
     }
 
     public int getSernderID() {
-        return sernderID;
+        return senderID;
     }
 
     public int getReceiverID() {
@@ -49,8 +49,8 @@ public class Invitation {
         this.invitationID = invitationID;
     }
 
-    public void setSernderID(int sernderID) {
-        this.sernderID = sernderID;
+    public void setSernderID(int senderID) {
+        this.senderID = senderID;
     }
 
     public void setReceiverID(int receiverID) {
@@ -63,7 +63,7 @@ public class Invitation {
 
     @Override
     public String toString() {
-        return "Invitation{" + "invitationID=" + invitationID + ", sernderID=" + sernderID + ", receiverID=" + receiverID + ", invitationStatus=" + invitationStatus + '}';
+        return "Invitation{" + "invitationID=" + invitationID + ", senderID=" + senderID + ", receiverID=" + receiverID + ", invitationStatus=" + invitationStatus + '}';
     }
 
     @Override
@@ -78,7 +78,7 @@ public class Invitation {
             return false;
         }
         final Invitation other = (Invitation) obj;
-        if (this.sernderID != other.sernderID) {
+        if (this.senderID != other.senderID) {
             return false;
         }
         if (this.receiverID != other.receiverID) {
@@ -86,7 +86,4 @@ public class Invitation {
         }
         return true;
     }
-    
-    
 }
-

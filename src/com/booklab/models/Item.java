@@ -129,7 +129,7 @@ public abstract class Item {
         if (this.id != other.id) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;

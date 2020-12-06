@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.booklab.interfaces.OrderController">
+   <children>
+      <Label layoutX="439.0" layoutY="21.0" text="Order#">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TableView layoutX="50.0" layoutY="70.0" prefHeight="243.0" prefWidth="491.0">
+        <columns>
+          <TableColumn fx:id="article" prefWidth="277.0" text="Article" />
+          <TableColumn fx:id="quantity" prefWidth="102.0" text="Quantity" />
+            <TableColumn fx:id="total" prefWidth="111.0" text="Total" />
+        </columns>
+      </TableView>
+      <Label layoutX="435.0" layoutY="330.0" text="Total:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="total_value" layoutX="489.0" layoutY="330.0" text="0DT">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="orderid_value" layoutX="500.0" layoutY="21.0" text="1">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

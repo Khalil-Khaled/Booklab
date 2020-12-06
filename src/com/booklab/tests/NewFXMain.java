@@ -27,7 +27,7 @@ public class NewFXMain extends Application {
        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../interfaces/ShoppingCart.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
+            Scene scene = new Scene(root);
         
         
         primaryStage.setTitle("ShoppingCart");
