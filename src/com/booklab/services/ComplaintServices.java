@@ -34,7 +34,7 @@ public class ComplaintServices  {
             while (rs.next()) {
                 System.out.println(rs.getInt(1));
             }
-            System.out.println("Added Complaint !!");
+            System.out.println("Added Complaint !!!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
