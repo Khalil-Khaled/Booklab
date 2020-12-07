@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.PaymentController">
+   <children>
+      <Label layoutX="162.0" layoutY="50.0" text="Pay" />
+      <Label layoutX="119.0" layoutY="141.0" text="Card number :" />
+      <Label layoutX="119.0" layoutY="192.0" text="Expiration Month :" />
+      <Label layoutX="119.0" layoutY="242.0" text="Expiration Year :" />
+      <Label layoutX="119.0" layoutY="291.0" text="Code : " />
+      <TextField fx:id="ccNumTF" layoutX="248.0" layoutY="137.0" promptText="Card Number" />
+      <Button fx:id="payBtn" layoutX="281.0" layoutY="361.0" mnemonicParsing="false" onAction="#pay" text="Pay !" />
+      <TextField fx:id="expMMTF" layoutX="248.0" layoutY="188.0" promptText="Expiration Month" />
+      <TextField fx:id="expYYYYTF" layoutX="248.0" layoutY="238.0" promptText="Expiration Year" />
+      <TextField fx:id="cvvTF" layoutX="248.0" layoutY="287.0" promptText="CVV/CVC" />
+      <Label layoutX="277.0" layoutY="50.0" text="with credit card" />
+      <Label fx:id="amountLabel" layoutX="214.0" layoutY="50.0" />
+   </children>
+</AnchorPane>

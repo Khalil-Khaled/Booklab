@@ -10,6 +10,7 @@ import com.booklab.services.CustomerServices;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,11 +23,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -112,18 +115,51 @@ public class RegisterController implements Initializable {
           imagelink=f.getAbsolutePath();
           System.out.println(imagelink);
         }
+          imagelink=".";
         
     }
      
      @FXML
-     private void adduser(ActionEvent event) {
+     private void adduser(ActionEvent event) throws IOException, Exception {
          CustomerServices s = new CustomerServices();
+         String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
+         JavaMailUtil.sendMail(email.getText());
+         TextInputDialog dialog = new TextInputDialog("Verification");
+         dialog.setTitle("VERIFICATION");
+         dialog.setHeaderText("Look, a Text Input Dialog");
+         dialog.setContentText("Please enter the code of verification sent in your mail:");
          
-         s.create(new Customer(username.getText(),firstname.getText(),lastname.getText(),email.getText(),password.getText(),questionverif.getText(),answerverif.getText(),this.getImagelink(),1,2,3));
+         // Traditional way to get the response value.
+         Optional<String> result = dialog.showAndWait();
+         if (result.get().equals(JavaMailUtil.code)){
+            
+            
+
+         s.create(new Customer(username.getText(),firstname.getText(),lastname.getText(),email.getText(),passwordcrypt,questionverif.getText(),answerverif.getText(),this.getImagelink(),1,2,3));
         JOptionPane.showMessageDialog(null,"customer added");
-        
+          Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("userlogin.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+   
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+                } });
          
          
     }
-     
+    } 
 }

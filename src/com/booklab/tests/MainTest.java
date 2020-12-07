@@ -27,6 +27,7 @@ import com.booklab.services.*;
 
 import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -44,6 +45,12 @@ public class MainTest {
 ////      s.modify(c);
 ////      s.delete(c1);
 //      System.out.println(s.show());
+String hashed = BCrypt.hashpw("radhwen", BCrypt.gensalt());
+if (BCrypt.checkpw("radhwen", hashed))
+	System.out.println("It matches");
+else
+	System.out.println("It does not match");
+
 //     Admin a = new Admin("radhwene05","radhwene","elhafi","elhafi@gmail.com","radhwej134564","radhwene??","byrsa","pige.png");   
 //      Admin a1 = new Admin(16," ","","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou","pig.png");   
 ////        

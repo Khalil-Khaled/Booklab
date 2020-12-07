@@ -110,6 +110,7 @@
                               <Label prefHeight="27.0" prefWidth="230.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Pick a date" />
                               <Label prefHeight="27.0" prefWidth="230.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Select gender" GridPane.rowIndex="2" />
                               <JFXDatePicker GridPane.columnIndex="1" />
+                              
                               <JFXRadioButton text="Male" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <JFXRadioButton text="Female" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label prefHeight="27.0" prefWidth="230.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Check Boxes" GridPane.rowIndex="4" />

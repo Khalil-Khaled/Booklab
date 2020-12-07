@@ -36,6 +36,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * FXML Controller class
@@ -154,12 +155,13 @@ public class ProfilesController implements Initializable {
          @FXML
         private void updatedpassword1(ActionEvent event){
             CustomerServices s = new CustomerServices();
-            if(!oldpassword.getText().equals(s.showcustomer(idlogin).getPassword()))
+            if(!BCrypt.checkpw(oldpassword.getText(),s.showcustomer(idlogin).getPassword()))
                 infoBox("Please enter the old password",null,"FAILED");
             else if(!newpassword.getText().equals(confirmationpassword.getText()))
                 infoBox("Please enter the same password ",null,"FAILED");
             else {
-                s.updatepass(newpassword.getText(),idlogin);
+                String hashed = BCrypt.hashpw(newpassword.getText(), BCrypt.gensalt());
+                s.updatepass(hashed,idlogin);
                 JOptionPane.showMessageDialog(null,"password changed");
             }
         }

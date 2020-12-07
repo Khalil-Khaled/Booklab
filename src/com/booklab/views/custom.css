@@ -57,3 +57,50 @@ and open the template in the editor.
 	-fx-effect: null;
 }
 
+.table-view {
+    -fx-background-color: transparent;
+    -fx-text-alignment: center;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #1DBBDD44, #93F9B944);
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 0px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell: hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: #1abc9c;
+}
+.table-row-cell: odd{
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: even{
+    -fx-background-color: #1dbbdd11;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+#offersTable .table-column {
+  -fx-alignment: CENTER;
+}
+
+.table-row-cell:selected {
+   -fx-background-color: #a8edaa; 
+   -fx-text-background-color: black;
+}
