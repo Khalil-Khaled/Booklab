@@ -187,5 +187,16 @@ public class CustomerServices {
 			System.out.println(ex.getMessage());
 		}	
 	}
-            
+         public void updatepassemail(String pass, String email){
+            try {
+                String req="UPDATE customer set password='"+pass+"' WHERE email='"+email+"'"+"";
+               
+			PreparedStatement st = cnx.prepareStatement(req);
+                        st.executeUpdate();
+			
+			System.out.println("customer updatedd ok!!");
+		}catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}	
+	}   
 }
