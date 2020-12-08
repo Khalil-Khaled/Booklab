@@ -7,6 +7,8 @@ package com.booklab.views;
 
 import com.booklab.models.Customer;
 import com.booklab.services.CustomerServices;
+import static com.booklab.views.ProfilesController.infoBox;
+import static com.booklab.views.UserloginController.idlogin;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +26,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -57,6 +61,8 @@ public class RegisterController1 implements Initializable {
     private TextField answerverif;
     @FXML 
     private Button image;
+     @FXML
+    private ImageView imageView;
     @FXML
     private Label labSingleFile;
     private String imagelink;
@@ -64,7 +70,8 @@ public class RegisterController1 implements Initializable {
     private double yOffset = 0;
     @FXML
     private AnchorPane parent;
-    
+    @FXML
+    private PasswordField confirmationpassword;
     Stage dialogStage = new Stage();
     Scene scene;
    
@@ -111,10 +118,11 @@ public class RegisterController1 implements Initializable {
      fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files","*.jpg","*.png"));
      File f = fc.showOpenDialog(null);
         if (f!=null){
-          labSingleFile.setText("selected file:"+f.getAbsolutePath());
           imagelink=f.getAbsolutePath();
-          System.out.println(imagelink);
-        }
+            File file = new File(imagelink);
+            Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
+        }else
           imagelink=".";
         
     }
@@ -122,7 +130,11 @@ public class RegisterController1 implements Initializable {
      @FXML
      private void adduser(ActionEvent event) throws IOException, Exception {
          CustomerServices s = new CustomerServices();
-         String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
+         
+            if(!password.getText().equals(confirmationpassword.getText()))
+                infoBox("Please enter the same password ",null,"FAILED");
+            else {
+                String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
          JavaMailUtil.sendMail(email.getText());
          TextInputDialog dialog = new TextInputDialog("Verification");
          dialog.setTitle("VERIFICATION");
@@ -162,4 +174,5 @@ public class RegisterController1 implements Initializable {
          
     }
     } 
+    }
 }

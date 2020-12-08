@@ -131,7 +131,9 @@ public class ProfilesController implements Initializable {
         if (f!=null){
           
           imagelink=f.getAbsolutePath();
-          System.out.println(imagelink);
+          File file = new File(imagelink);
+            Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
         }
         
     }
