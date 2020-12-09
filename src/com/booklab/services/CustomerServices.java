@@ -13,9 +13,11 @@ import java.util.List;
 
 import com.booklab.Utils.DataSource;
 import com.booklab.models.Customer;
+import static com.booklab.views.UserloginController.infoBox;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Blob;
+import javafx.scene.control.Alert;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -23,8 +25,9 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author radhw
  */
 public class CustomerServices {
+
     Connection cnx= DataSource.getInstance().getCnx();
-    
+   
     public void create(Customer c) {
 		try {
 			String req="INSERT INTO Customer VALUES(null,?,?,?,?,?,?,?,?,?,?,?)";

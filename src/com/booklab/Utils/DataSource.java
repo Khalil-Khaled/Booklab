@@ -9,9 +9,11 @@ package com.booklab.Utils;
  *
  * @author radhw
  */
+import static com.booklab.views.UserloginController.infoBox;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javafx.scene.control.Alert;
 
 public class DataSource {
  private static DataSource instance; 	
@@ -20,13 +22,23 @@ public class DataSource {
  private final String USERNAME="root";
  private final String PASSWORD="";
  
+   public static void infoBox(String infoMessage,String title,String herdertext){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setContentText(infoMessage);
+                alert.setTitle(title);
+                alert.setHeaderText(herdertext);
+                alert.showAndWait();
 
+               }
  private DataSource() {
-	 try {
+	  
+        try {
 	cnx = DriverManager.getConnection(URL,USERNAME,PASSWORD);
 	System.out.println("Connected to Database");
 	 }catch(SQLException ex) {
 		 System.out.println(ex.getMessage());
+                infoBox("bad connexion database",null,"FAILED");
+                System.exit(0);
 	 }
 }
  public static DataSource getInstance() {//only one instance 
