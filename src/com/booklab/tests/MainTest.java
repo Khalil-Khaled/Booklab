@@ -40,7 +40,15 @@ public class MainTest {
 
 //      Customer c = new Customer("radhw.05","radhwene","elhafi","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
 ////      Customer c1 = new Customer(17,"radhw.05","","","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
-     CustomerServices s = new CustomerServices();
+//     CustomerServices s = new CustomerServices();
+//     CategoryServices cs = new CategoryServices();
+//     Category c =new Category("Action and Adventure");
+//     Category c1 =new Category("Classics");
+//     Category c2 =new Category("Comic Book or Graphic Novel");
+//     Category c3 =new Category("Detective and Mystery");
+//   
+     
+     
 //        System.out.println(s.showemail("sinda.sghair@esprit.tn"));
 //      s.create(c);
 ////      s.modify(c);

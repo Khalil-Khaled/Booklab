@@ -12,10 +12,19 @@ import java.util.Objects;
  * @author Naoures Hidri
  */
 public class Category {
+
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Category() {
+    }
      
    
     private int categoryId;
     private String categoryName;
+
+    
 
     public int getCategoryId() {
         return categoryId;
