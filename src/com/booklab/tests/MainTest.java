@@ -41,15 +41,16 @@ public class MainTest {
 //      Customer c = new Customer("radhw.05","radhwene","elhafi","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
 ////      Customer c1 = new Customer(17,"radhw.05","","","radhwene@emai.com","-----66","the pet?","samouel","pic.jpg",1,2,3);
      CustomerServices s = new CustomerServices();
+//        System.out.println(s.showemail("sinda.sghair@esprit.tn"));
 //      s.create(c);
 ////      s.modify(c);
 ////      s.delete(c1);
 //      System.out.println(s.show());
-String hashed = BCrypt.hashpw("radhwen", BCrypt.gensalt());
-if (BCrypt.checkpw("radhwen", hashed))
-	System.out.println("It matches");
-else
-	System.out.println("It does not match");
+//String hashed = BCrypt.hashpw("radhwen", BCrypt.gensalt());
+//if (BCrypt.checkpw("radhwen", hashed))
+//	System.out.println("It matches");
+//else
+//	System.out.println("It does not match");
 
 //     Admin a = new Admin("radhwene05","radhwene","elhafi","elhafi@gmail.com","radhwej134564","radhwene??","byrsa","pige.png");   
 //      Admin a1 = new Admin(16," ","","elhafi","elahfi@radhwene.com","RADH123","the pet of mmy child","kangou","pig.png");   

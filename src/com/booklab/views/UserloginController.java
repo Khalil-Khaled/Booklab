@@ -171,38 +171,39 @@ public class UserloginController implements Initializable {
          
          // Traditional way to get the response value.
          Optional<String> result = dialog.showAndWait();
-         JavaMailUtil.sendMail(result.get());
-         TextInputDialog dialogi = new TextInputDialog("code");
-         dialogi.setTitle("new password");
-         dialogi.setHeaderText("Look, a Text Input Dialog");
-         dialogi.setContentText("code verification :");
-         
-         // Traditional way to get the response value.
-         Optional<String> result1 = dialogi.showAndWait();
-         mail=result.get();
-         if (result1.get().equals(JavaMailUtil.code)){
-                Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("forgetpassword.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    xOffset = event.getSceneX();
-                    yOffset = event.getSceneY();
-                }
-                });
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                dialogStage.setX(event.getScreenX() - xOffset);
-                dialogStage.setY(event.getScreenY() - yOffset);
-                     }
-        });
-         }
-    
-     }
+         if (!(result.get().length()==0)){
+            JavaMailUtil.sendMail(result.get());
+            TextInputDialog dialogi = new TextInputDialog("code");
+            dialogi.setTitle("new password");
+            dialogi.setHeaderText("Look, a Text Input Dialog");
+            dialogi.setContentText("code verification :");
 
+            // Traditional way to get the response value.
+            Optional<String> result1 = dialogi.showAndWait();
+            mail=result.get();
+            if (result1.get().equals(JavaMailUtil.code)){
+                   Node node = (Node)event.getSource();
+                   dialogStage = (Stage) node.getScene().getWindow();
+                   dialogStage.close();
+                   scene = new Scene(FXMLLoader.load(getClass().getResource("forgetpassword.fxml")));
+                   dialogStage.setScene(scene);
+                   dialogStage.show();
+                   scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                   @Override
+                   public void handle(MouseEvent event) {
+                       xOffset = event.getSceneX();
+                       yOffset = event.getSceneY();
+                   }
+                   });
+                   scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                   @Override
+                   public void handle(MouseEvent event) {
+                   dialogStage.setX(event.getScreenX() - xOffset);
+                   dialogStage.setY(event.getScreenY() - yOffset);
+                        }
+           });
+            }
+
+        }
+        }
 }

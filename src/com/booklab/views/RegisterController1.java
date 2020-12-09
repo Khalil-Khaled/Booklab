@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +23,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -126,15 +130,111 @@ public class RegisterController1 implements Initializable {
           imagelink=".";
         
     }
+        private boolean validateEmaill(){
+        CustomerServices s = new CustomerServices();
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(email.getText());
+        if (s.showemaildispo(email.getText())){
+               Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Email");
+                alert.setHeaderText(null);
+                alert.setContentText("this Email exist ");
+                alert.showAndWait();
+            
+            return false;    
+            } 
+        if(m.find() && m.group().equals(email.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Email");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter Valid Email");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+        private boolean validateusername(){
+        CustomerServices s = new CustomerServices();
+        Pattern p = Pattern.compile("[a-zA-Z0-9]+");
+        Matcher m = p.matcher(username.getText());
+        if (s.showeuserdispo(username.getText())){
+               Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate username");
+                alert.setHeaderText(null);
+                alert.setContentText("this username exist ");
+                alert.showAndWait();
+            
+            return false;    
+            } 
+        if(m.find() && m.group().equals(username.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate username");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter valide username only number and and password");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+        private boolean validatePassword(){
+        Pattern p = Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})");
+        Matcher m = p.matcher(password.getText());
+        if(m.matches()){
+            return true;
+        }else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Password");
+                alert.setHeaderText(null);
+                alert.setContentText("Password must contain at least one(Digit, Lowercase, UpperCase and Special Character) and length must be between 6 -15");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+         private boolean validateLastName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(lastname.getText());
+        if(m.find() && m.group().equals(lastname.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Last Name");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter Valid Last Name only alphabet");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+               private boolean validateFirstName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(firstname.getText());
+        if(m.find() && m.group().equals(firstname.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Last Name");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter Valid First Name only alphabet");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+     
      
      @FXML
      private void adduser(ActionEvent event) throws IOException, Exception {
          CustomerServices s = new CustomerServices();
-         
-            if(!password.getText().equals(confirmationpassword.getText()))
-                infoBox("Please enter the same password ",null,"FAILED");
-            else {
-                String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
+        if(validateusername()&&validateEmaill()&&validateLastName()&&validateFirstName()&&validatePassword()){
+        if(!password.getText().equals(confirmationpassword.getText()))
+            infoBox("Please enter the same password ",null,"FAILED");
+        else {
+            String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
          JavaMailUtil.sendMail(email.getText());
          TextInputDialog dialog = new TextInputDialog("Verification");
          dialog.setTitle("VERIFICATION");
@@ -175,4 +275,5 @@ public class RegisterController1 implements Initializable {
     }
     } 
     }
+     }
 }
