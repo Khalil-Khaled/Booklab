@@ -120,9 +120,13 @@ public class CustomerServices {
                             
                             password=res.getString("password");
                         }
-
+                        if(!(pass.length()==0)&&!(password.length()==0)){
                          if(BCrypt.checkpw(pass,password))
                            return true;  
+                         else 
+                             return false;
+                        }else 
+                            return false;
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -136,13 +140,13 @@ public class CustomerServices {
 			String req="select userid,password from Customer "+"where username ='"+username+"'";
 			
                         PreparedStatement st = cnx.prepareStatement(req);
-//                      st.setString(1, username);
-//			st.setString(2, pass);
 			ResultSet res=st.executeQuery(req);
                         while (res.next()) {
                             password=res.getString("password");
                          if(BCrypt.checkpw(pass,password))  
-                            return a= res.getInt("userId");       
+                            return a= res.getInt("userId");
+                         else 
+                             return 0;
                         }
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
