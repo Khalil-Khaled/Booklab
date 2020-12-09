@@ -52,13 +52,15 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnProfile;
     @FXML
     private JFXButton btnAlerts;
+     @FXML
+    private JFXButton btncarts;
     @FXML
     private Label user;
     @FXML
      private ImageView imageuser;
      Stage dialogStage = new Stage();
     Scene scene;
-    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers;
+    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers,cart;
     @FXML
     private JFXButton btnControls;
     private double xOffset = 0;
@@ -88,6 +90,7 @@ public class FXMLDocumentController implements Initializable {
              complaints = FXMLLoader.load(getClass().getResource("complaints.fxml"));
              controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
              offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
+             cart= FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
             setNode(pricing);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -164,6 +167,9 @@ public class FXMLDocumentController implements Initializable {
     private void switchControls(ActionEvent event) {
         setNode(controls);
     }
-    
+    @FXML
+     private void switchcarts(ActionEvent event) {
+        setNode(cart);
+    }
 
 }

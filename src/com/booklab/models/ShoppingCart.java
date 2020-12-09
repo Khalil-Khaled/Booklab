@@ -7,6 +7,10 @@ public class ShoppingCart {
 	private int userID;
 	private ArrayList<Item> items = new ArrayList<>();
         private ArrayList<Integer> amounts = new ArrayList<>();
+
+    public ShoppingCart() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
     @Override
     public int hashCode() {
@@ -81,11 +85,9 @@ public class ShoppingCart {
     }
     
     public void addItem(Item item, int amount) {
-        boolean found = false;
         for(int i=0; i<items.size(); i++){
             if (items.get(i).equals(item)){
                 amounts.set(i, amounts.get(i)+amount);
-                found = true;
                 return;
             }
         }

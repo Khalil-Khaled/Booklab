@@ -99,7 +99,14 @@
                     </font>
                
                 </JFXButton>
+               
                 <JFXButton fx:id="btnAlerts" layoutX="10.0" layoutY="235.0" onAction="#switchAlert" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Alerts" textFill="#a1aec4">
+                    <font>
+                        <Font name="Roboto Bold" size="14.0" />
+                    </font>
+               
+                </JFXButton>
+                  <JFXButton fx:id="btncarts" layoutX="10.0" layoutY="277.0" onAction="#switchcarts" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="cart" textFill="#a1aec4">
                     <font>
                         <Font name="Roboto Bold" size="14.0" />
                     </font>
