@@ -5,6 +5,9 @@
  */
 package com.booklab.tests;
 
+import com.booklab.models.Order;
+import com.booklab.models.ShoppingCart;
+import com.booklab.services.ServicesOrder;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -21,18 +24,22 @@ import javafx.stage.Stage;
  * @author ASUS
  */
 public class NewFXMain extends Application {
+    public static int userID = 1;
     
     @Override
     public void start(Stage primaryStage)throws IOException {
        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../interfaces/ShoppingCart.fxml"));
+        
+        
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("../interfaces/ShoppingCart.fxml"));
         Parent root = loader.load();
-            Scene scene = new Scene(root);
+        Scene scene = new Scene(root);
         
         
         primaryStage.setTitle("ShoppingCart");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
 
     /**

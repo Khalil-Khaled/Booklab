@@ -142,7 +142,7 @@ public class ServicesShoppingCart {
         
      public float getCartTotal(ShoppingCart SC){
          try{
-             String REQ = "select sum(amount *price) from item join cart_actions on ItemID = id where cartID = ? ";
+             String REQ = "select sum(amount * price) from item join cart_actions on ItemID = id where cartID = ? ";
    
             PreparedStatement st = cnx.prepareStatement(REQ);
             st.setInt(1, SC.getCartID());
@@ -180,5 +180,25 @@ public class ServicesShoppingCart {
             System.out.println("Query Failed: "+ ex.getMessage());
         }
         return list;
+    }
+
+    public ShoppingCart setActiveCart(ShoppingCart SC) {
+        try {
+            String REQ = "select max(cartID) from shoppingcart where userID = ?";
+            PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, SC.getUserID());
+            
+            ResultSet result = st.executeQuery();
+           
+            while (result.next()){//getInt(1), result.getInt(2)
+                SC.setCartID(result.getInt(1));
+            }
+            
+            System.out.println("UPDATE STATUS: "+(st.executeUpdate()>0));
+            
+        } catch (SQLException ex) {
+            System.out.println("Query Failed: "+ ex.getMessage());
+        }
+        return SC;
     }
 }

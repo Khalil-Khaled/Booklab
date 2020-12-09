@@ -1,40 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.booklab.interfaces.OrderController">
+<AnchorPane id="AnchorPane" prefHeight="379.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.interfaces.OrderController">
    <children>
-      <Label layoutX="439.0" layoutY="21.0" text="Order#">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="387.0" layoutX="-3.0" layoutY="-2.0" stroke="#ffffff00" strokeType="INSIDE" width="610.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#bb84cf" offset="0.007662835249042145" />
+                  <Stop color="#61396fc2" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Label layoutX="51.0" layoutY="17.0" text="Order REF°" textFill="#464646">
          <font>
-            <Font size="19.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
+         <effect>
+            <Reflection fraction="0.68" topOffset="-10.0" />
+         </effect>
       </Label>
-      <TableView layoutX="50.0" layoutY="70.0" prefHeight="243.0" prefWidth="491.0">
+      <TableView fx:id="order_table" layoutX="40.0" layoutY="74.0" prefHeight="237.0" prefWidth="525.0">
         <columns>
-          <TableColumn fx:id="article" prefWidth="277.0" text="Article" />
-          <TableColumn fx:id="quantity" prefWidth="102.0" text="Quantity" />
-            <TableColumn fx:id="total" prefWidth="111.0" text="Total" />
+          <TableColumn fx:id="article" prefWidth="288.0" text="Article" />
+          <TableColumn fx:id="quantity" prefWidth="71.0" text="Quantity" />
+            <TableColumn fx:id="prix_unitaire" minWidth="0.0" prefWidth="73.0" text="Prix Unitaire" />
+            <TableColumn fx:id="total" prefWidth="124.0" text="Total" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Reflection fraction="0.06" />
+         </effect>
       </TableView>
-      <Label layoutX="435.0" layoutY="330.0" text="Total:">
+      <Label layoutX="436.0" layoutY="324.0" text="Total:" textFill="#464646">
          <font>
-            <Font size="19.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
+         <effect>
+            <Reflection fraction="0.68" topOffset="-10.0" />
+         </effect>
       </Label>
-      <Label fx:id="total_value" layoutX="489.0" layoutY="330.0" text="0DT">
+      <Label fx:id="total_value" layoutX="494.0" layoutY="324.0" text="0DT" textAlignment="RIGHT" textFill="#464646">
          <font>
-            <Font size="19.0" />
+            <Font size="16.0" />
          </font>
+         <effect>
+            <Reflection fraction="0.68" topOffset="-10.0" />
+         </effect>
       </Label>
-      <Label fx:id="orderid_value" layoutX="500.0" layoutY="21.0" text="1">
+      <Label fx:id="orderid_value" layoutX="135.0" layoutY="17.0" text="1" textFill="#464646">
          <font>
-            <Font size="19.0" />
+            <Font name="System Italic" size="16.0" />
          </font>
+         <effect>
+            <Reflection fraction="0.68" topOffset="-10.0" />
+         </effect>
+      </Label>
+      <Label layoutX="415.0" layoutY="17.0" text="Status:" textFill="#464646">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.68" topOffset="-10.0" />
+         </effect>
+      </Label>
+      <Label fx:id="orderstatus_value" layoutX="480.0" layoutY="17.0" text="Pending" textAlignment="RIGHT" textFill="#464646">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+         <effect>
+            <Reflection fraction="0.68" topOffset="-10.0" />
+         </effect>
       </Label>
    </children>
 </AnchorPane>

@@ -5,12 +5,14 @@
  */
 package com.booklab.interfaces;
 
+import com.booklab.Utils.NotificationAPI;
 import com.booklab.models.Book;
 import com.booklab.models.Item;
 import com.booklab.models.Order;
 import com.booklab.models.ShoppingCart;
 import com.booklab.services.ServicesOrder;
 import com.booklab.services.ServicesShoppingCart;
+import static com.booklab.tests.NewFXMain.userID;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.stripe.Stripe;
@@ -18,9 +20,11 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
 import com.stripe.model.Token;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +34,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -40,6 +47,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import javax.swing.JOptionPane;
@@ -80,26 +88,26 @@ public class ShoppingCartController implements Initializable {
     private TextField exp_year;
     @FXML
     private TextField cvc;
+    @FXML
+    private Button history;
  
+    private ShoppingCart SC = new ShoppingCart(userID);
     /**
      * Initializes the controller class.
      */
+    private ServicesShoppingCart ssc = new ServicesShoppingCart();
+    @FXML
+    private Button addbookfortest;
+    
    @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ServicesShoppingCart ssc = new ServicesShoppingCart();
+        
         /*ArrayList<Item> i = ssc.getCartItems(new ShoppingCart(1,1)).getItems();
         for(Item item : i)
             System.out.println(item.getName());*/
-       
-        ShoppingCart SC = new ShoppingCart(1, 1);
-        SC = ssc.getCartItems(SC);
-            SC.addItem(new Book(1), 1);
-            SC.addItem(new Book(2), 1);
-            SC.addItem(new Book(3), 1);
-         ssc.addItemsToCart(SC);
-            
-        
-  
+
+
+  addbookfortest.setOnAction(e -> addbookfortests());
             
         
         article.setCellValueFactory(new PropertyValueFactory<TableData, String>("item_name"));
@@ -131,28 +139,57 @@ public class ShoppingCartController implements Initializable {
         });
         loadTotal();
         
+        history.setOnAction(e ->{
+            try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../interfaces/OrderHistory.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage newWindow = new Stage();
+        
+        
+        newWindow.setTitle("Purchase History");
+        newWindow.setScene(scene);
+        newWindow.show();
+            }catch(IOException Ex){
+                System.out.println(Ex.getMessage());
+            }
+        });
+        
  
     } 
     
+    public void addbookfortests(){
+        SC.addItem(new Book(1), 1);
+            SC.addItem(new Book(2), 1);
+           SC.addItem(new Book(3), 1);
+          ssc.addItemsToCart(SC);
+          loadItems();
+          loadTotal();
+    }
+    
+    public void initCart(){
+        SC = ssc.setActiveCart(SC);
+        if (SC.getCartID() == 0)
+            ssc.createCart(SC);
+        else
+        SC = ssc.getCartItems(SC);
+    }
+    
     public void loadTotal(){
-        ServicesShoppingCart so = new ServicesShoppingCart();
         DecimalFormat df = new DecimalFormat("#.###");
-        sum_total.setText(String.valueOf(df.format(so.getCartTotal(new ShoppingCart(1,1))))+" DT");
+        sum_total.setText(String.valueOf(df.format(ssc.getCartTotal(SC)))+" DT");
     }
     
     public void loadItems(){
+        initCart();
         list_cart.setItems(getItems());
     }
     
     public ObservableList<TableData> getItems(){
-        ShoppingCart sc=new ShoppingCart(1,1);
         ObservableList<TableData> list = FXCollections.observableArrayList();
-            ServicesShoppingCart so = new ServicesShoppingCart();
-            sc = so.getCartItems(sc);
-        
  
-        for(int i =0; i<sc.getItems().size(); i++){
-            list.add(new TableData(sc.getItems().get(i).getId(), sc.getItems().get(i).getName(), sc.getItemAmount(i),sc.getItems().get(i).getPrice(), sc.getItems().get(i).getPrice() * sc.getItemAmount(i)));
+        for(int i =0; i<SC.getItems().size(); i++){
+            list.add(new TableData(SC.getItems().get(i).getId(), SC.getItems().get(i).getName(), SC.getItemAmount(i),SC.getItems().get(i).getPrice(), SC.getItems().get(i).getPrice() * SC.getItemAmount(i)));
         }
        return list;
     }
@@ -161,7 +198,7 @@ public class ShoppingCartController implements Initializable {
     public void changeQuantity(CellEditEvent editedCell) {
         TableData eventSelected = list_cart.getSelectionModel().getSelectedItem();
         eventSelected.setAmount((int) editedCell.getNewValue());
-        ServicesShoppingCart ssc = new ServicesShoppingCart();
+        
         ssc.updateCartItem(eventSelected);
         loadTotal();
         loadItems();
@@ -172,30 +209,31 @@ public class ShoppingCartController implements Initializable {
         if (eventSelected == null)
             JOptionPane.showMessageDialog(null, "Select Row to Remove!");
         else{
-            ServicesShoppingCart ssc = new ServicesShoppingCart();
             ssc.removeOneItem(eventSelected);
             loadTotal();
         }
     }
 
     private void createOrder() {
-        ServicesShoppingCart sso = new ServicesShoppingCart();
-        ShoppingCart sc = new ShoppingCart(1,1);
-        sc = sso.getCartItems(sc);
- 
         ServicesOrder so = new ServicesOrder();
-        Order o = new Order(sc, true, new Date(2020-1900,10,10));
+        
+        Order o = new Order(SC, true, new Date(2020-1900,10,10));
         so.insertOrder(o);
-        sso.removeItemsFromCart(sc);
+        
+        // Create new Cart for that user
+            SC.setCartID(0);
+            ssc.createCart(SC);
+            
+            loadItems();
+            JOptionPane.showMessageDialog(null, "Your order was Created! Check your purchase history.");
+        
        
         
     }
 
     private void clearOrder() {
-        ServicesShoppingCart sso = new ServicesShoppingCart();
-        ShoppingCart sc = new ShoppingCart(1,1);
-        sc = sso.getCartItems(sc);
-        sso.removeItemsFromCart(sc);
+        SC = ssc.getCartItems(SC);
+        ssc.removeItemsFromCart(SC);
     }
 
     private void pay() {
@@ -222,19 +260,32 @@ public class ShoppingCartController implements Initializable {
             Map<String, Object> source = new HashMap<String, Object>();
             source.put("source", token.getId());
             
-            a.getSources().create(source);
+            //a.getSources().create(source);
             
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             System.out.println(gson.toJson(token));
             
             Map<String,Object> chargeParam = new HashMap<String, Object>();
-            chargeParam.put("amount", sum_total.getText());
-            chargeParam.put("currency", "tnd");
+            chargeParam.put("amount", Integer.parseInt(sum_total.getText().substring(0, sum_total.getText().length()-3)));
+            chargeParam.put("currency", "usd");
             chargeParam.put("source", token.getId());
             
             Charge.create(chargeParam);
+            NotificationAPI.notifInfo("Payment", "Your payment was successful!");
+            // Create Order
+            ServicesOrder so = new ServicesOrder();
+            
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+            Date date = new Date(System.currentTimeMillis());
+            Order O = new Order(SC, true, date);
+            createOrder();
+            
+            
         }catch(StripeException e){
-            System.out.println(e.getMessage());            
+            System.out.println(e.getMessage());   
+            NotificationAPI.notif("Payment", "An error has occured with your Payment!");
         }
     }
+
+ 
 }
