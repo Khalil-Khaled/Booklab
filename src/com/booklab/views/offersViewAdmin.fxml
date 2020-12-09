@@ -20,7 +20,7 @@
          </font>
       </Label>
       <Separator layoutX="3.0" layoutY="55.0" prefHeight="4.0" prefWidth="1213.0" />
-      <TableView editable="true" fx:id="offersTable" layoutX="47.0" layoutY="86.0" prefHeight="511.0" prefWidth="685.0">
+      <TableView fx:id="offersTable" editable="true" layoutX="47.0" layoutY="86.0" prefHeight="511.0" prefWidth="685.0">
         <columns>
             <!--<TableColumn fx:id="idOffer" prefWidth="90.0" text="Offre Num " />-->
           <TableColumn fx:id="typeOffer" prefWidth="100.0" text="Offre" />
@@ -29,26 +29,26 @@
             <TableColumn fx:id="statusOffer" onEditCommit="#updateOfferStatus" prefWidth="200.0" text="status" />
         </columns>
       </TableView>
-      <JFXButton fx:id="createOfferBtn" layoutX="250.0" layoutY="629.0" mnemonicParsing="false" onAction="#createOfferView" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Create an offer" textAlignment="CENTER">
+<!--      <JFXButton fx:id="createOfferBtn" layoutX="250.0" layoutY="629.0" mnemonicParsing="false" onAction="#createOfferView" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Create an offer" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </JFXButton>
-      <AnchorPane fx:id="holderPane" layoutX="700.0" layoutY="100.0" prefHeight="452.0" prefWidth="310.0" />
-      <JFXButton fx:id="payBtn" layoutX="400.0" layoutY="629.0" mnemonicParsing="false" onAction="#payView" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Pay offer" >
+      </JFXButton>-->
+      <AnchorPane fx:id="holderPane" layoutX="732.0" layoutY="116.0" prefHeight="452.0" prefWidth="310.0" />
+<!--      <JFXButton fx:id="payBtn" layoutX="550.0" layoutY="629.0" mnemonicParsing="false" onAction="#payView" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Pay offer" >
           <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-     </JFXButton>
-      <JFXButton fx:id="refreshBtn" layoutX="100.0" layoutY="629.0" mnemonicParsing="false" onAction="#refreshOffers" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Refresh offers" >
+     </JFXButton>-->
+      <JFXButton fx:id="refreshBtn" layoutX="250.0" layoutY="629.0" mnemonicParsing="false" onAction="#refreshOffers" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Refresh offers" >
         <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
      </JFXButton>
-<!--      <JFXButton fx:id="removeBtn" layoutX="400.0" layoutY="629.0" mnemonicParsing="false" onAction="#removeOffer" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Remove offer" >
+      <JFXButton fx:id="removeBtn" layoutX="400.0" layoutY="629.0" mnemonicParsing="false" onAction="#removeOffer" ripplerFill="WHITE" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Remove offer" >
           <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         </JFXButton>-->
+         </JFXButton>
    </children>
 </AnchorPane>

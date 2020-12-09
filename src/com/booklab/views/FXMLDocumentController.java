@@ -23,11 +23,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -54,7 +56,8 @@ public class FXMLDocumentController implements Initializable {
     private Label user;
     @FXML
      private ImageView imageuser;
-    
+     Stage dialogStage = new Stage();
+    Scene scene;
     AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers;
     @FXML
     private JFXButton btnControls;
@@ -115,7 +118,33 @@ public class FXMLDocumentController implements Initializable {
     private void switchContacts(ActionEvent event) {
         setNode(contacts);
     }
+     @FXML
+    private void logout(ActionEvent event) throws IOException {
+                Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("userlogin.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+   
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+                } });
+                idlogin=0;
+    }
 
+    
     @FXML
     private void switchWidget(ActionEvent event) {
         setNode(complaints);

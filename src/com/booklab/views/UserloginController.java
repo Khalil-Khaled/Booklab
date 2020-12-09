@@ -101,14 +101,17 @@ public class UserloginController implements Initializable {
   @FXML
     private void authentification(ActionEvent event) throws IOException {
       CustomerServices s=new CustomerServices();
-      String s1=username.getText().toString();
-      String s2=password.getText().toString();
-      idlogin=s.idlogin(s1,s2);
+      String s1=username.getText();
+      String s2=password.getText();
+      
       boolean passauth=s.authentification(s1,s2);
-      if((!passauth)||(s1.length()==0)||(s2.length()==0))
+      if((s1.length()==0)||(s2.length()==0))
           infoBox("Please enter correct username and password",null,"FAILED");
+      else if((!passauth)){
+
+          infoBox("Please enter correct username and password",null,"FAILED");}
       else{
-                
+                idlogin=s.idlogin(s1,s2);
                 Node node = (Node)event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
                 dialogStage.close();

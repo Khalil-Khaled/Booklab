@@ -16,6 +16,7 @@ import com.booklab.models.Customer;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Blob;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -106,19 +107,22 @@ public class CustomerServices {
 		return list;
 	}
         public boolean authentification(String username,String pass){
-                    
+                  
+                    String password="";
            	try {
-			String req="select * from Customer "+"where username ='"+username+"' and password ='"+pass+"' ";
+			String req="select password from Customer "+"where username ='"+username+"'";
 			
                         PreparedStatement st = cnx.prepareStatement(req);
 //                      st.setString(1, username);
 //			st.setString(2, pass);
 			ResultSet res=st.executeQuery(req);
-                        if(!res.next()){
-                        return false;
-                        }else{
-                            return true;
+                         while (res.next()) {
+                            
+                            password=res.getString("password");
                         }
+
+                         if(BCrypt.checkpw(pass,password))
+                           return true;  
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -127,20 +131,23 @@ public class CustomerServices {
         }
         public int idlogin(String username,String pass){
          	int a=0;
+                String password="";
                 try {
-			String req="select userid from Customer "+"where username ='"+username+"' and password ='"+pass+"' ";
+			String req="select userid,password from Customer "+"where username ='"+username+"'";
 			
                         PreparedStatement st = cnx.prepareStatement(req);
 //                      st.setString(1, username);
 //			st.setString(2, pass);
 			ResultSet res=st.executeQuery(req);
                         while (res.next()) {
-                            a= res.getInt("userId");       
+                            password=res.getString("password");
+                         if(BCrypt.checkpw(pass,password))  
+                            return a= res.getInt("userId");       
                         }
 		}catch(SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
-        return a;
+        return 0;
         }
             public Customer showcustomer(int id){
 		Customer c=null;
@@ -160,7 +167,7 @@ public class CustomerServices {
 	}
             public void updatepass(String pass, int id){
             try {
-                String req="UPDATE customer set password="+pass+" WHERE userId="+id;
+                String req="UPDATE customer set password='"+pass+"' WHERE userId="+id;
 			PreparedStatement st = cnx.prepareStatement(req);
                         st.executeUpdate();
 			

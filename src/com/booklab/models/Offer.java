@@ -16,22 +16,25 @@ public class Offer {
     private String descriptionOffer;
     private boolean offerStatus=false;
     private int idCustomer;
+    private String stripeId;
 
-    public Offer(String typeOffer, float priceOffer, String descriptionOffer, int idCustomer) {
+    public Offer(String typeOffer, float priceOffer, String descriptionOffer, int idCustomer,String stripeId) {
         this.typeOffer = typeOffer;
         this.priceOffer = priceOffer;
         this.descriptionOffer = descriptionOffer;
         this.idCustomer=idCustomer;
+        this.stripeId=stripeId;
         
     }
 
-    public Offer(int idOffer, String typeOffer, float priceOffer, String descriptionOffer, boolean offerStatus,int idCustomer) {
+    public Offer(int idOffer, String typeOffer, float priceOffer, String descriptionOffer, boolean offerStatus,int idCustomer,String stripeId) {
         this.idOffer = idOffer;
         this.typeOffer = typeOffer;
         this.priceOffer = priceOffer;
         this.descriptionOffer = descriptionOffer;
         this.offerStatus = offerStatus;
         this.idCustomer=idCustomer;
+        this.stripeId=stripeId;
     }
 
     public int getIdOffer() {
@@ -88,6 +91,14 @@ public class Offer {
 
     public void setIdCustomer(int idCustomer) {
         this.idCustomer = idCustomer;
+    }
+
+    public String getStripeId() {
+        return stripeId;
+    }
+
+    public void setStripeId(String stripeId) {
+        this.stripeId = stripeId;
     }
     
     @Override
