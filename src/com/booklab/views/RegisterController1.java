@@ -130,6 +130,7 @@ public class RegisterController1 implements Initializable {
           imagelink=".";
         
     }
+     
         private boolean validateEmaill(){
         CustomerServices s = new CustomerServices();
         Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
@@ -180,10 +181,10 @@ public class RegisterController1 implements Initializable {
             return false;            
         }
     }
-        private boolean validatePassword(){
+         private boolean validatePassword(){
         Pattern p = Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})");
         Matcher m = p.matcher(password.getText());
-        if(m.matches()){
+         if(m.matches()){
             return true;
         }else{
                 Alert alert = new Alert(AlertType.WARNING);
@@ -210,16 +211,29 @@ public class RegisterController1 implements Initializable {
             return false;            
         }
     }
-               private boolean validateFirstName(){
+        private boolean validateFirstName(){
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(firstname.getText());
         if(m.find() && m.group().equals(firstname.getText())){
             return true;
         }else{
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("Validate Last Name");
+                alert.setTitle("Validate first Name");
                 alert.setHeaderText(null);
                 alert.setContentText("Please Enter Valid First Name only alphabet");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+        private boolean validatepasswordverification(){
+        if(password.getText().equals(confirmationpassword.getText())){
+           return true; 
+        }else{
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate password");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter the same password");
                 alert.showAndWait();
             
             return false;            
@@ -230,11 +244,8 @@ public class RegisterController1 implements Initializable {
      @FXML
      private void adduser(ActionEvent event) throws IOException, Exception {
          CustomerServices s = new CustomerServices();
-        if(validateusername()&&validateEmaill()&&validateLastName()&&validateFirstName()&&validatePassword()){
-        if(!password.getText().equals(confirmationpassword.getText()))
-            infoBox("Please enter the same password ",null,"FAILED");
-        else {
-            String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
+       {
+         String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
          JavaMailUtil.sendMail(email.getText());
          TextInputDialog dialog = new TextInputDialog("Verification");
          dialog.setTitle("VERIFICATION");
@@ -276,4 +287,4 @@ public class RegisterController1 implements Initializable {
     } 
     }
      }
-}
+

@@ -24,6 +24,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -123,6 +125,114 @@ public class ProfilesController implements Initializable {
 //        Customer c = new Customer();
 //        s.modify(c);
 //    }
+     private boolean validateEmaill(){
+        CustomerServices s = new CustomerServices();
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(email.getText());
+        if (s.showemaildispo(email.getText())){
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate Email");
+                alert.setHeaderText(null);
+                alert.setContentText("this Email exist ");
+                alert.showAndWait();
+            
+            return false;    
+            } 
+        if(m.find() && m.group().equals(email.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate Email");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter Valid Email");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+        private boolean validateusername(){
+        CustomerServices s = new CustomerServices();
+        Pattern p = Pattern.compile("[a-zA-Z0-9]+");
+        Matcher m = p.matcher(username.getText());
+        if (s.showeuserdispo(username.getText())){
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate username");
+                alert.setHeaderText(null);
+                alert.setContentText("this username exist ");
+                alert.showAndWait();
+            
+            return false;    
+            } 
+        if(m.find() && m.group().equals(username.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate username");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter valide username only number and and password");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+         private boolean validatePassword(){
+        Pattern p = Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})");
+        Matcher m = p.matcher(newpassword.getText());
+         if(m.matches()){
+            return true;
+        }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate Password");
+                alert.setHeaderText(null);
+                alert.setContentText("Password must contain at least one(Digit, Lowercase, UpperCase and Special Character) and length must be between 6 -15");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+         private boolean validateLastName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(lastname.getText());
+        if(m.find() && m.group().equals(lastname.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate Last Name");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter Valid Last Name only alphabet");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+        private boolean validateFirstName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(firstname.getText());
+        if(m.find() && m.group().equals(firstname.getText())){
+            return true;
+        }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate first Name");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Enter Valid First Name only alphabet");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
+        private boolean validatepasswordverification(){
+        if(newpassword.getText().equals(confirmationpassword.getText())){
+           return true; 
+        }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validate password");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter the same password");
+                alert.showAndWait();
+            
+            return false;            
+        }
+    }
         @FXML
         private void image(ActionEvent event) {
         FileChooser fc = new FileChooser(); 
@@ -134,16 +244,17 @@ public class ProfilesController implements Initializable {
           File file = new File(imagelink);
             Image image = new Image(file.toURI().toString());
             imageView.setImage(image);
+            
         }
         
     }
         @FXML
         private void updated(ActionEvent event){
             CustomerServices s = new CustomerServices();
-        
-            s.modify(new Customer(username.getText(),firstname.getText(),lastname.getText(),email.getText(),"123456",questionverif.getText(),answerverif.getText(),"1235",1,2,3),idlogin);
-            JOptionPane.showMessageDialog(null,"updated");
-        
+             
+                s.modify(new Customer(username.getText(),firstname.getText(),lastname.getText(),email.getText(),"123456",questionverif.getText(),answerverif.getText(),"1235",1,2,3),idlogin);
+                JOptionPane.showMessageDialog(null,"updated");
+             
         
         }
             public static void infoBox(String infoMessage,String title,String herdertext){
@@ -176,6 +287,9 @@ public class ProfilesController implements Initializable {
               System.out.println(imagelink=f.getAbsolutePath());
         if (f!=null){
           imagelink=f.getAbsolutePath();
+            File file = new File(imagelink);
+            Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
           s.updateimage(imagelink,idlogin);
           
         }
