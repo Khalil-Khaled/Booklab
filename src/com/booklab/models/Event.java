@@ -5,7 +5,8 @@
  */
 package com.booklab.models;
 
-import java.util.*;
+import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,42 +16,60 @@ public class Event {
 
     private int idEvent;
     private int eventOrganizerID;
+    private String organizerName;
     private String eventName;
     private String eventDesciption;
-    private Date eventDate;
+    private Date eventStartDate;
+    private Date eventEndDate;
     private String eventLocation;
+    private int participantID;
+    private String participantName;
+    private String participantEmail;
     private ArrayList<Customer> participants = new ArrayList<>();
 
-    public Event(String eventName, int eventOrganizerID, String eventDesciption, Date eventDate, String eventLocation) {
-        this.eventName = eventName;
-        this.eventOrganizerID = eventOrganizerID;
-        this.eventDesciption = eventDesciption;
-        this.eventDate = eventDate;
-        this.eventLocation = eventLocation;
-    }
-
-    public Event(String eventName, String eventDesciption, Date eventDate, String eventLocation) {
-        this.eventName = eventName;
-        this.eventDesciption = eventDesciption;
-        this.eventDate = eventDate;
-        this.eventLocation = eventLocation;
-    }
-
-    public Event(int idEvent, String eventName, String eventDesciption, String eventLocation) {
+    public Event(int idEvent) {
         this.idEvent = idEvent;
+    }
+    
+    public Event(int idEvent ,String organizerName,String eventName, String eventDesciption, Date eventStartDate,Date eventEndDate ,String eventLocation) {
+        this.idEvent = idEvent;
+        this.organizerName=organizerName;
+        this.eventName = eventName;
+        this.eventDesciption = eventDesciption;
+        this.eventStartDate = eventStartDate;
+        this.eventEndDate = eventEndDate;
+        this.eventLocation = eventLocation;
+    }
+
+    public Event(String eventName, String eventDesciption, Date eventStartDate, Date eventEndDate ,String eventLocation) {
+        this.eventName = eventName;
+        this.eventDesciption = eventDesciption;
+        this.eventStartDate = eventStartDate;
+        this.eventEndDate = eventEndDate;
+        this.eventLocation = eventLocation;
+    }
+
+    public Event(int idEvent,String organizerName, String eventName, String eventDesciption, String eventLocation) {
+        this.idEvent = idEvent;
+        this.organizerName=organizerName;
         this.eventName = eventName;
         this.eventDesciption = eventDesciption;
         this.eventLocation = eventLocation;
     }
 
-    public int getId() {
-        return idEvent;
+    public Event(String participantName, String participantEmail) {
+        this.participantName = participantName;
+        this.participantEmail = participantEmail;
     }
-
+    
     public int getIdEvent() {
         return idEvent;
     }
 
+    public String getOrganizerName() {
+        return organizerName;
+    }
+    
     public String getEventName() {
         return eventName;
     }
@@ -59,10 +78,14 @@ public class Event {
         return eventDesciption;
     }
 
-    public Date getEventDate() {
-        return eventDate;
+    public Date getEventStartDate() {
+        return eventStartDate;
     }
 
+    public Date getEventEndDate() {
+        return eventEndDate;
+    }
+    
     public String getEventLocation() {
         return eventLocation;
     }
@@ -75,6 +98,20 @@ public class Event {
         return participants.get(index);
     }
 
+    public int getParticipantID() {
+        return participantID;
+    }
+
+    public String getParticipantName() {
+        return participantName;
+    }
+
+    public String getParticipantEmail() {
+        return participantEmail;
+    }
+    
+    
+    
     public ArrayList<Customer> getParticipants() {
         return participants;
     }
@@ -99,21 +136,33 @@ public class Event {
         this.eventDesciption = eventDesciption;
     }
 
-    public void setEventDate(Date eventDate) {
-        this.eventDate = eventDate;
+    public void setEventStartDate(Date eventDate) {
+        this.eventStartDate = eventDate;
     }
 
+    public void setEventEndDate(Date eventEndDate) {
+        this.eventEndDate = eventEndDate;
+    }
+    
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
     }
 
+    public void setOrganizerName(String organizerName) {
+        this.organizerName = organizerName;
+    }
+
+    public void setParticipantID(int participantID) {
+        this.participantID = participantID;
+    }
+    
     public void setEventOrganizerID(int eventOrganizerID) {
         this.eventOrganizerID = eventOrganizerID;
     }
 
     @Override
     public String toString() {
-        return "Event{" + "idEvent=" + idEvent + ", eventOrganizerID=" + eventOrganizerID + ", eventName=" + eventName + ", eventDesciption=" + eventDesciption + ", eventDate=" + eventDate + ", eventLocation=" + eventLocation + '}';
+        return "Event{" + "idEvent=" + idEvent + ", eventOrganizerName=" + organizerName + ", eventName=" + eventName + ", eventDesciption=" + eventDesciption + ", eventStartDate=" + eventStartDate +", evenEndDate"+ eventEndDate + ", eventLocation=" + eventLocation + '}';
     }
 
     @Override
@@ -128,18 +177,13 @@ public class Event {
             return false;
         }
         final Event other = (Event) obj;
-        if (this.eventOrganizerID != other.eventOrganizerID) {
-            return false;
-        }
-        if (!Objects.equals(this.eventLocation, other.eventLocation)) {
-            return false;
-        }
-        if (!Objects.equals(this.eventDate, other.eventDate)) {
+        if (this.idEvent != other.idEvent) {
             return false;
         }
         return true;
     }
 
+    
     public void ajouterParticipant(Customer participant) {
         boolean found = false;
         for (int i = 0; i < participants.size(); i++) {
@@ -151,12 +195,12 @@ public class Event {
         this.participants.add(participant);
     }
 
-    public void supprimerBook(Book book) {
+    public void supprimerParticipant(Customer participant) {
         boolean found = false;
         for (int i = 0; i < participants.size(); i++) {
-            if (participants.get(i).equals(book)) {
+            if (participants.get(i).equals(participant)) {
                 found = true;
-                this.participants.remove(book);
+                this.participants.remove(participant);
             }
         }
         return;

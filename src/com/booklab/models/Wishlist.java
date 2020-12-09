@@ -15,18 +15,15 @@ public class Wishlist {
 
     private int wishlistID;
     private int customerID;
-    private int bookID;
     private ArrayList<Book> books = new ArrayList<>();
 
-    public Wishlist(int wishlistID, int customerID, int bookID) {
+    public Wishlist(int wishlistID, int customerID) {
         this.wishlistID = wishlistID;
         this.customerID = customerID;
-        this.bookID = bookID;
     }
-
-    public Wishlist(int customerID, int bookID) {
+    
+    public Wishlist(int customerID) {
         this.customerID = customerID;
-        this.bookID = bookID;
     }
 
     public int getWishlistID() {
@@ -35,10 +32,6 @@ public class Wishlist {
 
     public int getCustomerID() {
         return customerID;
-    }
-
-    public int getBookID() {
-        return bookID;
     }
 
     public Book getBook(int index) {
@@ -61,13 +54,9 @@ public class Wishlist {
         this.customerID = customerID;
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
-    }
-
     @Override
     public String toString() {
-        return "Wishlist{" + "wishlistID=" + wishlistID + ", customerID=" + customerID + ", bookID=" + bookID + '}';
+        return "Wishlist{" + "wishlistID=" + wishlistID + ", customerID=" + customerID + '}';
     }
 
     @Override

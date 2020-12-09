@@ -5,12 +5,8 @@
  */
 package com.booklab.views;
 
-import com.booklab.models.Customer;
-import com.booklab.services.CustomerServices;
-import com.booklab.tests.logintest;
 import static com.booklab.views.UserloginController.idlogin;
 import com.jfoenix.controls.JFXButton;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -80,13 +75,12 @@ public class FXMLDocumentController implements Initializable {
 //image and user in the dashboard
         try {
             
-            
-             contacts = FXMLLoader.load(getClass().getResource("Contacts.fxml"));
-             alerts = FXMLLoader.load(getClass().getResource("Alerts.fxml"));
-             pricing = FXMLLoader.load(getClass().getResource("Pricing.fxml"));
+            contacts = FXMLLoader.load(getClass().getResource("ShowEvent.fxml"));
+             alerts = FXMLLoader.load(getClass().getResource("Wishlist.fxml"));
+             pricing = FXMLLoader.load(getClass().getResource("Wishlist.fxml"));
              profiles = FXMLLoader.load(getClass().getResource("Profiles.fxml"));
              complaints = FXMLLoader.load(getClass().getResource("complaints.fxml"));
-             controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
+             controls = FXMLLoader.load(getClass().getResource("Wishlist.fxml"));
              offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
             setNode(pricing);
         } catch (IOException ex) {

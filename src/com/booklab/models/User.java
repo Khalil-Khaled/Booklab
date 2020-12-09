@@ -48,7 +48,10 @@ public abstract class User {
     public User() {
     }
 
-
+    public User(String firstName, String email) {
+        this.firstName = firstName;
+        this.email = email;
+    }
 
     public int getUserid() {
         return userid;

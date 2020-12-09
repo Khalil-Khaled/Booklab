@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package com.booklab.models;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Objects;
 /**
  *
@@ -30,6 +28,10 @@ private int cardId;
         this.cardId = cardId;
     }
 
+    public Customer(String firstName, String email) {
+        super(firstName, email);
+    }
+    
     public int getRate() {
         return rate;
     }
