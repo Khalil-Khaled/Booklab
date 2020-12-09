@@ -244,7 +244,8 @@ public class RegisterController1 implements Initializable {
      @FXML
      private void adduser(ActionEvent event) throws IOException, Exception {
          CustomerServices s = new CustomerServices();
-       {
+       
+         if(validateusername()&&validateFirstName()&&validateLastName()&&validateEmaill()&&validatePassword()&&validatepasswordverification()){
          String passwordcrypt=BCrypt.hashpw(password.getText(),BCrypt.gensalt());
          JavaMailUtil.sendMail(email.getText());
          TextInputDialog dialog = new TextInputDialog("Verification");
