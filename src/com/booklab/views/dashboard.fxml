@@ -83,7 +83,7 @@
                     </font>
               
                 </JFXButton>
-                <JFXButton fx:id="btnContacts" layoutX="10.0" layoutY="109.0" onAction="#switchContacts" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="EVENTS" textFill="#a1aec4">
+                <JFXButton fx:id="btnContacts" layoutX="10.0" layoutY="109.0" onAction="#switchevents" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="EVENTS" textFill="#a1aec4">
                     <font>
                         <Font name="Roboto Bold" size="14.0" />
                     </font>
@@ -114,7 +114,7 @@
                     </font>
                
                 </JFXButton>
-                <JFXButton fx:id="btnControls" onAction="#switchControls" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Controls" textFill="#a1aec4">
+                <JFXButton fx:id="btnControls" onAction="#switchwishlist" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="WishList" textFill="#a1aec4">
                     <font>
                         <Font name="Roboto Bold" size="14.0" />
                     </font>

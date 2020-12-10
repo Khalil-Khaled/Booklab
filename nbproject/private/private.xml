@@ -5,25 +5,38 @@
         <group>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Category.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ProfilesController.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Accessory.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/TableData.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ShoppingCartController.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/UserloginController.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/OrderHistoryController.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/logintest.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CustomerServices.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/OrderController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/User.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/MainTest.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/tests/Registertest.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ShoppingCart.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/custom.css</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/AdminController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Book.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Item.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CategoryServices.java</file>
-            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/AdminServices.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CouponServices.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CategoryServices.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ProfileAdminController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/CreateEventController.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/ServicesShoppingCart.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/OffersViewController.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/RegisterController1.java</file>
             <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/ServicesOrder.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ShowEventController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Accessory.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/ShoppingCartController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/CategoryAdminController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/OrderHistoryController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/CustomerServices.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Admin.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/models/Customer.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/OrderController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/EventServices.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/Admin.fxml</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/views/WishlistController.java</file>
+            <file>file:/C:/Users/radhw/Desktop/esprit%20-%20cour/Booklab/src/com/booklab/services/AdminServices.java</file>
         </group>
     </open-files>
 </project-private>

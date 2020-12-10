@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Naoures Hidri
  */
-public abstract class Item {
+public class Item {
  
     private int id;
     private String name;
@@ -29,6 +29,15 @@ public abstract class Item {
 
     public Item(int id, String name, int categoryId, String description, float price, String image, int quantity, int rating) {
         this.id = id;
+        this.name = name;
+        this.categoryId = categoryId;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.quantity = quantity;
+        this.rating = rating;
+    }
+       public Item(String name, int categoryId, String description, float price, String image, int quantity, int rating) {
         this.name = name;
         this.categoryId = categoryId;
         this.description = description;

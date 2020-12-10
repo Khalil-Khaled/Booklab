@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="703.0" prefWidth="1017.0" style="-fx-background-color: #d7e3fc;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.booklab.views.CategoryAdminController">
+    <stylesheets>
+        <URL value="@categoryadmin.css" />
+    </stylesheets>
+   <children>
+      <Separator layoutX="1.0" layoutY="45.0" prefHeight="37.0" prefWidth="1017.0" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #ff1654;" text="Categories" textFill="#7387a8">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TreeTableView fx:id="categoryTable" layoutX="57.0" layoutY="82.0" prefHeight="511.0" prefWidth="685.0">
+        <columns>
+          <TreeTableColumn fx:id="categoryName" prefWidth="684.0" style="-fx-background-color: #b2dbbf;" text="Category Name" />
+        </columns>
+      </TreeTableView>
+      <JFXButton fx:id="btnRefresh" layoutX="216.0" layoutY="610.0" onAction="#refreshCategory" style="-fx-background-color: #70c1b3;" text="Refresh Categories">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="bntRemove" layoutX="455.0" layoutY="609.0" onAction="#removeCategory" style="-fx-background-color: #70c1b3;" text="Remove Category">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

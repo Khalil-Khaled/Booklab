@@ -40,7 +40,7 @@ import javafx.stage.Stage;
  *
  * @author radhw
  */
-public class UserloginController implements Initializable {
+public class AdminloginController implements Initializable {
 
     @FXML
     private TextField username;
@@ -121,7 +121,7 @@ public class UserloginController implements Initializable {
                 Node node = (Node)event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
                 dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("dashboard.fxml")));
+                scene = new Scene(FXMLLoader.load(getClass().getResource("admin.fxml")));
                 dialogStage.setScene(scene);
                 dialogStage.show();
                 
@@ -142,33 +142,10 @@ public class UserloginController implements Initializable {
       }
      
  }  @FXML
-    private void loginadmin(ActionEvent event) throws IOException{
-                 Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("adminlogin.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    xOffset = event.getSceneX();
-                    yOffset = event.getSceneY();
-                }
-                });
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                dialogStage.setX(event.getScreenX() - xOffset);
-                dialogStage.setY(event.getScreenY() - yOffset);
-            }
-        });
-    
-     }
-    
+
  
     
-    @FXML
+    
         private void registert(ActionEvent event) throws IOException {
                 Node node = (Node)event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
@@ -192,6 +169,29 @@ public class UserloginController implements Initializable {
         });
     
      }
+        @FXML
+        private void loginCustomer (ActionEvent event) throws IOException, Exception {
+          Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("userlogin.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+        }
         @FXML
         private void forgetpassword(ActionEvent event) throws IOException, Exception {
          TextInputDialog dialog = new TextInputDialog("Email");

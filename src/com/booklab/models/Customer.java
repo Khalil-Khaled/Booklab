@@ -29,6 +29,10 @@ private int cardId;
         this.wishId = wishId;
         this.cardId = cardId;
     }
+    public Customer(String firstName,String email) {
+        super(firstName,email);
+      
+    }
 
     public int getRate() {
         return rate;
@@ -37,7 +41,9 @@ private int cardId;
     public int getWishId() {
         return wishId;
     }
-
+	public Customer(int userid){
+        super(userid);
+    }
     public int getCardId() {
         return cardId;
     }

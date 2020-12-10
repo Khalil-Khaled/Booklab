@@ -18,6 +18,7 @@ public class Book extends Item{
    private Date publishDate;
    private String author;
    private int pageNumber;
+   
 
 
     public Book(int id) {
@@ -30,6 +31,17 @@ public class Book extends Item{
         this.author = author;
         this.pageNumber = pageNumber;
     }
+
+    public Book(Date publishDate, String author, int pageNumber, String name, int categoryId, String description, float price, String image, int quantity, int rating) {
+        super(name, categoryId, description, price, image, quantity, rating);
+        this.publishDate = publishDate;
+        this.author = author;
+        this.pageNumber = pageNumber;
+    }
+
+ 
+
+   
 
     public Date getPublishDate() {
         return publishDate;

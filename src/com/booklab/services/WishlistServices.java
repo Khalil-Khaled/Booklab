@@ -7,12 +7,16 @@ package com.booklab.services;
 
 import com.booklab.Utils.DataSource;
 import com.booklab.models.Book;
-import com.booklab.models.Wishlist;
+import com.booklab.models.Customer;
+import com.booklab.models.Item;
+import com.booklab.models.wishlistBooks;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,80 +26,146 @@ public class WishlistServices {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
-    public void ajouterDansWishlist(Wishlist wishlist) {
+    public int createWishlist(int userid) {
+        int wishid = 0;
+
+        System.out.println(userid);
         PreparedStatement st;
         String REQ = "";
         try {
+            REQ = "INSERT INTO wishlist(customerid) values (?) ";
 
-            for (int i = 0; i < wishlist.getBooks().size(); i++) {
-                REQ = "INSERT INTO wishlist_actions values (null, ?, ?, ?)";
-                st = cnx.prepareStatement(REQ);
+            st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, userid);
+            st.executeUpdate();
+            ResultSet rs = st.getGeneratedKeys();
 
-                st.setInt(1, wishlist.getWishlistID());
-                st.setInt(2, wishlist.getBook(i).getId());
-                st.setInt(3, wishlist.getBooks().size());
-                System.out.println("(" + i + ")INSERT STATUS: " + (st.executeUpdate() > 0));
+            if (rs.next()) {
+                wishid = rs.getInt(1);
             }
-
         } catch (SQLException ex) {
             System.out.println("Query Failed: " + ex.getMessage());
         }
+        return wishid;
+
     }
 
-    public void supprimerDeWishlist(Wishlist wishlist) {
+    public int getWishlistId(int userid) {
+        int wishid = 0;
         PreparedStatement st;
         String REQ = "";
         try {
+            REQ = "Select wishlistid from wishlist where customerid=? ";
 
-            for (int i = 0; i < wishlist.getBooks().size(); i++) {
-                REQ = "DELETE FROM wishlist_actions WHERE wihlistID = ? and bookID = ?";
-                st = cnx.prepareStatement(REQ);
+            st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, userid);
+            st.executeQuery();
+            ResultSet rs = st.getResultSet();
 
-                st.setInt(1, wishlist.getWishlistID());
-                st.setInt(2, wishlist.getBook(i).getId());
-                System.out.println("(" + i + ")DELETE STATUS: " + (st.executeUpdate() > 0));
+            if (rs.next()) {
+                wishid = rs.getInt(1);
             }
-
         } catch (SQLException ex) {
             System.out.println("Query Failed: " + ex.getMessage());
         }
+        return wishid;
     }
 
-    public void viderWishlist(Wishlist wishlist) {
+    public void ajouterDansWishlist(Customer c, Item b) {
         PreparedStatement st;
         String REQ = "";
         try {
 
-            REQ = "DELETE FROM wishlist_actions WHERE cartID = ?";
+            REQ = "INSERT INTO wishlistbooks(bookid,wishlistid) values (?,?) ";
             st = cnx.prepareStatement(REQ);
-            st.setInt(1, wishlist.getWishlistID());
-
-            System.out.println("DELETE STATUS: " + (st.executeUpdate() > 0));
+            st.setInt(1, b.getId());
+            st.setInt(2, c.getWishId());
+            System.out.println(c.getWishId());
+            st.executeUpdate();
+            System.out.println("Book added");
 
         } catch (SQLException ex) {
             System.out.println("Query Failed: " + ex.getMessage());
         }
     }
 
-    public Wishlist afficherWishlist(Wishlist wishlist) {
-        Wishlist list = new Wishlist(wishlist.getWishlistID(), wishlist.getCustomerID());
+    //Supprimer book from wishlist
+    public void supprimerBook(wishlistBooks wb) {
         try {
-            String REQ = "select DISTINCT bookID, sum(amount) from wishlist_actions where wishlistID = ? group by bookID;";
-            PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
-            st.setInt(1, wishlist.getWishlistID());
+            String req = "DELETE FROM wishlistbooks WHERE bookid=?";
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setInt(1, wb.getBookId());
+            st.executeUpdate();
+            System.out.println("Book deleted");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
-            ResultSet result = st.executeQuery();
-
-            while (result.next()) {//getInt(1), result.getInt(2)
-                list.ajouterBook(new Book(result.getInt(1)));
-            }
-
-            System.out.println("UPDATE STATUS: " + (st.executeUpdate() > 0));
-
+    public void viderWishlist(wishlistBooks wb) {
+        PreparedStatement st;
+        String REQ = "";
+        try {
+            REQ = "DELETE FROM wishlistbooks";
+            st = cnx.prepareStatement(REQ);
+            st.executeUpdate();
+            System.out.println("wishlist is empty now");
         } catch (SQLException ex) {
             System.out.println("Query Failed: " + ex.getMessage());
+        }
+    }
+
+    public ObservableList<wishlistBooks> afficherWishlistBooks(int id) {
+        ObservableList<wishlistBooks> list = FXCollections.observableArrayList();
+        try {
+            String req = "SELECT distinct b.bookName,b.bookdescription,b.bookid FROM wishlistbooks wb join book b on b.bookid=wb.bookid join customer c on c.wishlistid=wb.wishlistid where c.userid="+id;
+            PreparedStatement st = cnx.prepareStatement(req);
+         
+            ResultSet res = st.executeQuery();
+            while (res.next()) {
+                list.add(new wishlistBooks(res.getInt("bookID"), res.getString("bookName"), res.getString("bookDescription")));
+            }
+            System.out.println("Wishlist récuperés");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
         return list;
+    }
+
+   
+    public Integer nmbreBookDansWishlist(int id) {
+        int nbr = 0;
+        try {
+            String req = "SELECT count(*) as num from wishlistbooks wb join customer c on wb.wishlistid=c.wishlistid where c.userid="+id;
+            PreparedStatement st = cnx.prepareStatement(req);
+            ResultSet res = st.executeQuery();
+            if (res.next()) {
+                nbr = res.getInt("num");
+            }
+            System.out.println("Wishlist récuperés");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nbr;
+    }
+
+    public int searchbookInWishlist(int bookid, int wishid) {
+        int count = 0;
+        System.out.println(bookid);
+        try {
+            String req = "select count(*) from wishlistbooks where wishlistid=? and bookid=? ";
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setInt(1, wishid);
+            st.setInt(2, bookid);
+            ResultSet res = st.executeQuery(req);
+            if (res.next()) { // just in case
+                count = res.getInt(1); // note that indexes are one-based
+            }
+            //System.out.println(count);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return count;
     }
 
 }

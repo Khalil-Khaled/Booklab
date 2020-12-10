@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorAdmin" prefHeight="400.0" prefWidth="650.0" styleClass="sidebar" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.AdminController">
+    <stylesheets>
+        <URL value="@admin.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="250.0" layoutY="-13.0" prefHeight="623.0" prefWidth="839.0" styleClass="parent" stylesheets="@admin.css" />
+      <Label alignment="CENTER" layoutX="-21.0" prefHeight="75.0" prefWidth="271.0" style="-fx-background-color: #00A2D3;" styleClass="txtColor" stylesheets="@admin.css" text="Admin BookLAB" textOverrun="CLIP">
+         <effect>
+            <ColorAdjust />
+         </effect>
+      </Label>
+      <HBox layoutX="28.0" layoutY="95.0">
+         <children>
+            <TextField alignment="CENTER" prefHeight="26.0" prefWidth="214.0" promptText="Search" style="-fx-background-color: transparent;" />
+         </children>
+      </HBox>
+      <JFXButton fx:id="btnEvent" layoutX="-3.0" layoutY="282.0" onAction="#switchEvent" prefHeight="32.0" prefWidth="254.0" style="-fx-background-color: transparent;" styleClass="btns" text="Events" />
+      <JFXButton fx:id="btnprofile" layoutY="143.0" onAction="#switchProfile" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="btns" text="Profile" />
+      <JFXButton fx:id="btnUser" contentDisplay="CENTER" layoutY="187.0" onAction="#switchUser" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="btns" text="Users" />
+      <JFXButton fx:id="btnCategory" layoutY="230.0" onAction="#switchCategory" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="btns" text="Category" />
+      <JFXButton fx:id="btnOffers" layoutX="1.0" layoutY="332.0" onAction="#switchItem" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="btns" text="Offers" />
+      <JFXButton fx:id="bntComplaint" layoutX="-2.0" layoutY="377.0" onAction="#switchComplaint" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="btns" text="Complaint" />
+   </children>
+</AnchorPane>

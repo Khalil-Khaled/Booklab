@@ -63,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
      private ImageView imageuser;
      Stage dialogStage = new Stage();
     Scene scene;
-    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers,cart;
+    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers,cart,wishlist,events;
     @FXML
     private JFXButton btnControls;
     @FXML
@@ -106,6 +106,8 @@ public class FXMLDocumentController implements Initializable {
              controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
              offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
              cart= FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
+             wishlist= FXMLLoader.load(getClass().getResource("Wishlist.fxml"));
+             events=FXMLLoader.load(getClass().getResource("ShowEvent.fxml"));
             setNode(pricing);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,8 +135,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void switchContacts(ActionEvent event) {
-        setNode(contacts);
+    private void switchevents(ActionEvent event) {
+        setNode(events);
     }
      @FXML
     private void logout(ActionEvent event) throws IOException {
@@ -187,4 +189,8 @@ public class FXMLDocumentController implements Initializable {
         setNode(cart);
     }
 
+        @FXML
+     private void switchwishlist(ActionEvent event) {
+        setNode(wishlist);
+    }
 }

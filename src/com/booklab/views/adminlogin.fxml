@@ -16,7 +16,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onInputMethodTextChanged="#registert" fx:id="parent" prefHeight="500.0" prefWidth="45.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.UserloginController">
+<AnchorPane id="AnchorPane" onInputMethodTextChanged="#registert" fx:id="parent" prefHeight="500.0" prefWidth="45.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.AdminloginController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="440.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #2E323B;">
          <children>
@@ -37,7 +37,7 @@
             </ImageView>
          </children>
       </VBox>
-      <Label layoutX="70.0" layoutY="103.0" text="User Login">
+      <Label layoutX="70.0" layoutY="103.0" text="Admin Login">
          <font>
             <Font size="20.0" />
          </font>
@@ -73,10 +73,9 @@
             <Font name="Microsoft Sans Serif" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="300.0" layoutY="275.0" onAction="#loginadmin"  text="Admin" >
-          <cursor>
-                  <Cursor fx:constant="HAND" />
-          </cursor></JFXButton>
+      <JFXButton layoutX="300.0" layoutY="275.0" onAction="#loginCustomer"  text="Customer" ><cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></JFXButton>
       <Pane layoutY="420.0" prefHeight="80.0" prefWidth="440.0" style="-fx-background-color: #F3F4F6;">
          <children>
             <JFXButton layoutX="86.0" fx:id="register" onAction="#registert" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" ripplerFill="WHITE" text="REGISTER" underline="true">

@@ -44,7 +44,13 @@ public abstract class User {
         this.questionVerif = questionVerif;
         this.answerVerif = answerVerif;
     }
-
+     public User(String firstName,String email) {
+      
+        this.firstName = firstName;
+        
+        this.email = email;
+        
+    }
     public User() {
     }
 
@@ -57,7 +63,9 @@ public abstract class User {
     public String getUserName() {
         return userName;
     }
-
+	 public User(int userid) {
+        this.userid = userid;
+    }
     public String getFirstName() {
         return firstName;
     }
