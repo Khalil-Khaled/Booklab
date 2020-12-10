@@ -302,7 +302,7 @@ public class ShowEventController implements Initializable {
             loader.setLocation(getClass().getResource("ListParticipants.fxml"));
             Parent parent = loader.load();
             ListParticipantsController c = loader.getController();
-            System.out.println(eventSelected);
+            
             c.setEvent(eventSelected);
             Scene scene = new Scene(parent);
             Stage newWindow = new Stage();

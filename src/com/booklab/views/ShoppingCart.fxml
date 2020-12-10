@@ -103,5 +103,13 @@
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
+      <Button fx:id="coupon" onAction="#coupon" layoutX="772.0"  layoutY="660.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="189.0" style="-fx-background-color: #2354;" text="Use coupon" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

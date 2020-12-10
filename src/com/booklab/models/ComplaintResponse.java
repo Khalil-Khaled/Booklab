@@ -12,25 +12,28 @@ import java.util.Objects;
  * @author user
  */
 public class ComplaintResponse {
-   private int  complaintResponseID;
-    private String response ;
-    private String complaintStatus ;
-    private int userId;
-     private int complaintId;
-     
-    public ComplaintResponse(int complaintResponseID, int userId,int complaintId, String Response, String complaintStatus) {
+
+    private int complaintResponseID;
+    private String response;
+    private String complaintStatus;
+  
+    private int complaintId;
+    private String customerInfo;
+
+    public ComplaintResponse(int complaintResponseID, int complaintId,String customerInfo, String Response, String complaintStatus) {
         this.complaintResponseID = complaintResponseID;
-        this.userId=userId;
-        this.complaintId=complaintId;
+        this.complaintId = complaintId;
         this.response = Response;
         this.complaintStatus = complaintStatus;
+        this.customerInfo = customerInfo;
     }
 
-    public ComplaintResponse(int userId,int complaintId,String Response, String complaintStatus) {
-        this.userId=userId;
-        this.complaintId=complaintId;
+    public ComplaintResponse(int complaintId, String customerInfo, String Response, String complaintStatus) {
+        this.complaintId = complaintId;
         this.response = Response;
         this.complaintStatus = complaintStatus;
+        this.customerInfo = customerInfo;
+
     }
 
     public int getComplaintIResponseID() {
@@ -45,10 +48,6 @@ public class ComplaintResponse {
         return complaintStatus;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
     public void setComplaintIResponseID(int complaintIResponseID) {
         this.complaintResponseID = complaintIResponseID;
     }
@@ -61,9 +60,7 @@ public class ComplaintResponse {
         this.complaintStatus = complaintStatus;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+  
 
     public int getComplaintResponseID() {
         return complaintResponseID;
@@ -81,6 +78,20 @@ public class ComplaintResponse {
         this.complaintId = complaintId;
     }
 
+    public String getCustomerInfo() {
+        return customerInfo;
+    }
+
+    public void setCustomerInfo(String customerInfo) {
+        this.customerInfo = customerInfo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -96,27 +107,28 @@ public class ComplaintResponse {
         if (this.complaintResponseID != other.complaintResponseID) {
             return false;
         }
-        if (this.userId != other.userId) {
-            return false;
-        }
         if (this.complaintId != other.complaintId) {
             return false;
         }
         if (!Objects.equals(this.response, other.response)) {
             return false;
         }
-        if (this.complaintStatus != other.complaintStatus) {
+        if (!Objects.equals(this.complaintStatus, other.complaintStatus)) {
+            return false;
+        }
+        if (!Objects.equals(this.customerInfo, other.customerInfo)) {
             return false;
         }
         return true;
     }
 
+   
+
     @Override
     public String toString() {
-        return "ComplaintResponse{" + "complaintResponseID=" + complaintResponseID + ", response=" + response + ", complaintStatus=" + complaintStatus + ", userId=" + userId + ", complaintId=" + complaintId + '}';
+        return "ComplaintResponse{" + "complaintResponseID=" + complaintResponseID + ", response=" + response + ", complaintStatus=" + complaintStatus + ", complaintId=" + complaintId + ", customerInfo=" + customerInfo + '}';
     }
 
-  
-
     
+
 }

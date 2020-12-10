@@ -5,8 +5,10 @@
  */
 package com.booklab.models;
 
+import com.stripe.model.CouponCollection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -14,25 +16,28 @@ import java.util.Objects;
  * @author user
  */
 public class Coupon {
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+   
+
+ 
     private int couponID;
     private String codeCoupon;
-    private boolean validity;
+      private String couponName;
     private Date expirationDate;
     
-    public Coupon(int couponID, String codeCoupon, boolean validity,Date expirationDate ) {
+    public Coupon(int couponID, String codeCoupon,  String couponName,Date expirationDate ) {
         this.couponID = couponID;
         this.codeCoupon = codeCoupon;
-        this.validity = validity;
+        this.couponName = couponName;
         this.expirationDate=expirationDate;
     }
 
-    public Coupon(String codeCoupon, boolean validity,Date expirationDate) {
+    public Coupon(String codeCoupon,String couponName,Date expirationDate) {
         this.codeCoupon = codeCoupon;
-        this.validity = validity;
+        this.couponName = couponName;
         this.expirationDate=expirationDate;
     }
-
+   
 
     public int getCouponID() {
         return couponID;
@@ -42,9 +47,7 @@ public class Coupon {
         return codeCoupon;
     }
 
-    public boolean isValidity() {
-        return validity;
-    }
+  
 
     public void setCouponID(int couponID) {
         this.couponID = couponID;
@@ -54,9 +57,7 @@ public class Coupon {
         this.codeCoupon = codeCoupon;
     }
 
-    public void setValidity(boolean validity) {
-        this.validity = validity;
-    }
+   
 
     public Date getExpirationDate() {
         return expirationDate;
@@ -64,6 +65,28 @@ public class Coupon {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+//    public SimpleDateFormat getFormatter() {
+//        return formatter;
+//    }
+
+    public String getCouponName() {
+        return couponName;
+    }
+
+//    public void setFormatter(SimpleDateFormat formatter) {
+//        this.formatter = formatter;
+//    }
+
+    public void setCouponName(String couponName) {
+        this.couponName = couponName;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
     }
 
     @Override
@@ -78,7 +101,16 @@ public class Coupon {
             return false;
         }
         final Coupon other = (Coupon) obj;
+        if (this.couponID != other.couponID) {
+            return false;
+        }
         if (!Objects.equals(this.codeCoupon, other.codeCoupon)) {
+            return false;
+        }
+        if (!Objects.equals(this.couponName, other.couponName)) {
+            return false;
+        }
+        if (!Objects.equals(this.expirationDate, other.expirationDate)) {
             return false;
         }
         return true;
@@ -86,8 +118,9 @@ public class Coupon {
 
     @Override
     public String toString() {
-        return "Coupon{" + "couponID=" + couponID + ", codeCoupon=" + codeCoupon + ", validity=" + validity + ", expirationDate=" + expirationDate + '}';
+        return "Coupon{" + "couponID=" + couponID + ", codeCoupon=" + codeCoupon + ", couponName=" + couponName + ", expirationDate=" + expirationDate + '}';
     }
-
+ 
+ 
 
 }

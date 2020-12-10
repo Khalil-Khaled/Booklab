@@ -45,7 +45,7 @@ import org.mindrot.jbcrypt.BCrypt;
  *
  * @author Naoures Hidri
  */
-public class ProfileAdminController implements Initializable {
+public class ProfileAdminController {
 
     private String imagelink;
     @FXML
@@ -77,21 +77,21 @@ public class ProfileAdminController implements Initializable {
              */
 
 
-    public void initialize(URL url, ResourceBundle rb) {
-
-        AdminServices s = new AdminServices();
-        Admin a = s.showadmin(UserloginController.idlogin);
-        firstname.setText(a.getFirstName());
-        lastname.setText(a.getLastName());
-        adminname.setText(a.getUserName());
-        email.setText(a.getEmail());
-        questionverif.setText(a.getQuestionVerif());
-        answerverif.setText(a.getAnswerVerif());
-
-        File file = new File(a.getProfilimage());
-        Image image = new Image(file.toURI().toString());
-        imageView.setImage(image);
-    }
+//    public void initialize(URL url, ResourceBundle rb) {
+//
+//        AdminServices s = new AdminServices();
+//        Admin a = s.showadmin(UserloginController.idlogin);
+//        firstname.setText(a.getFirstName());
+//        lastname.setText(a.getLastName());
+//        adminname.setText(a.getUserName());
+//        email.setText(a.getEmail());
+//        questionverif.setText(a.getQuestionVerif());
+//        answerverif.setText(a.getAnswerVerif());
+//
+//        File file = new File(a.getProfilimage());
+//        Image image = new Image(file.toURI().toString());
+//        imageView.setImage(image);
+//    }
 
     @FXML
     private void image(ActionEvent event) {
@@ -106,14 +106,14 @@ public class ProfileAdminController implements Initializable {
 
     }
 
-    @FXML
-    private void updated(ActionEvent event) {
-        AdminServices s = new AdminServices();
-
-        s.modify(new Admin(adminname.getText(), firstname.getText(), lastname.getText(), email.getText(), "123456", questionverif.getText(), answerverif.getText(), "1235"), idlogin);
-        JOptionPane.showMessageDialog(null, "updated");
-
-    }
+//    @FXML
+//    private void updated(ActionEvent event) {
+//        AdminServices s = new AdminServices();
+//
+//        s.modify(new Admin(adminname.getText(), firstname.getText(), lastname.getText(), email.getText(), "123456", questionverif.getText(), answerverif.getText(), "1235"), idlogin);
+//        JOptionPane.showMessageDialog(null, "updated");
+//
+//    }
 
     public static void infoBox(String infoMessage, String title, String herdertext) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -124,21 +124,21 @@ public class ProfileAdminController implements Initializable {
 
     }
 
-    @FXML
-    private void updatedpassword1(ActionEvent event) {
-        AdminServices s = new AdminServices();
-        if (BCrypt.checkpw(oldpassword.getText(), s.showadmin(idlogin).getPassword())) {
-            if (!newpassword.getText().equals(confirmationpassword.getText())) {
-                infoBox("Please enter the same password ", null, "FAILED");
-            } else {
-                String hashed = BCrypt.hashpw(newpassword.getText(), BCrypt.gensalt());
-                s.updatepass(hashed, idlogin);
-                JOptionPane.showMessageDialog(null, "password changed");
-            }
-        } else {
-            infoBox("Please enter the old password", null, "FAILED");
-        }
-    }
+//    @FXML
+//    private void updatedpassword1(ActionEvent event) {
+//        AdminServices s = new AdminServices();
+//        if (BCrypt.checkpw(oldpassword.getText(), s.showadmin(idlogin).getPassword())) {
+//            if (!newpassword.getText().equals(confirmationpassword.getText())) {
+//                infoBox("Please enter the same password ", null, "FAILED");
+//            } else {
+//                String hashed = BCrypt.hashpw(newpassword.getText(), BCrypt.gensalt());
+//                s.updatepass(hashed, idlogin);
+//                JOptionPane.showMessageDialog(null, "password changed");
+//            }
+//        } else {
+//            infoBox("Please enter the old password", null, "FAILED");
+//        }
+//    }
 
     @FXML
     private void image1(ActionEvent event) {

@@ -7,6 +7,7 @@ package com.booklab.views;
 
 import com.booklab.models.Complaint;
 import com.booklab.models.Customer;
+import com.booklab.services.ComplaintResponseServices;
 
 import com.booklab.services.ComplaintServices;
 import com.booklab.services.CustomerServices;
@@ -66,8 +67,9 @@ public class ComplaintsController implements Initializable {
      * Initializes the controller class.
      */
     ComplaintServices complaintServices = new ComplaintServices();
-    ObservableList<Complaint> oList = FXCollections.observableArrayList(complaintServices.showAll());
+    ObservableList<Complaint> oList = FXCollections.observableArrayList(complaintServices.showComplaintsByUser());
     int index = -1;
+    public static int complaintId;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,17 +84,24 @@ public class ComplaintsController implements Initializable {
         col_topic.setCellFactory(TextFieldTableCell.forTableColumn());
         col_details.setCellFactory(TextFieldTableCell.forTableColumn());
         col_type.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+
     }
   @FXML
     private void addComplaint(ActionEvent event) {
         String complaintTypeText;
+        String complaintStatus="New";
         if (order.isSelected() )
                 complaintTypeText = order.getText();
         else complaintTypeText = offer.getText();
-        complaintServices.add(new Complaint(tfTopic.getText(),complaintTypeText, tfDetails.getText()));
+        Complaint complaint =new Complaint(0,tfTopic.getText(),complaintTypeText, tfDetails.getText(),complaintStatus);
+       
+        
+        
+        complaintServices.add(complaint);
         JOptionPane.showMessageDialog(null, "Complaint Added");
-          oList.add(new Complaint(tfTopic.getText(),complaintTypeText, tfDetails.getText()));
-          complaintServices.showAll();
+          oList.add(new Complaint(0,tfTopic.getText(),complaintTypeText, tfDetails.getText(),complaintStatus));
+          complaintServices.showComplaintsByUser();
             tfTopic.clear();
         tfDetails.clear();
         order.getProperties().clear();
@@ -100,17 +109,18 @@ public class ComplaintsController implements Initializable {
         typeGroup.getProperties().clear();
 
     }
-    public void showAllComplaints() {
+    public void showComplaintsByUser() {
        
         index = table_complaint.getSelectionModel().getSelectedIndex();
         if (index <= -1) {
             return;
         }
+        Complaint complaintSelected = table_complaint.getSelectionModel().getSelectedItem();
         col_topic.setText(col_topic.getCellData(index).toString());
         col_details.setText(col_details.getCellData(index).toString());
         col_type.setText(col_type.getCellData(index).toString());
         table_complaint.setItems(oList);
-        
+        AdminRespondToComplaintController a =new AdminRespondToComplaintController();
         
     }
 
@@ -141,8 +151,9 @@ public class ComplaintsController implements Initializable {
         } else {
             complaintServices.delete(complaintSelected);
             oList.remove(complaintSelected);
-            complaintServices.showAll();
+            complaintServices.showComplaintsByUser();
         }
     }
+    
 
 }

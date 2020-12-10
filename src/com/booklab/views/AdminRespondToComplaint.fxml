@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="respondPane" prefHeight="306.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.AdminRespondToComplaintController">
+   <children>
+      <TextArea fx:id="tfResponse" layoutX="48.0" layoutY="14.0" prefHeight="221.0" prefWidth="422.0" promptText="Please respond to the complaint here ..." />
+      <Button fx:id="btn_send" layoutX="349.0" layoutY="249.0" mnemonicParsing="false" onAction="#send" text="Send Response">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

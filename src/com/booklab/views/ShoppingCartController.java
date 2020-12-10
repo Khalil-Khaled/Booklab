@@ -32,10 +32,13 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -45,6 +48,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -90,7 +94,10 @@ public class ShoppingCartController implements Initializable {
     private TextField cvc;
     @FXML
     private Button history;
- 
+     private double xOffset = 0;
+    private double yOffset = 0;
+     Stage dialogStage = new Stage();
+    Scene scene;
     private ShoppingCart SC = new ShoppingCart(idlogin);
     /**
      * Initializes the controller class.
@@ -230,7 +237,22 @@ public class ShoppingCartController implements Initializable {
        
         
     }
-
+    @FXML  
+    private void coupon(ActionEvent event) throws IOException{
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("UserCouponView.fxml"));
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage newWindow = new Stage();
+                newWindow.setScene(scene);
+                newWindow.show();
+            
+              
+            }
+      
+    
+    
+    
     private void clearOrder() {
         SC = ssc.getCartItems(SC);
         ssc.removeItemsFromCart(SC);

@@ -7,6 +7,7 @@ package com.booklab.services;
 
 import com.booklab.Utils.DataSource;
 import com.booklab.models.*;
+import com.booklab.views.ComplaintsController;
 import java.sql.*;
 import java.util.*;
 
@@ -20,11 +21,13 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
 
     @Override
     public void add(ComplaintResponse c) {
+              //  int complaintId = ComplaintsController.complaintId;
+              
         try {
-            String req = "INSERT INTO complaint_response(userId,complaintId,response,complaintStatus) VALUES (?,?,?,?)";
-            PreparedStatement st = cnx.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
-            st.setInt(1, c.getUserId());
-            st.setInt(2, c.getComplaintId());
+            String req = "INSERT INTO complaint_response(complaintId,customerInfo,response,complaintStatus) VALUES (?,?,?,?)";
+            PreparedStatement st = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, c.getComplaintId());
+            st.setString(2, c.getCustomerInfo());
             st.setString(3, c.getResponse());
             st.setString(4, c.getComplaintStatus());
             st.executeUpdate();
@@ -36,7 +39,7 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
 
     @Override
@@ -55,12 +58,12 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
     @Override
     public void modify(ComplaintResponse c) {
         try {
-            String req = "UPDATE complaint_response SET userId=? ,complaintId=?,response=? , complaintStatus=? WHERE complaintResponseId=?";
+            String req = "UPDATE complaint_response SET complaintId=?,customerInfo=? response=? , complaintStatus=? WHERE complaintResponseId=?";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(5, c.getComplaintResponseID());
-             st.setInt(5, c.getUserId());
-              st.setInt(5, c.getComplaintId());
-            st.setString(2, c.getResponse());
+            st.setInt(1, c.getComplaintId());
+            st.setString(2, c.getCustomerInfo());
+            st.setString(3, c.getResponse());
             st.setString(4, c.getComplaintStatus());
             st.executeUpdate();
             System.out.println("ComplaintResponse modified !");
@@ -74,12 +77,12 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
         ComplaintResponse complaintResponse = null;
 
         try {
-            String req = "SELECT * FROM complaint_response WHERE complaintResponseId=?";
+            String req = "SELECT cr.* , c.username FROM complaint_response cr JOIN customer c ON cr.customerInfo=c.username WHERE complaintResponseId=?";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(1, complaintResponseId);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                complaintResponse = new ComplaintResponse(res.getInt(1), res.getInt(2),res.getInt(3),res.getString(4), res.getString(5));
+                complaintResponse = new ComplaintResponse(res.getInt(1), res.getInt(2),res.getString(3) , res.getString(4), res.getString(5));
             }
             System.out.println(complaintResponse);
         } catch (SQLException ex) {
@@ -96,7 +99,7 @@ public class ComplaintResponseServices implements Iservices<ComplaintResponse> {
             PreparedStatement st = cnx.prepareStatement(req);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new ComplaintResponse(res.getInt(1), res.getInt(2),res.getInt(3),res.getString(4), res.getString(5)));
+                list.add(new ComplaintResponse(res.getInt(1), res.getInt(2),res.getString(3) , res.getString(4), res.getString(5)));
             }
             System.out.println("List of complaints responses  :");
             System.out.println(list);

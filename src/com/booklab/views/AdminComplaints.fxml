@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="compAnchor" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.AdminComplaintsController">
+   <children>
+      <Button fx:id="btn_respond" layoutX="554.0" layoutY="407.0" mnemonicParsing="false" onAction="#respond" text="Respond to a complaint" />
+      <Label fx:id="lb_complaints" layoutX="465.0" layoutY="65.0" text="ALL COMPLAINTS " />
+      <Button fx:id="btn_remove" layoutX="773.0" layoutY="407.0" mnemonicParsing="false" onAction="#removeComplaint" text="Remove complaint" />
+      <AnchorPane fx:id="holderPane" layoutX="50.0" layoutY="459.0" prefHeight="293.0" prefWidth="913.0" />
+      <TableView fx:id="tab_admin" layoutX="14.0" layoutY="121.0" prefHeight="269.0" prefWidth="944.0">
+        <columns>
+          <TableColumn fx:id="col_topic" prefWidth="191.0" text="Topic " />
+          <TableColumn fx:id="col_details" prefWidth="455.0" text="Complaint Details " />
+            <TableColumn fx:id="col_customer" minWidth="5.0" prefWidth="125.0" text="Customer" />
+            <TableColumn fx:id="col_type" prefWidth="79.0" text="Type" />
+            <TableColumn fx:id="col_status" prefWidth="81.0" text="Status" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -21,21 +21,26 @@ public class Complaint {
     private String topic;
     private String message;
     private String type;
-   
-    public Complaint(int complaintId, String topic, String type, String message ) {
+    private int userId;
+    private   String status;
+
+    public Complaint(int complaintId,int userId, String topic, String type, String message,String status ) {
         this.complaintId = complaintId;
         this.topic = topic;
         this.type = type;
         this.message = message;
-        
+        this.userId=userId;
+        this.status=status;
     }
 
-    public Complaint(String topic, String type, String message) {
+    public Complaint(int userId,String topic, String type, String message,String status) {
         this.topic = topic;
         this.type = type;
         this.message = message;
-      
+        this.userId=userId;
+        this.status=status;
     }
+
 
 
     public int getComplaintId() {
@@ -69,6 +74,28 @@ public class Complaint {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String isStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+  
 
   
     

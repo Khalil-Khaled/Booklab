@@ -96,53 +96,5 @@ public class AdminServices {
 		}
 		return list;
 	}
-            public Admin showadmin(int id) {
-            Admin c = null;
-            try {
-                String req = "select * from admin where userid=" + id;
-                PreparedStatement st = cnx.prepareStatement(req);
-                ResultSet res = st.executeQuery(req);
-                while (res.next()) {
-                    c = new Admin(res.getInt("userId"), res.getString("userName"), res.getString("firstName"), res.getString("lastName"), res.getString("email"), res.getString("password"), res.getString("questionVerif"), res.getString("answerVerif"), res.getString("profilimage"));
-
-                }
-
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            return c;
-    }
-                public void modify(Admin c, int id) {
-        try {
-            String req = "UPDATE admin set userName=?,firstName=?,lastName=?,email=?,password=?,questionVerif=?,answerVerif=?,profilImage=? WHERE userId=" + id;
-            PreparedStatement st = cnx.prepareStatement(req);
-
-            st.setString(1, c.getUserName());
-            st.setString(2, c.getFirstName());
-            st.setString(3, c.getLastName());
-            st.setString(4, c.getEmail());
-            st.setString(5, c.getPassword());
-            st.setString(6, c.getQuestionVerif());
-            st.setString(7, c.getAnswerVerif());
-            st.setString(8, c.getProfilimage());
-
-            st.executeUpdate();
-
-            System.out.println("admin updatedd ok!!");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-       public void updatepass(String pass, int id) {
-        try {
-            String req = "UPDATE admin set password='" + pass + "' WHERE userId=" + id;
-            PreparedStatement st = cnx.prepareStatement(req);
-            st.executeUpdate();
-
-            System.out.println("admin updatedd ok!!");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
 }
