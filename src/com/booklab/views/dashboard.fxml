@@ -37,7 +37,7 @@
                 </JFXButton>
             </center>-->
             <right>
-                <HBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="40.0">
+                <HBox alignment="CENTER"  prefHeight="200.0" prefWidth="200.0" spacing="40.0">
                     <children>
                         
                         <JFXButton  layoutX="100.0" layoutY="0.0" onAction="#logout" text="Logout" style="-fx-background-color: #00A65A;" textFill="WHITE">
@@ -66,9 +66,11 @@
             </right>
         </JFXToolbar>
         
-        <VBox layoutY="40.0" prefHeight="720.0" prefWidth="140.0" style="-fx-background-color: #2A3F54;">
+        <VBox layoutY="40.0" alignment="TOP_CENTER"  prefHeight="720.0" prefWidth="140.0" style="-fx-background-color: #2A3F54;">
             <children>
-                  
+               
+                <ImageView fx:id="imageView"  fitHeight="98.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="user1" style="-fx-text-background-color: #1abc9c;" ></Label>
                 <JFXButton fx:id="btnHome" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="PROFILE" textFill="#a1aec4">
                     <font>
                         <Font name="Roboto Bold" size="14.0" />

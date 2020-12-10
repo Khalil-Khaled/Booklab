@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Button?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
@@ -12,9 +11,9 @@
 
 <AnchorPane id="AnchorPane" fx:id="createOfferAnchor" prefHeight="446.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.CreateOfferController">
    <children>
-      <TextField fx:id="priceTF" alignment="CENTER" layoutX="247.0" layoutY="194.0" promptText="Enter price..." />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="198.0" text="Price" textAlignment="CENTER" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="283.0" text="Description" textAlignment="CENTER" />
+      <TextField fx:id="priceTF" alignment="CENTER" layoutX="247.0" layoutY="188.0" prefHeight="25.0" prefWidth="166.0" promptText="Enter price..." />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="192.0" text="Price :" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="255.0" text="Description :" textAlignment="CENTER" />
       <Label layoutX="220.0" layoutY="68.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Create an offer">
          <font>
             <Font size="18.0" />
@@ -25,8 +24,10 @@
             <ToggleGroup fx:id="ventePret" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="pretRadio" layoutX="363.0" layoutY="132.0" mnemonicParsing="false" text="Prêt" toggleGroup="$ventePret" />
-      <Label layoutX="124.0" layoutY="132.0" text="Type" />
+      <Label layoutX="108.0" layoutY="132.0" text="Type :" />
       <JFXButton fx:id="createOfferBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="410.0" mnemonicParsing="false" onAction="#createOffer" style="-fx-background-color: #41EAC1; -fx-background-radius: 5px;" text="Create Offer" />
-      <TextArea fx:id="DescriptionTF" layoutX="247.0" layoutY="235.0" prefHeight="114.0" prefWidth="149.0" promptText="Enter your description..." wrapText="true" />
+      <TextArea fx:id="DescriptionTF" layoutX="247.0" layoutY="235.0" prefHeight="74.0" prefWidth="166.0" promptText="Enter your description..." wrapText="true" />
+      <TextField fx:id="stripeID" layoutX="247.0" layoutY="325.0" prefHeight="25.0" prefWidth="166.0" promptText="Enter your Stripe Account ID" />
+      <Label layoutX="107.0" layoutY="329.0" text="Stripe Account ID :" />
    </children>
 </AnchorPane>

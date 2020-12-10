@@ -66,6 +66,12 @@ public class OffersViewController implements Initializable {
     @FXML
     private Button payBtn;
     
+    private static String sellerId="";
+
+    public String getSellerId() {
+        return sellerId;
+    }
+    
 
     /**
      * Initializes the controller class.
@@ -166,6 +172,13 @@ public class OffersViewController implements Initializable {
         } else {
             Label amountLabel = (Label) pay.lookup("#amountLabel");
             amountLabel.setText(Float.toString(eventSelected.getPriceOffer()));
+            
+            Label descriptionLabel = (Label) pay.lookup("#offerDetail");
+            descriptionLabel.setText(eventSelected.getDescriptionOffer());
+            
+            OfferServices os = new OfferServices();
+            sellerId = os.getStripeUserID(eventSelected);
+            System.out.println(sellerId);
             setNode(pay);
         }
         

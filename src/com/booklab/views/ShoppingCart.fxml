@@ -15,7 +15,8 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="730.0" prefWidth="1227.0" style="-fx-background-color: #2354;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.ShoppingCartController">
-   <children>
+    
+    <children>
       <TableView fx:id="list_cart" layoutX="26.0" layoutY="91.0" prefHeight="270.0" prefWidth="1174.0" style="-fx-background-radius: 10;">
         <columns>
           <TableColumn fx:id="article" prefWidth="116.0" text="Product" />
@@ -51,7 +52,7 @@
          <effect>
             <Reflection />
          </effect></Button>
-      <Label layoutX="1045.0" layoutY="49.0" prefHeight="31.0" prefWidth="47.0" style="-fx-font-weight: bold;" text="Total:">
+      <Label layoutX="1069.0" layoutY="31.0" prefHeight="31.0" prefWidth="47.0" style="-fx-font-weight: bold;" text="Total:">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
@@ -59,7 +60,7 @@
             <Reflection />
          </effect>
       </Label>
-      <Text fx:id="sum_total" fill="WHITE" layoutX="1093.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="0" textAlignment="CENTER">
+      <Text fx:id="sum_total" fill="WHITE" layoutX="1125.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="0" textAlignment="CENTER">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>

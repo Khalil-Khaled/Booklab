@@ -29,6 +29,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -57,12 +58,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label user;
     @FXML
+    private ImageView imageView;
+    @FXML
      private ImageView imageuser;
      Stage dialogStage = new Stage();
     Scene scene;
     AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers,cart;
     @FXML
     private JFXButton btnControls;
+    @FXML
+    private Label user1;
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML
@@ -72,7 +77,17 @@ public class FXMLDocumentController implements Initializable {
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
-        //Load all fxmls in a cache
+          CustomerServices s=new CustomerServices();
+          Customer c=s.showcustomer(UserloginController.idlogin);
+           File file = new File(c.getProfilimage());
+           
+           Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
+            user1.setText("Hello "+c.getUserName());
+            
+            
+           
+            //Load all fxmls in a cache
 //        CustomerServices s=new CustomerServices();
 //        Customer c=s.showcustomer(UserloginController.idlogin);
 //         File file = new File(c.getProfilimage());
