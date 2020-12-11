@@ -23,13 +23,13 @@ public class ComplaintServices {
         int loginId = UserloginController.idlogin;
 
         try {
-            String req = "INSERT INTO complaint(userId,topic,type,message,status) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO complaint(userId,topic,type,message) VALUES (?,?,?,?)";
             PreparedStatement st = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
             st.setInt(1, loginId);
             st.setString(2, c.getTopic());
             st.setString(3, c.getType());
             st.setString(4, c.getMessage());
-            st.setString(5, c.getStatus());
+
             st.executeUpdate();
             ResultSet rs = st.getGeneratedKeys();
             while (rs.next()) {
@@ -89,15 +89,15 @@ public class ComplaintServices {
 //    }
     public List<Complaint> showAll() {
         List<Complaint> list = new ArrayList<>();
-        
+
         try {
             String req = "SELECT * FROM complaint";
             PreparedStatement st = cnx.prepareStatement(req);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new Complaint(res.getInt(1),0, res.getString(2), res.getString(3), res.getString(4),res.getString(5)));
+                list.add(new Complaint(res.getInt(1), 0, res.getString(2), res.getString(3), res.getString(4), res.getString(5)));
             }
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -105,16 +105,17 @@ public class ComplaintServices {
         return list;
     }
 //        
+
     public List<Complaint> showComplaintsByUser() {
         List<Complaint> list = new ArrayList<>();
-        int  loginId=UserloginController.idlogin;
+        int loginId = UserloginController.idlogin;
         try {
             String req = "SELECT * FROM complaint WHERE userId=?";//where id =loginId 
             PreparedStatement st = cnx.prepareStatement(req);
-             st.setInt(1, loginId);
+            st.setInt(1, loginId);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new Complaint(res.getInt(1),0, res.getString(3), res.getString(4), res.getString(5),res.getString(6)));
+                list.add(new Complaint(0, res.getString(3), res.getString(4), res.getString(5)));
             }
             System.out.println("List of complaints :");
             System.out.println(list);
@@ -144,5 +145,4 @@ public class ComplaintServices {
 //
 //        return list;
 //    }
-    
 }

@@ -28,6 +28,7 @@
             <Font size="20.0" />
          </font></Label>
       <Button layoutX="399.0" layoutY="559.0" mnemonicParsing="false" onAction="#addToCart" text="Add to Cart" />
+      <Button fx:id="btnWishlist" layoutX="179.0" layoutY="559.0" mnemonicParsing="false" onAction="#ajouterDansWs" text="Add To wishlist" />
 
    </children>
 </AnchorPane>

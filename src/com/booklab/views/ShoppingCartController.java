@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -104,7 +106,9 @@ public class ShoppingCartController implements Initializable {
      */
     private ServicesShoppingCart ssc = new ServicesShoppingCart();
     @FXML
-    private Button addbookfortest;
+    private Button coupon;
+    @FXML
+    private Button refreshBtn;
     
    @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -113,8 +117,7 @@ public class ShoppingCartController implements Initializable {
         for(Item item : i)
             System.out.println(item.getName());*/
 
-
-  addbookfortest.setOnAction(e -> addbookfortests());
+verifInput();
             
         
         article.setCellValueFactory(new PropertyValueFactory<TableData, String>("item_name"));
@@ -307,6 +310,50 @@ public class ShoppingCartController implements Initializable {
             System.out.println(e.getMessage());   
             NotificationAPI.notif("Payment", "An error has occured with your Payment!");
         }
+    }
+
+    @FXML
+    private void refresh(ActionEvent event) {
+        loadItems();
+        loadTotal();
+    }
+
+    private void verifInput() {
+        card_number.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,16}?")) {
+                    card_number.setText(oldValue);
+                }
+            }
+        });
+
+        exp_month.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,2}?")) {
+                    exp_month.setText(oldValue);
+                }
+            }
+        });
+
+        exp_year.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,4}?")) {
+                    exp_year.setText(oldValue);
+                }
+            }
+        });
+
+        cvc.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,4}?")) {
+                    cvc.setText(oldValue);
+                }
+            }
+        });
     }
 
  

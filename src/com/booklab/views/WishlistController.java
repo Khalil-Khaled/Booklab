@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,6 +47,12 @@ public class WishlistController implements Initializable {
 
     Stage dialogStage = new Stage();
     Scene scene;
+    @FXML
+    private Button btnDelete;
+    @FXML
+    private Button btnRemoveAll;
+    @FXML
+    private Button refreshBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,6 +91,8 @@ public class WishlistController implements Initializable {
     }
 
     public void UpdateTable() {
+        col_book.setCellValueFactory(new PropertyValueFactory<Wishlist, Integer>("BookName"));
+        col_price.setCellValueFactory(new PropertyValueFactory<Wishlist, Integer>("BookDescription"));
         listM = ws.afficherWishlistBooks(idlogin);
         wishlist.setItems(listM);
     }
@@ -92,6 +101,11 @@ public class WishlistController implements Initializable {
         listM = ws.afficherWishlistBooks(idlogin);
         wishlist.setItems(listM);
         quantity.setText(ws.nmbreBookDansWishlist(idlogin).toString());
+    }
+
+    @FXML
+    private void refresh(ActionEvent event) {
+        UpdateTable();
     }
 
 }

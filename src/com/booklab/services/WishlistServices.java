@@ -118,12 +118,12 @@ public class WishlistServices {
     public ObservableList<wishlistBooks> afficherWishlistBooks(int id ) {
         ObservableList<wishlistBooks> list = FXCollections.observableArrayList();
         try {
-            String req = "SELECT distinct b.itemName,b.itemdescription,b.itemid FROM wishlistbooks wb join item b on b.itemid=wb.itemid join customer c on c.wishlistid=wb.wishlistid where c.userid="+id;
+            String req = "SELECT distinct b.Name,b.description,b.id FROM wishlistbooks wb join item b on b.id=wb.itemid join customer c on c.wishlistid=wb.wishlistid where c.userid="+id;
             PreparedStatement st = cnx.prepareStatement(req);
             
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new wishlistBooks(res.getInt("itemID"), res.getString("itemName"), res.getString("itemDescription")));
+                list.add(new wishlistBooks(res.getInt("ID"), res.getString("Name"), res.getString("Description")));
             }
             System.out.println("Wishlist récuperés");
         } catch (SQLException ex) {

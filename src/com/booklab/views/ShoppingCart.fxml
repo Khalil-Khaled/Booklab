@@ -81,7 +81,6 @@
             <Reflection />
          </effect>
       </Button>
-      <Button fx:id="addbookfortest" layoutX="15.0" layoutY="680.0" mnemonicParsing="false" style="-fx-background-color: #2354;" text="add book for test" />
       <Button fx:id="order_btn" layoutX="319.0" layoutY="653.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="55.0" style="-fx-background-color: #2354;" text="Pay" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="16.0" />
@@ -103,9 +102,17 @@
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="coupon" onAction="#coupon" layoutX="772.0"  layoutY="660.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="189.0" style="-fx-background-color: #2354;" text="Use coupon" textFill="WHITE">
+      <Button fx:id="coupon" layoutX="772.0" layoutY="660.0" mnemonicParsing="false" onAction="#coupon" prefHeight="31.0" prefWidth="189.0" style="-fx-background-color: #2354;" text="Use coupon" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Button>
+      <Button fx:id="refreshBtn" layoutX="492.0" layoutY="373.0" mnemonicParsing="false" onAction="#refresh" prefHeight="38.0" prefWidth="82.0" style="-fx-background-color: #2354;" text="Refresh" textFill="#fffffffc">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
          </font>
          <effect>
             <Reflection />

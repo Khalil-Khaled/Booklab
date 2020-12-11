@@ -5,6 +5,7 @@
  */
 package com.booklab.views;
 
+import static com.booklab.views.UserloginController.idlogin;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,26 +35,18 @@ public class AdminController implements Initializable {
     
     @FXML
     private AnchorPane menu;
-    @FXML
-    private Button btnUser;
-    @FXML
-    private Button btnCategory;
-    @FXML
-    private Button btnEvent;
-    @FXML
-    private Button btnOffers;
     Stage dialogStage = new Stage();
     Scene scene;
     AnchorPane profile, users, items, events,offers, complaint,coupon;
     @FXML
     private AnchorPane anchorAdmin;
     @FXML
-    private Button btnprofile;
-    @FXML
-    private Button bntComplaint;
-    @FXML
-    private Button bntcoupon;
+    private Button logout;
+      private double xOffset = 0;
+    private double yOffset = 0;
+    
     /**1
+     * 
      * Initializes the controller class.
      */
      private void close_app(MouseEvent event) {
@@ -73,7 +67,32 @@ public class AdminController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
-       //Set selected node to a content holder
+     @FXML
+    private void logout(ActionEvent event) throws IOException {
+                Node node = (Node)event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("adminlogin.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+   
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+                } });
+                idlogin=0;
+    }
+//Set selected node to a content holder
     private void setNode(Node node) {
         menu.getChildren().clear();
         menu.getChildren().add((Node) node);
@@ -99,7 +118,6 @@ public class AdminController implements Initializable {
         setNode(complaint);
     }
      
-     @FXML
      private void switchProfile(ActionEvent event) {
         setNode(profile);
     }
@@ -119,6 +137,7 @@ public class AdminController implements Initializable {
         setNode(items);
     }
 
+  
     
 }
 

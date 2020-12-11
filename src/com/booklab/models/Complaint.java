@@ -41,6 +41,13 @@ public class Complaint {
         this.status=status;
     }
 
+    public Complaint(int userId,String topic, String message, String type) {
+        this.topic = topic;
+        this.message = message;
+        this.type = type;
+        this.userId = userId;
+    }
+
 
 
     public int getComplaintId() {

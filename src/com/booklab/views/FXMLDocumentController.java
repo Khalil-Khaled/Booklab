@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -177,7 +178,13 @@ public class FXMLDocumentController implements Initializable {
         setNode(controls);
     }
     @FXML
-     private void switchcarts(ActionEvent event) {
+     private void switchcarts(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("ShoppingCart.fxml"));
+            Parent parent = loader.load();
+
+            ShoppingCartController c = loader.getController();
+            c.loadItems();
         setNode(cart);
     }
 

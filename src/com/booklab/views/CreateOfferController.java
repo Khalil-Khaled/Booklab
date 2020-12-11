@@ -134,7 +134,7 @@ public class CreateOfferController implements Initializable {
 //            AccountLink accountLink = AccountLink.create(params1);
 
             logintest a = new logintest();
-            a.getHostServices().showDocument("https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://connect.stripe.com/hosted/oauth&client_id=ca_IXEy7KYcmtDwbwNXJS2AnWYZ4d6dyewh&state=onbrd_IXegYfqVzfJfv5yKQoeVl7o3WM&stripe_user[country]=US");
+            a.getHostServices().showDocument("https://connect.stripe.com/oauth/authorize?redirect_uri=https://connect.stripe.com/hosted/oauth&client_id=ca_IXEy7KYcmtDwbwNXJS2AnWYZ4d6dyewh&state=onbrd_IYDBBFp4bUcXDaUwUquuIhUIDM&response_type=code&scope=read_write&stripe_user[country]=US");
 
 //        AccountLinkCreateParams params2
 //                = AccountLinkCreateParams.builder()

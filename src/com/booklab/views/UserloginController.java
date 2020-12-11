@@ -6,9 +6,12 @@
 package com.booklab.views;
 
 import com.booklab.models.Customer;
+import com.booklab.models.ShoppingCart;
 import com.booklab.services.CustomerServices;
+import com.booklab.services.ServicesShoppingCart;
 import com.booklab.tests.logintest;
 import com.jfoenix.controls.JFXButton;
+import static com.stripe.param.checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry.SC;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -56,22 +59,23 @@ public class UserloginController implements Initializable {
     public static String mail;
     @FXML
     private JFXButton register;
+
     /**
      * Initializes the controller class.
      */
- 
-   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         makeStageDrageable();
+        
     }
 
     @FXML
     private void close_app(MouseEvent event) {
         System.exit(0);
     }
+
     private void makeStageDrageable() {
         parent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -96,146 +100,151 @@ public class UserloginController implements Initializable {
         });
 
     }
-    public static void infoBox(String infoMessage,String title,String herdertext){
-     Alert alert = new Alert(AlertType.CONFIRMATION);
-     alert.setContentText(infoMessage);
-     alert.setTitle(title);
-     alert.setHeaderText(herdertext);
-     alert.showAndWait();
-     
-    }
-  @FXML
-    private void authentification(ActionEvent event) throws IOException {
-      CustomerServices s=new CustomerServices();
-      String s1=username.getText();
-      String s2=password.getText();
-      
-      boolean passauth=s.authentification(s1,s2);
-      if((s1.length()==0)||(s2.length()==0))
-          infoBox("Please enter correct username and password",null,"FAILED");
-      else if((!passauth)){
 
-          infoBox("Please enter correct username and password",null,"FAILED");}
-      else{
-                idlogin=s.idlogin(s1,s2);
-                Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("dashboard.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
-                
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-   
-                @Override
-                public void handle(MouseEvent event) {
-                    xOffset = event.getSceneX();
-                    yOffset = event.getSceneY();
-                }
-                });
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                dialogStage.setX(event.getScreenX() - xOffset);
-                dialogStage.setY(event.getScreenY() - yOffset);
-                } });
-      }
-     
- }  @FXML
-    private void loginadmin(ActionEvent event) throws IOException{
-                 Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("adminlogin.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    xOffset = event.getSceneX();
-                    yOffset = event.getSceneY();
-                }
-                });
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                dialogStage.setX(event.getScreenX() - xOffset);
-                dialogStage.setY(event.getScreenY() - yOffset);
-            }
-        });
-    
-     }
-    
- 
-    
+    public static void infoBox(String infoMessage, String title, String herdertext) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(herdertext);
+        alert.showAndWait();
+
+    }
+
     @FXML
-        private void registert(ActionEvent event) throws IOException {
-                Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("register.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+    private void authentification(ActionEvent event) throws IOException {
+        CustomerServices s = new CustomerServices();
+        String s1 = username.getText();
+        String s2 = password.getText();
+
+        boolean passauth = s.authentification(s1, s2);
+        if ((s1.length() == 0) || (s2.length() == 0)) {
+            infoBox("Please enter correct username and password", null, "FAILED");
+        } else if ((!passauth)) {
+
+            infoBox("Please enter correct username and password", null, "FAILED");
+        } else {
+            idlogin = s.idlogin(s1, s2);
+            Node node = (Node) event.getSource();
+            dialogStage = (Stage) node.getScene().getWindow();
+            dialogStage.close();
+            scene = new Scene(FXMLLoader.load(getClass().getResource("dashboard.fxml")));
+            dialogStage.setScene(scene);
+            dialogStage.show();
+
+            scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+
                 @Override
                 public void handle(MouseEvent event) {
                     xOffset = event.getSceneX();
                     yOffset = event.getSceneY();
                 }
-                });
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            });
+            scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    dialogStage.setX(event.getScreenX() - xOffset);
+                    dialogStage.setY(event.getScreenY() - yOffset);
+                }
+            });
+ 
+        }
+
+    }
+
+    @FXML
+    private void loginadmin(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        dialogStage = (Stage) node.getScene().getWindow();
+        dialogStage.close();
+        scene = new Scene(FXMLLoader.load(getClass().getResource("adminlogin.fxml")));
+        dialogStage.setScene(scene);
+        dialogStage.show();
+        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
                 dialogStage.setX(event.getScreenX() - xOffset);
                 dialogStage.setY(event.getScreenY() - yOffset);
             }
         });
-    
-     }
-        @FXML
-        private void forgetpassword(ActionEvent event) throws IOException, Exception {
-         TextInputDialog dialog = new TextInputDialog("Email");
-         dialog.setTitle("forget password");
-         
-         dialog.setContentText("give the email :");
-         
-         // Traditional way to get the response value.
-         Optional<String> result = dialog.showAndWait();
-         if (!(result.get().length()==0)){
+
+    }
+
+    @FXML
+    private void registert(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        dialogStage = (Stage) node.getScene().getWindow();
+        dialogStage.close();
+        scene = new Scene(FXMLLoader.load(getClass().getResource("register.fxml")));
+        dialogStage.setScene(scene);
+        dialogStage.show();
+        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                dialogStage.setX(event.getScreenX() - xOffset);
+                dialogStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+
+    }
+
+    @FXML
+    private void forgetpassword(ActionEvent event) throws IOException, Exception {
+        TextInputDialog dialog = new TextInputDialog("Email");
+        dialog.setTitle("forget password");
+
+        dialog.setContentText("give the email :");
+
+        // Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+        if (!(result.get().length() == 0)) {
             JavaMailUtil.sendMail(result.get());
             TextInputDialog dialogi = new TextInputDialog("code");
             dialogi.setTitle("new password");
             dialogi.setHeaderText("Look, a Text Input Dialog");
             dialogi.setContentText("code verification :");
-        
+
             // Traditional way to get the response value.
             Optional<String> result1 = dialogi.showAndWait();
-            mail=result.get();
-            if (result1.get().equals(JavaMailUtil.code)){
-                   Node node = (Node)event.getSource();
-                   dialogStage = (Stage) node.getScene().getWindow();
-                   dialogStage.close();
-                   scene = new Scene(FXMLLoader.load(getClass().getResource("forgetpassword.fxml")));
-                   dialogStage.setScene(scene);
-                   dialogStage.show();
-                   scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                   @Override
-                   public void handle(MouseEvent event) {
-                       xOffset = event.getSceneX();
-                       yOffset = event.getSceneY();
-                   }
-                   });
-                   scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                   @Override
-                   public void handle(MouseEvent event) {
-                   dialogStage.setX(event.getScreenX() - xOffset);
-                   dialogStage.setY(event.getScreenY() - yOffset);
-                        }
-           });
+            mail = result.get();
+            if (result1.get().equals(JavaMailUtil.code)) {
+                Node node = (Node) event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                scene = new Scene(FXMLLoader.load(getClass().getResource("forgetpassword.fxml")));
+                dialogStage.setScene(scene);
+                dialogStage.show();
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        xOffset = event.getSceneX();
+                        yOffset = event.getSceneY();
+                    }
+                });
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        dialogStage.setX(event.getScreenX() - xOffset);
+                        dialogStage.setY(event.getScreenY() - yOffset);
+                    }
+                });
             }
 
         }
-        }
+    }
 
     @FXML
     private void registert(InputMethodEvent event) {

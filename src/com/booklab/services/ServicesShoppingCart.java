@@ -23,7 +23,7 @@ public class ServicesShoppingCart {
     
     public void createCart(ShoppingCart SC){
         try {           
-            String REQ = "INSERT INTO shoppingcart values (?, ?)";
+            String REQ = "INSERT INTO shoppingcart values (?, ?, 0)";
             PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
                 st.setInt(1, SC.getCartID());
                 st.setInt(2, SC.getUserID());

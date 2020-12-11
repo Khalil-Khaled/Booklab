@@ -5,17 +5,25 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.WishlistController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.WishlistController">
    <children>
-      <TableView fx:id="wishlist" editable="true" layoutX="115.0" prefHeight="400.0" prefWidth="289.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="wishlist" editable="true" layoutX="238.0" layoutY="14.0" prefHeight="527.0" prefWidth="908.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="14.0">
         <columns>
           <TableColumn fx:id="col_book" prefWidth="94.39996337890625" text="Book" />
           <TableColumn fx:id="col_price" prefWidth="193.60003662109375" text="Description" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnDelete" layoutX="21.0" layoutY="76.0" mnemonicParsing="false" onAction="#Delete" text="Delete" />
-      <Button fx:id="btnRemoveAll" layoutX="21.0" layoutY="119.0" mnemonicParsing="false" onAction="#RemoveAll" text="Remove All" />
-      <Label fx:id="quantity" layoutX="32.0" layoutY="35.0" text="quantity" />
+      <Button fx:id="btnDelete" layoutX="55.0" layoutY="204.0" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: #aff0e3;" text="Delete" />
+      <Button fx:id="btnRemoveAll" layoutX="55.0" layoutY="247.0" mnemonicParsing="false" onAction="#RemoveAll" style="-fx-background-color: #aff0e3;" text="Remove All" />
+      <Label fx:id="quantity" layoutX="97.0" layoutY="82.0" text="quantity">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font></Label>
+      <Button fx:id="refreshBtn" layoutX="54.0" layoutY="292.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: #aff0e3;" text="Refresh" />
    </children>
 </AnchorPane>

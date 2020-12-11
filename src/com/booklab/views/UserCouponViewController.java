@@ -9,6 +9,7 @@ import com.booklab.models.Coupon;
 import com.booklab.models.ShoppingCart;
 import com.booklab.services.AdminCouponServices;
 import com.booklab.services.ServicesShoppingCart;
+import static com.booklab.views.UserloginController.idlogin;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -49,7 +50,7 @@ public class UserCouponViewController implements Initializable {
        int discount= adminCouponService.checkCouponValidity(code);
         if (discount > 0) {
             ServicesShoppingCart sc=new ServicesShoppingCart();
-            ShoppingCart a=new ShoppingCart(37);
+            ShoppingCart a=new ShoppingCart(idlogin);
             a=sc.setActiveCart(a);
             sc.setDiscount(a,discount);
             JOptionPane.showMessageDialog(null, "Coupon Used");
