@@ -6,7 +6,9 @@
 package com.booklab.views;
 
 import com.booklab.models.Coupon;
+import com.booklab.models.ShoppingCart;
 import com.booklab.services.AdminCouponServices;
+import com.booklab.services.ServicesShoppingCart;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -41,14 +43,20 @@ public class UserCouponViewController implements Initializable {
         // TODO
     }
 
-    @FXML
+   @FXML
     public void useCoupon(ActionEvent event) {
         String code = tfUseCoupon.getText();
-        if (adminCouponService.checkCouponValidity(code)) {
+       int discount= adminCouponService.checkCouponValidity(code);
+        if (discount > 0) {
+            ServicesShoppingCart sc=new ServicesShoppingCart();
+            ShoppingCart a=new ShoppingCart(37);
+            a=sc.setActiveCart(a);
+            sc.setDiscount(a,discount);
             JOptionPane.showMessageDialog(null, "Coupon Used");
         } else {
             JOptionPane.showMessageDialog(null, "Please add a valid coupon ");
         }
 
     }
+    
 }

@@ -121,7 +121,7 @@ public class AdminloginController implements Initializable {
                 Node node = (Node)event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
                 dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("admin.fxml")));
+                scene = new Scene(FXMLLoader.load(getClass().getResource("Admin.fxml")));
                 dialogStage.setScene(scene);
                 dialogStage.show();
                 

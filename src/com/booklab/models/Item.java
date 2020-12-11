@@ -6,6 +6,7 @@
 package com.booklab.models;
 
 import java.awt.Image;
+import java.sql.Date;
 import java.util.Objects;
 
 /**
@@ -16,40 +17,48 @@ public class Item {
  
     private int id;
     private String name;
-    private int categoryId;
+    private String categoryName;
     private String description;
-    private float price;
+    private double price;
     private String image;
     private int quantity;
     private int rating;
+    private Date publishDate;
+    private String author;
+    private int pageNumber;
+    private String type;
     
     public Item(int id){
         this.id=id;
     }
 
-    public Item(int id, String name, int categoryId, String description, float price, String image, int quantity, int rating) {
+    public Item(int id, String name, String categoryName, String description, double price, String image, int quantity, int rating, Date publishDate, String author, int pageNumber, String type) {
         this.id = id;
         this.name = name;
-        this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.description = description;
         this.price = price;
         this.image = image;
         this.quantity = quantity;
         this.rating = rating;
-    }
-       public Item(String name, int categoryId, String description, float price, String image, int quantity, int rating) {
-        this.name = name;
-        this.categoryId = categoryId;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.quantity = quantity;
-        this.rating = rating;
+        this.publishDate = publishDate;
+        this.author = author;
+        this.pageNumber = pageNumber;
+        this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" + "id=" + id + ", name=" + name + ", categoryId=" + categoryId + ", description=" + description + ", price=" + price + ", image=" + image + ", quantity=" + quantity + ", rating=" + rating + '}';
+    public Item(String name, String categoryName, String description, double price, String image, int quantity, int rating, Date publishDate, String author, int pageNumber, String type) {
+        this.name = name;
+        this.categoryName = categoryName;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.quantity = quantity;
+        this.rating = rating;
+        this.publishDate = publishDate;
+        this.author = author;
+        this.pageNumber = pageNumber;
+        this.type = type;
     }
 
     public int getId() {
@@ -68,12 +77,12 @@ public class Item {
         this.name = name;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getDescription() {
@@ -84,11 +93,11 @@ public class Item {
         this.description = description;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -116,10 +125,43 @@ public class Item {
         this.rating = rating;
     }
 
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 89 * hash + this.id;
+        hash = 17 * hash + this.id;
+        hash = 17 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -135,14 +177,20 @@ public class Item {
             return false;
         }
         final Item other = (Item) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
+        
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", name=" + name + ", categoryName=" + categoryName + ", description=" + description + ", price=" + price + ", image=" + image + ", quantity=" + quantity + ", rating=" + rating + ", publishDate=" + publishDate + ", author=" + author + ", pageNumber=" + pageNumber + ", type=" + type + '}';
+    }
+
+    
+
 
 
     

@@ -7,7 +7,6 @@ package com.booklab.services;
 
 import com.booklab.models.ShoppingCart;
 import com.booklab.Utils.DataSource;
-import com.booklab.models.Book;
 import com.booklab.models.Item;
 import java.sql.*;
 import java.util.ArrayList;
@@ -142,7 +141,7 @@ public class ServicesShoppingCart {
         
      public float getCartTotal(ShoppingCart SC){
          try{
-             String REQ = "select sum(amount * price) from item join cart_actions on ItemID = id where cartID = ? ";
+             String REQ = "select sum(amount * price) - (sum(amount * price) * discount / 100) from item join cart_actions on ItemID = id join shoppingcart on cart_actions.cartID = shoppingcart.cartID where cart_actions.cartID = ? ";
    
             PreparedStatement st = cnx.prepareStatement(REQ);
             st.setInt(1, SC.getCartID());
@@ -166,7 +165,7 @@ public class ServicesShoppingCart {
             ResultSet result = st.executeQuery();
            
             while (result.next()){//getInt(1), result.getInt(2)
-                Book tmp = new Book(result.getInt(1));
+                Item tmp = new Item(result.getInt(1));
                     tmp.setName(result.getString(2));
                     tmp.setPrice(result.getFloat(3));
                     tmp.setQuantity(result.getInt(4));
@@ -174,7 +173,6 @@ public class ServicesShoppingCart {
                 list.addItem(tmp, result.getInt(5));
             }
             
-            System.out.println("UPDATE STATUS: "+(st.executeUpdate()>0));
             
         } catch (SQLException ex) {
             System.out.println("Query Failed: "+ ex.getMessage());
@@ -200,5 +198,23 @@ public class ServicesShoppingCart {
             System.out.println("Query Failed: "+ ex.getMessage());
         }
         return SC;
+    }
+    
+    public void setDiscount(ShoppingCart SC, int discountvalue){
+        try {
+            String REQ = "Update shoppingcart set discount = discount + ? where cartID = ?";
+            PreparedStatement st = cnx.prepareStatement(REQ, Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, discountvalue);
+            st.setInt(2, SC.getCartID());
+            
+            st.executeUpdate();
+           
+          
+            
+            System.out.println("REDUCTIONS UPDATE STATUS: "+(st.executeUpdate()>0));
+            
+        } catch (SQLException ex) {
+            System.out.println("Query Failed: "+ ex.getMessage());
+        }
     }
 }

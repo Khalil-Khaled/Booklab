@@ -6,7 +6,7 @@
 package com.booklab.views;
 
 import com.booklab.Utils.NotificationAPI;
-import com.booklab.models.Book;
+
 import com.booklab.models.Item;
 import com.booklab.models.Order;
 import com.booklab.models.ShoppingCart;
@@ -166,9 +166,9 @@ public class ShoppingCartController implements Initializable {
     } 
     
     public void addbookfortests(){
-        SC.addItem(new Book(1), 1);
-            SC.addItem(new Book(2), 1);
-           SC.addItem(new Book(3), 1);
+        SC.addItem(new Item(1), 1);
+            SC.addItem(new Item(2), 1);
+           SC.addItem(new Item(3), 1);
           ssc.addItemsToCart(SC);
           loadItems();
           loadTotal();

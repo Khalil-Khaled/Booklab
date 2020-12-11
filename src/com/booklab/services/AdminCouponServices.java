@@ -121,17 +121,15 @@ public class AdminCouponServices {
 //        return isValid;
 //    }
     
-      public boolean checkCouponValidity(String code) {
-      
-        boolean isValid=false;
+public int  checkCouponValidity(String code) {
+
+        int  valid=0;
         for (int i = 0; i < showAll().size(); i++) {
             if (showAll().get(i).getName().equals(code)) {
-               isValid=true;
-            } else {
-               isValid=false;
-            }
+               valid= showAll().get(i).getPercentOff();
+            } 
         }
-        return isValid;
+        return valid;
     }
       
       

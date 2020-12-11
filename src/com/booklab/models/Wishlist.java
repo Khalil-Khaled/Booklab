@@ -15,7 +15,7 @@ public class Wishlist {
 
     private int wishlistID;
     private int customerID;
-    private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Item> books = new ArrayList<>();
 
     public Wishlist(int wishlistID, int customerID) {
         this.wishlistID = wishlistID;
@@ -34,15 +34,15 @@ public class Wishlist {
         return customerID;
     }
 
-    public Book getBook(int index) {
+    public Item getBook(int index) {
         return books.get(index);
     }
 
-    public ArrayList<Book> getBooks() {
+    public ArrayList<Item> getBooks() {
         return books;
     }
 
-    public void setBooks(ArrayList<Book> books) {
+    public void setBooks(ArrayList<Item> books) {
         this.books = books;
     }
 
@@ -77,7 +77,7 @@ public class Wishlist {
         return true;
     }
 
-    public void ajouterBook(Book book) {
+    public void ajouterBook(Item  book) {
         boolean found = false;
         for (int i = 0; i < books.size(); i++) {
             if (books.get(i).equals(book)) {
@@ -88,7 +88,7 @@ public class Wishlist {
         this.books.add(book);
     }
 
-    public void supprimerBook(Book book) {
+    public void supprimerBook(Item  book) {
         boolean found = false;
         for (int i = 0; i < books.size(); i++) {
             if (books.get(i).equals(book)) {

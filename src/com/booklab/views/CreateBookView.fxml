@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="531.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booklab.views.CreateBookViewController">
+   <children>
+      <Label layoutX="239.0" layoutY="24.0" text="Create a Book">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="99.0" text="Book Name :" />
+      <Label layoutX="85.0" layoutY="128.0" text="Category :" />
+      <Label layoutX="85.0" layoutY="157.0" text="Description : " />
+      <Label layoutX="86.0" layoutY="186.0" text="Price :" />
+      <Label layoutX="85.0" layoutY="216.0" text="Quantity :" />
+      <Label layoutX="86.0" layoutY="245.0" text="Rating :" />
+      <Label layoutX="86.0" layoutY="274.0" text="Author : " />
+      <Label layoutX="85.0" layoutY="335.0" text="Publish Date :" />
+      <Label layoutX="85.0" layoutY="304.0" text="Page Number :" />
+      <TextField fx:id="bookNameTF" layoutX="263.0" layoutY="95.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="categoryTF" layoutX="263.0" layoutY="124.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="descriptionTF" layoutX="263.0" layoutY="153.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="priceTF" layoutX="263.0" layoutY="182.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="quantityTF" layoutX="263.0" layoutY="212.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="ratingTF" layoutX="263.0" layoutY="241.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="authorTF" layoutX="263.0" layoutY="270.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="pageNumberTF" layoutX="262.0" layoutY="300.0" prefHeight="25.0" prefWidth="203.0" />
+      <DatePicker fx:id="datePicker" layoutX="263.0" layoutY="331.0" prefHeight="25.0" prefWidth="203.0" />
+      <Button layoutX="451.0" layoutY="448.0" mnemonicParsing="false" onAction="#createBook" text="Create Book" />
+      <Label layoutX="86.0" layoutY="369.0" text="Image :" />
+      <Button layoutX="323.0" layoutY="365.0" mnemonicParsing="false" onAction="#selectImage" text="Select image" />
+      <ImageView fx:id="image" fitHeight="316.0" fitWidth="223.0" layoutX="586.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

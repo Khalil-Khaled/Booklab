@@ -6,10 +6,10 @@
 package com.booklab.services;
 
 import com.booklab.Utils.DataSource;
-import com.booklab.models.Book;
 import com.booklab.models.Customer;
 import com.booklab.models.Item;
 import com.booklab.models.wishlistBooks;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -76,7 +76,7 @@ public class WishlistServices {
         String REQ = "";
         try {
 
-            REQ = "INSERT INTO wishlistbooks(bookid,wishlistid) values (?,?) ";
+            REQ = "INSERT INTO wishlistbooks(itemid,wishlistid) values (?,?) ";
             st = cnx.prepareStatement(REQ);
             st.setInt(1, b.getId());
             st.setInt(2, c.getWishId());
@@ -92,7 +92,7 @@ public class WishlistServices {
     //Supprimer book from wishlist
     public void supprimerBook(wishlistBooks wb) {
         try {
-            String req = "DELETE FROM wishlistbooks WHERE bookid=?";
+            String req = "DELETE FROM wishlistbooks WHERE itemid=?";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(1, wb.getBookId());
             st.executeUpdate();
@@ -115,15 +115,15 @@ public class WishlistServices {
         }
     }
 
-    public ObservableList<wishlistBooks> afficherWishlistBooks(int id) {
+    public ObservableList<wishlistBooks> afficherWishlistBooks(int id ) {
         ObservableList<wishlistBooks> list = FXCollections.observableArrayList();
         try {
-            String req = "SELECT distinct b.bookName,b.bookdescription,b.bookid FROM wishlistbooks wb join book b on b.bookid=wb.bookid join customer c on c.wishlistid=wb.wishlistid where c.userid="+id;
+            String req = "SELECT distinct b.itemName,b.itemdescription,b.itemid FROM wishlistbooks wb join item b on b.itemid=wb.itemid join customer c on c.wishlistid=wb.wishlistid where c.userid="+id;
             PreparedStatement st = cnx.prepareStatement(req);
-         
+            
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new wishlistBooks(res.getInt("bookID"), res.getString("bookName"), res.getString("bookDescription")));
+                list.add(new wishlistBooks(res.getInt("itemID"), res.getString("itemName"), res.getString("itemDescription")));
             }
             System.out.println("Wishlist récuperés");
         } catch (SQLException ex) {
@@ -149,14 +149,14 @@ public class WishlistServices {
         return nbr;
     }
 
-    public int searchbookInWishlist(int bookid, int wishid) {
+    public int searchbookInWishlist(int itemid, int wishid) {
         int count = 0;
-        System.out.println(bookid);
+        System.out.println(itemid);
         try {
-            String req = "select count(*) from wishlistbooks where wishlistid=? and bookid=? ";
+            String req = "select count(*) from wishlistbooks where wishlistid=? and itemid=? ";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(1, wishid);
-            st.setInt(2, bookid);
+            st.setInt(2, itemid);
             ResultSet res = st.executeQuery(req);
             if (res.next()) { // just in case
                 count = res.getInt(1); // note that indexes are one-based

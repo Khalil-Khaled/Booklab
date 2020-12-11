@@ -1,0 +1,27 @@
+.parent{
+    -fx-background-color: #fff;
+}
+.sidebar{
+    -fx-background-color: #333645;
+}
+.txtColor{
+    -fx-text-background-color: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+.btns{
+    -fx-background-color: transparent;
+}
+.btns:hover{
+    -fx-background-color: #202332;
+}
+.box{
+    -fx-border-color: #3B3F4B;
+    -fx-border-width: 1px 0px 0px 0px;
+}
+
+.txtColor1{
+    -fx-text-background-color: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}

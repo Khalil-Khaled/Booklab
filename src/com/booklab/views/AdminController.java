@@ -31,7 +31,7 @@ import javafx.util.Duration;
 public class AdminController implements Initializable {
     
     @FXML
-    private AnchorPane anchorAdmin;
+    private AnchorPane menu;
     @FXML
     private JFXButton btnProfile;
     @FXML
@@ -46,7 +46,7 @@ public class AdminController implements Initializable {
     private JFXButton btnComplaint;
     Stage dialogStage = new Stage();
     Scene scene;
-    AnchorPane profile, users, category, events,offers, complaint;
+    AnchorPane profile, users, category, events,offers, complaint,coupon;
     /**1
      * Initializes the controller class.
      */
@@ -56,12 +56,13 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try{
-            profile=FXMLLoader.load(getClass().getResource("ProfileAdmin.fxml"));
+            profile=FXMLLoader.load(getClass().getResource("Contacts.fxml"));
             users= FXMLLoader.load(getClass().getResource("UsersView.fxml"));
-            category=FXMLLoader.load(getClass().getResource("CaegoryAdmin.fxml"));
-            events=FXMLLoader.load(getClass().getResource("Events.fxml"));
+            category=FXMLLoader.load(getClass().getResource("BookViewAdmin.fxml"));
+            events=FXMLLoader.load(getClass().getResource("CreateEvent.fxml"));
             offers=FXMLLoader.load(getClass().getResource("offersViewAdmin.fxml"));
-            complaint=FXMLLoader.load(getClass().getResource("ComplaintsView.fxml"));
+            complaint=FXMLLoader.load(getClass().getResource("AdminComplaints.fxml"));
+            coupon=FXMLLoader.load(getClass().getResource("adminCouponView.fxml"));
             setNode(category);
         }catch(IOException ex){
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,8 +70,8 @@ public class AdminController implements Initializable {
     }    
        //Set selected node to a content holder
     private void setNode(Node node) {
-        anchorAdmin.getChildren().clear();
-        anchorAdmin.getChildren().add((Node) node);
+        menu.getChildren().clear();
+        menu.getChildren().add((Node) node);
 
         FadeTransition ft = new FadeTransition(Duration.millis(1500));
         ft.setNode(node);
@@ -120,4 +121,9 @@ public class AdminController implements Initializable {
       private void switchComplaints(ActionEvent event) {
         setNode(complaint);
     }
+      @FXML
+      private void switchcoupon(ActionEvent event) {
+        setNode(coupon);
+    }
 }
+

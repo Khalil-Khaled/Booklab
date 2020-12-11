@@ -108,7 +108,7 @@ public class FXMLDocumentController implements Initializable {
              cart= FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
              wishlist= FXMLLoader.load(getClass().getResource("Wishlist.fxml"));
              events=FXMLLoader.load(getClass().getResource("ShowEvent.fxml"));
-            setNode(pricing);
+            setNode(profiles);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
