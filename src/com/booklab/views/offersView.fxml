@@ -20,7 +20,7 @@
          </font>
       </Label>
       <Separator layoutX="3.0" layoutY="55.0" prefHeight="4.0" prefWidth="1213.0" />
-      <TableView editable="true" fx:id="offersTable" layoutX="47.0" layoutY="86.0" prefHeight="511.0" prefWidth="685.0">
+      <TableView editable="false" fx:id="offersTable" layoutX="47.0" layoutY="86.0" prefHeight="511.0" prefWidth="685.0">
         <columns>
             <!--<TableColumn fx:id="idOffer" prefWidth="90.0" text="Offre Num " />-->
           <TableColumn fx:id="typeOffer" prefWidth="100.0" text="Offre" />

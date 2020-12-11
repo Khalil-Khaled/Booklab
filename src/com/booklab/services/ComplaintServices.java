@@ -95,10 +95,9 @@ public class ComplaintServices {
             PreparedStatement st = cnx.prepareStatement(req);
             ResultSet res = st.executeQuery();
             while (res.next()) {
-                list.add(new Complaint(res.getInt(1),0, res.getString(3), res.getString(4), res.getString(5),res.getString(6)));
+                list.add(new Complaint(res.getInt(1),0, res.getString(2), res.getString(3), res.getString(4),res.getString(5)));
             }
-            System.out.println("List of complaints :");
-            System.out.println(list);
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -33,20 +34,24 @@ public class AdminController implements Initializable {
     @FXML
     private AnchorPane menu;
     @FXML
-    private JFXButton btnProfile;
+    private Button btnUser;
     @FXML
-    private JFXButton btnUser;
+    private Button btnCategory;
     @FXML
-    private JFXButton btnCategory;
+    private Button btnEvent;
     @FXML
-    private JFXButton btnEvent;
-    @FXML
-    private JFXButton btnOffers;
-    @FXML
-    private JFXButton btnComplaint;
+    private Button btnOffers;
     Stage dialogStage = new Stage();
     Scene scene;
-    AnchorPane profile, users, category, events,offers, complaint,coupon;
+    AnchorPane profile, users, items, events,offers, complaint,coupon;
+    @FXML
+    private AnchorPane anchorAdmin;
+    @FXML
+    private Button btnprofile;
+    @FXML
+    private Button bntComplaint;
+    @FXML
+    private Button bntcoupon;
     /**1
      * Initializes the controller class.
      */
@@ -56,14 +61,14 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try{
-            profile=FXMLLoader.load(getClass().getResource("Contacts.fxml"));
+            
             users= FXMLLoader.load(getClass().getResource("UsersView.fxml"));
-            category=FXMLLoader.load(getClass().getResource("BookViewAdmin.fxml"));
+            items=FXMLLoader.load(getClass().getResource("BookViewAdmin.fxml"));
             events=FXMLLoader.load(getClass().getResource("CreateEvent.fxml"));
             offers=FXMLLoader.load(getClass().getResource("offersViewAdmin.fxml"));
             complaint=FXMLLoader.load(getClass().getResource("AdminComplaints.fxml"));
             coupon=FXMLLoader.load(getClass().getResource("adminCouponView.fxml"));
-            setNode(category);
+            setNode(items);
         }catch(IOException ex){
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,47 +88,37 @@ public class AdminController implements Initializable {
     }
     @FXML
      private void switchEvent(ActionEvent event) {
-        setNode(profile);
+        setNode(events);
     }
     @FXML
      private void switchUser(ActionEvent event) {
-        setNode(profile);
+        setNode(users);
     }
       @FXML
      private void switchComplaint(ActionEvent event) {
-        setNode(profile);
+        setNode(complaint);
     }
-     @FXML
-     private void switchItem(ActionEvent event) {
-        setNode(profile);
-    }
+     
      @FXML
      private void switchProfile(ActionEvent event) {
         setNode(profile);
     }
-     @FXML
-     private void switchUsers(ActionEvent event) {
-        setNode(users);
-    }
-     @FXML
-     private void switchCategory(ActionEvent event) {
-        setNode(category);
-    }
-     @FXML
-     private void switchEvents(ActionEvent event) {
-        setNode(events);
-    }
-     @FXML
+  
+    @FXML
      private void switchOffers(ActionEvent event) {
         setNode(offers);
     }
-     @FXML
-      private void switchComplaints(ActionEvent event) {
-        setNode(complaint);
-    }
+     
       @FXML
       private void switchcoupon(ActionEvent event) {
         setNode(coupon);
     }
+
+    @FXML
+    private void switchItems(ActionEvent event) {
+        setNode(items);
+    }
+
+    
 }
 

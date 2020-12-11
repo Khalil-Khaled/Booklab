@@ -86,6 +86,7 @@ public class AdminComplaintsController implements Initializable {
             Logger.getLogger(AdminComplaintsController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        
         List<Complaint> complaints = new ArrayList<>();
         ComplaintServices cs = new ComplaintServices();
 
@@ -104,7 +105,11 @@ public class AdminComplaintsController implements Initializable {
         col_customer.setCellFactory(TextFieldTableCell.forTableColumn());
         col_type.setCellFactory(TextFieldTableCell.forTableColumn());
         col_status.setCellFactory(TextFieldTableCell.forTableColumn());
-        tab_admin.getItems().addAll(complaints);
+        
+        
+        
+        
+        
     }
     @FXML
     private void respond(ActionEvent event) {

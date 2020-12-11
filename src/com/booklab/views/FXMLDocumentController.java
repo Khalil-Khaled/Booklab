@@ -51,19 +51,13 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnWidgets;
     @FXML
     private JFXButton btnProfile;
-    @FXML
-    private JFXButton btnAlerts;
      @FXML
     private JFXButton btncarts;
     @FXML
-    private Label user;
-    @FXML
     private ImageView imageView;
-    @FXML
-     private ImageView imageuser;
      Stage dialogStage = new Stage();
     Scene scene;
-    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers,cart,wishlist,events;
+    AnchorPane contacts,alerts,pricing,profiles,complaints,controls,offers,cart,wishlist,events,items;
     @FXML
     private JFXButton btnControls;
     @FXML
@@ -98,17 +92,17 @@ public class FXMLDocumentController implements Initializable {
         try {
             
             
-             contacts = FXMLLoader.load(getClass().getResource("Contacts.fxml"));
-             alerts = FXMLLoader.load(getClass().getResource("Alerts.fxml"));
-             pricing = FXMLLoader.load(getClass().getResource("Pricing.fxml"));
+             
+             
+             
              profiles = FXMLLoader.load(getClass().getResource("Profiles.fxml"));
-             complaints = FXMLLoader.load(getClass().getResource("complaints.fxml"));
-             controls = FXMLLoader.load(getClass().getResource("Controls.fxml"));
+             complaints = FXMLLoader.load(getClass().getResource("Complaints.fxml"));
              offers = FXMLLoader.load(getClass().getResource("offersView.fxml"));
              cart= FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
              wishlist= FXMLLoader.load(getClass().getResource("Wishlist.fxml"));
              events=FXMLLoader.load(getClass().getResource("ShowEvent.fxml"));
-            setNode(profiles);
+             items= FXMLLoader.load(getClass().getResource("ItemsView.fxml"));
+            setNode(items);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -175,12 +169,10 @@ public class FXMLDocumentController implements Initializable {
         setNode(profiles);
     }
 
-    @FXML
     private void switchAlert(ActionEvent event) {
         setNode(alerts);
     }
 
-    @FXML
     private void switchControls(ActionEvent event) {
         setNode(controls);
     }
@@ -192,5 +184,11 @@ public class FXMLDocumentController implements Initializable {
         @FXML
      private void switchwishlist(ActionEvent event) {
         setNode(wishlist);
+    }
+
+    @FXML
+    private void switchItems(ActionEvent event) {
+        setNode(items);
+        
     }
 }

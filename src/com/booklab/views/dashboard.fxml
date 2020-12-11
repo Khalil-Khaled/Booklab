@@ -71,7 +71,7 @@
                
                 <ImageView fx:id="imageView"  fitHeight="98.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" />
                 <Label fx:id="user1" style="-fx-text-background-color: #1abc9c;" ></Label>
-                <JFXButton fx:id="btnHome" prefHeight="42.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="PROFILE" textFill="#a1aec4">
+                <JFXButton fx:id="btnHome" prefHeight="42.0" onAction="#switchItems" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="HOME" textFill="#a1aec4">
                     <font>
                         <Font name="Roboto Bold" size="14.0" />
                     </font>
